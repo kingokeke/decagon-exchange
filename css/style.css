@@ -24,6 +24,42 @@ h3 {
   width: 200px;
   margin-bottom: 50px;
 }
+.dashboard-logo {
+  margin: 0;
+  padding: 0;
+}
+.dashboard-logo img {
+  height: 50px;
+  vertical-align: sub;
+}
+.sidebar-toggle {
+  font-size: 1.5em;
+}
+.sidebar ul li a {
+  padding: 1.5rem 1rem;
+}
+.sidebar a svg {
+  font-size: 2em;
+  vertical-align: middle;
+}
+.admin-panel-logo-text {
+  text-transform: uppercase;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+.admin-panel-logo-text .decagon {
+  font-size: 1.5em;
+  display: inline-block;
+}
+.admin-panel-logo-text .crypto {
+  font-size: 0.5em;
+  display: inline-block;
+}
+.profile-icon {
+  font-size: 1.25em;
+}
 .site-content.login-page,
 .site-content.signup-page {
   background: url(../img/bg1.jpg);
