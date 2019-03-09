@@ -1,0 +1,37 @@
+:root {
+  --lime: #b8d344;
+  --green: #34a853;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  display: inline-block;
+}
+h2,
+h3 {
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.site-content.login-page {
+  background: url(bg1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.form-wrapper {
+  margin: 100px;
+}
+#login-form {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+.form-title.login {
+  font-size: 6rem;
+}
+.logo img {
+  width: 200px;
+  margin-bottom: 50px;
+}
