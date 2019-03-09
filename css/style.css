@@ -16,22 +16,104 @@ h3 {
   font-weight: bold;
   margin-bottom: 30px;
 }
-.site-content.login-page {
-  background: url(bg1.jpg);
-  background-size: cover;
-  background-position: center;
-}
-.form-wrapper {
-  margin: 100px;
-}
-#login-form {
-  margin-top: 100px;
-  margin-bottom: 50px;
-}
-.form-title.login {
-  font-size: 6rem;
+.header-logo {
+  width: 35px;
+  display: inline-block;
 }
 .logo img {
   width: 200px;
   margin-bottom: 50px;
+}
+.site-content.login-page,
+.site-content.signup-page {
+  background: url(../img/bg1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.75);
+  min-height: 100vh;
+}
+.form-wrapper {
+  margin: 100px;
+}
+#login-form,
+#signup-form {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+.form-title.login,
+.form-title.signup {
+  font-size: 6rem;
+}
+.recaptcha {
+  background-color: whitesmoke;
+  padding: 20px 0px 20px 5px;
+  border-radius: 5px;
+  font-size: 1.25em;
+}
+.recaptcha-google {
+  float: right;
+  margin-top: -15px;
+  text-align: center;
+}
+.recaptcha-google img {
+  height: 30px;
+}
+.recaptcha-google .text {
+  display: block;
+  font-size: 0.75rem;
+}
+.recaptcha-text {
+  margin-left: 20px;
+}
+.captcha-links {
+  display: block;
+  margin-top: -15px;
+}
+.captcha-links a {
+  font-size: 0.425em;
+  padding-top: 0;
+  margin-top: -20px;
+  color: #000;
+}
+.custom-control-label::before {
+  position: absolute;
+  top: 0px;
+  left: -2rem;
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  pointer-events: none;
+  content: '';
+  background-color: #fff;
+  border: #adb5bd solid 2px;
+  border-radius: 1px;
+}
+.custom-control-label::after {
+  position: absolute;
+  top: 0em;
+  left: -2rem;
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  content: '';
+  background: no-repeat 50%/50% 50%;
+}
+.login-button,
+.signup-button {
+  color: var(--green);
+  border-color: var(--green);
+}
+.login-button:hover,
+.signup-button:hover {
+  background-color: var(--green);
+  border-color: var(--green);
+}
+.signup-link a {
+  color: white;
+  text-decoration: none;
+}
+.signup-link a:hover {
+  color: var(--lime);
 }
