@@ -6,5 +6,63 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-sm-10 col-md-8 col-lg-6 form-wrapper">
+            <div class="text-center">
+              <div class="logo">
+                <h1 class="sr-only">Decagon chain cryptocurrency exchange</h1>
+                <a href="index.html"><img src="decagon-chain-logo.png" class="img-fluid" alt=""/></a>
+              </div>
+              <h2><span class="form-title login">Decagon</span> Cryptocurrency Exchange</h2>
+            </div>
+            <div class="text-center">
+              <h3>Log into your account</h3>
+            </div>
+            <form method="POST" action="login.html" id="login-form">
+              <div class="form-group">
+                <label for="exampleInputEmail1" class="sr-only">Email address</label>
+                <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1" class="sr-only">Password</label>
+                <input
+                  type="password"
+                  class="form-control form-control-lg "
+                  id="exampleInputPassword1"
+                  placeholder="Password"
+                />
+              </div>
+              <div class="form-group recaptcha">
+                <div class="col-auto my-1">
+                  <div class="custom-control custom-checkbox mr-sm-2">
+                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing" />
+                    <label class="custom-control-label" for="customControlAutosizing"></label
+                    ><span class="recaptcha-text">I'm not a robot</span>
+                    <div class="recaptcha-google">
+                      <img src="recaptcha-logo.png" class="img-fluid" alt="recaptcha image" />
+                      <span class="text">reCAPTCHA</span>
+                      <span class="captcha-links"
+                        ><a href="https://www.google.com/intl/en/policies/privacy/">Privacy</a> <a href="#">-</a>
+                        <a href="https://www.google.com/intl/en/policies/terms/">Terms</a></span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <div class="form-group text-center">
+                <button type="button" class="login-button btn btn-outline-info btn-lg btn-block">Log In</button>
+              </div>
+            </form>
+            <div class="text-center signup-link">
+              <p><a href="signup.html">Don't have an account yet? Sign up</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
