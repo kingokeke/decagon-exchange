@@ -66,6 +66,7 @@ function getRandomInteger(min, max) {
 }
 
 function btcAddress() {
+  // Function to generate random mock BTC and BCH addresses for user wallets
   const startNumber = ['1', '3'];
   let address = startNumber[Math.round(Math.random())];
   const characterList = generateCharacterList();
@@ -77,11 +78,23 @@ function btcAddress() {
 }
 
 function ethAddress() {
+  // Function to generate random mock ETH addresses for user wallets
   let address = '0x';
   for (let i = 3; i--; ) {
     address += getRandomInteger(1e16, 1e17).toString(16);
   }
   return address.slice(0, 42);
+}
+
+function xrpAddress() {
+  // Function to generate random mock XRP addresses for user wallets
+  let address = 'r';
+  const characterList = generateCharacterList().filter(x => !['0', 'O', 'I', 'l'].includes(x));
+  const addressLength = getRandomInteger(25, 35);
+  for (let i = addressLength; i--; ) {
+    address += characterList[getRandomInteger(0, characterList.length)];
+  }
+  return address;
 }
 
 // ###################################
