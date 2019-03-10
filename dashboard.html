@@ -5,14 +5,13 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/fontawesome.min.css" />
     <link rel="stylesheet" href="css/datatables.min.css" />
-    <link rel="stylesheet" href="css/fullcalendar.min.css" />
     <link rel="stylesheet" href="css/bootadmin.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <title>Blank/Starter | Decagon Cryptocurrency Exchange</title>
   </head>
   <body class="bg-light" data-gr-c-s-loaded="true">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <a class="sidebar-toggle mr-5" href="#"><i class="fas fa-bars"></i></a>
+      <a class="sidebar-toggle mr-4 ml-2" href="#"><i class="fas fa-bars"></i></a>
       <a class="navbar-brand dashboard-logo" href="#">
         <!-- <img src="img/logo.png" alt="Decagon Logo" />
         <p class="admin-panel-logo-text">
@@ -54,7 +53,87 @@
         </ul>
       </div>
 
-      <div class="content p-4"></div>
+      <div class="content p-4">
+        <div class="row">
+          <div class="col-xl-8">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-6 dashboard-minicharts">
+                    <!-- <div class="card"> -->
+                    <!-- <div class="card-header">
+                                      <h4>Bitcoin Price</h4>
+                                    </div> -->
+                    <div class="chart">
+                      <!-- TradingView Widget BEGIN -->
+                      <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <script
+                          type="text/javascript"
+                          src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
+                          async
+                        >
+                            {
+                            "symbol": "BITSTAMP:BTCUSD",
+                            "width": "100%",
+                            "height": "100%",
+                            "locale": "en",
+                            "dateRange": "1d",
+                            "colorTheme": "light",
+                            "trendLineColor": "#f8a034",
+                            "underLineColor": "rgba(227, 242, 253, 0.5)",
+                            "isTransparent": true,
+                            "autosize": true,
+                            "largeChartUrl": ""
+                          }
+                        </script>
+                      </div>
+                      <!-- TradingView Widget END -->
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                  <div class="col-lg-6 dashboard-minicharts">
+                    <div class="chart">
+                      <!-- TradingView Widget BEGIN -->
+                      <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+
+                        <script
+                          type="text/javascript"
+                          src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
+                          async
+                        >
+                            {
+                            "symbol": "BITSTAMP:ETHUSD",
+                            "width": "100%",
+                            "height": "100%",
+                            "locale": "en",
+                            "dateRange": "1d",
+                            "colorTheme": "light",
+                            "trendLineColor": "#848586",
+                            "underLineColor": "rgba(227, 242, 253, 0.27)",
+                            "isTransparent": true,
+                            "autosize": false,
+                            "largeChartUrl": ""
+                          }
+                        </script>
+                      </div>
+                      <!-- TradingView Widget END -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4">
+            <div class="card">
+              <div class="card-header">
+                <h4>Cryptocurrency News</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>
