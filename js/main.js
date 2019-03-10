@@ -43,6 +43,21 @@ function cryptoNews(number_of_articles, number_of_chars, query = '', type = '') 
     });
 }
 
+function generateCharacterList() {
+  // Helper function to generate list of characters for wallet addresses
+  const array = [];
+  for (let i = 48; i <= 57; i++) {
+    array[array.length] = String.fromCharCode(i);
+  }
+  for (let i = 65; i <= 90; i++) {
+    array[array.length] = String.fromCharCode(i);
+  }
+  for (let i = 97; i <= 122; i++) {
+    array[array.length] = String.fromCharCode(i);
+  }
+  return array;
+}
+
 // ###################################
 // FUNCTION CALLS
 // ###################################
