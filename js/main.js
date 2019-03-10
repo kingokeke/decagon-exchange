@@ -145,6 +145,39 @@ function getBTCPrices() {
     });
 }
 
+function generateQRCode(address, output) {
+  // Function to generate qrcode for wallet addresses
+  // Please note that qrcode.min.js must be included
+  // on the HTML page before this function is invoked
+  let walletType = '';
+  switch (address[0]) {
+    case '1':
+    case '3':
+      walletType = 'bitcoin';
+      break;
+    case '0':
+      walletType = 'ethereum';
+      break;
+    case 'r':
+      walletType = 'ripple';
+      break;
+    case 'q':
+      walletType = 'bitcoincash';
+      break;
+    case 'M':
+      walletType = 'litecoin';
+      break;
+  }
+  const qrcode = new QRCode(document.querySelector(output), {
+    text: `${walletType}:${address}`,
+    width: 256,
+    height: 256,
+    colorDark: '#000000',
+    colorLight: '#ffffff',
+  });
+  return qrcode;
+}
+
 // ###################################
 // FUNCTION CALLS
 // ###################################
