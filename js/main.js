@@ -58,6 +58,24 @@ function generateCharacterList() {
   return array;
 }
 
+function getRandomInteger(min, max) {
+  // Helper function to get a random integer between a list of values
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function btcAddress() {
+  const startNumber = ['1', '3'];
+  let address = startNumber[Math.round(Math.random())];
+  const characterList = generateCharacterList();
+  const addressLength = getRandomInteger(30, 34);
+  for (let i = addressLength; i--; ) {
+    address += characterList[getRandomInteger(0, characterList.length)];
+  }
+  return address;
+}
+
 // ###################################
 // FUNCTION CALLS
 // ###################################
