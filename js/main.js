@@ -43,18 +43,27 @@ function cryptoNews(number_of_articles, number_of_chars, query = '', type = '') 
     });
 }
 
-function generateCharacterList() {
+function generateCharacterList(...types) {
   // Helper function to generate list of characters for wallet addresses
   const array = [];
-  for (let i = 48; i <= 57; i++) {
-    array[array.length] = String.fromCharCode(i);
+  for (let i = types.length; i--; ) {
+    if (types[i] === 'numbers') {
+      for (let i = 48; i <= 57; i++) {
+        array[array.length] = String.fromCharCode(i);
+      }
+    }
+    if (types[i] === 'uppercase') {
+      for (let i = 65; i <= 90; i++) {
+        array[array.length] = String.fromCharCode(i);
+      }
+    }
+    if (types[i] === 'lowercase') {
+      for (let i = 97; i <= 122; i++) {
+        array[array.length] = String.fromCharCode(i);
+      }
+    }
   }
-  for (let i = 65; i <= 90; i++) {
-    array[array.length] = String.fromCharCode(i);
-  }
-  for (let i = 97; i <= 122; i++) {
-    array[array.length] = String.fromCharCode(i);
-  }
+
   return array;
 }
 
@@ -69,7 +78,7 @@ function btcAddress() {
   // Function to generate random mock BTC and BCH addresses for user wallets
   const startNumber = ['1', '3'];
   let address = startNumber[Math.round(Math.random())];
-  const characterList = generateCharacterList();
+  const characterList = generateCharacterList('numbers', 'lowercase', 'uppercase');
   const addressLength = getRandomInteger(30, 34);
   for (let i = addressLength; i--; ) {
     address += characterList[getRandomInteger(0, characterList.length)];
@@ -89,7 +98,8 @@ function ethAddress() {
 function xrpAddress() {
   // Function to generate random mock XRP addresses for user wallets
   let address = 'r';
-  const characterList = generateCharacterList().filter(x => !['0', 'O', 'I', 'l'].includes(x));
+  let characterList = generateCharacterList('numbers', 'lowercase', 'uppercase');
+  characterList = characterList.filter(x => !['0', 'O', 'I', 'l'].includes(x));
   const addressLength = getRandomInteger(25, 35);
   for (let i = addressLength; i--; ) {
     address += characterList[getRandomInteger(0, characterList.length)];
@@ -102,3 +112,9 @@ function xrpAddress() {
 // ###################################
 
 // cryptoNews(7, 160, 'bitcoin');
+console.log(btcAddress());
+console.log(ethAddress());
+console.log(xrpAddress());
+console.log(bchAddress());
+
+MBTEjQSiUDViwhk3yhGQNbWGFfsgC3GKRB;
