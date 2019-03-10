@@ -3,8 +3,12 @@
   --green: #34a853;
   --bitcoin-color: #f8a034;
   --ethereum-color: #848586;
+  --ripple-color: #000000;
   --litecoin-color: #345d9d;
   --bitcoin-cash-color: #8dc351;
+  --monero-color: #ff6600;
+  --tronix-color: #cd372d;
+  --dash-color: #028de4;
   --newsapi-key: f6968066194849a19cf97a517a1cd3b3;
 }
 body {
@@ -43,8 +47,8 @@ h1 {
   padding: 1.5rem 1rem;
 }
 .sidebar a svg {
-  font-size: 2em;
-  vertical-align: middle;
+  font-size: 1.5em;
+  vertical-align: text-top;
 }
 .admin-panel-logo-text {
   text-transform: uppercase;
@@ -157,7 +161,8 @@ h1 {
 .signup-link a:hover {
   color: var(--lime);
 }
-.cryptocurrency-news h3 {
+.cryptocurrency-news h3,
+.charts-title h3 {
   text-transform: uppercase;
   font-size: 1.5em;
   margin: 10px 0px 20px;
