@@ -111,7 +111,18 @@ function bchAddress() {
   // Function to generate random mock BCH addresses for user wallets
   let address = 'q';
   const characterList = generateCharacterList('numbers', 'lowercase');
-  const addressLength = getRandomInteger(40, 42);
+  const addressLength = getRandomInteger(38, 42);
+  for (let i = addressLength; i--; ) {
+    address += characterList[getRandomInteger(0, characterList.length)];
+  }
+  return address;
+}
+
+function ltcAddress() {
+  // Function to generate random mock LTC addresses for user wallets
+  let address = 'M';
+  const characterList = generateCharacterList('numbers', 'lowercase', 'uppercase');
+  const addressLength = getRandomInteger(32, 36);
   for (let i = addressLength; i--; ) {
     address += characterList[getRandomInteger(0, characterList.length)];
   }
@@ -123,9 +134,3 @@ function bchAddress() {
 // ###################################
 
 // cryptoNews(7, 160, 'bitcoin');
-console.log(btcAddress());
-console.log(ethAddress());
-console.log(xrpAddress());
-console.log(bchAddress());
-
-MBTEjQSiUDViwhk3yhGQNbWGFfsgC3GKRB;
