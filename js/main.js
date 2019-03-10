@@ -107,6 +107,17 @@ function xrpAddress() {
   return address;
 }
 
+function bchAddress() {
+  // Function to generate random mock BCH addresses for user wallets
+  let address = 'q';
+  const characterList = generateCharacterList('numbers', 'lowercase');
+  const addressLength = getRandomInteger(40, 42);
+  for (let i = addressLength; i--; ) {
+    address += characterList[getRandomInteger(0, characterList.length)];
+  }
+  return address;
+}
+
 // ###################################
 // FUNCTION CALLS
 // ###################################
