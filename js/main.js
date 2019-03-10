@@ -129,6 +129,22 @@ function ltcAddress() {
   return address;
 }
 
+function getBTCPrices() {
+  const btcUSDPrice = document.querySelector('#bitcoin-usd-price');
+  const btcNGNPrice = document.querySelector('#bitcoin-ngn-price');
+  const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+  const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd';
+  fetch(proxyurl + url, { method: 'GET' })
+    .then(response => response.json())
+    .then(data => {
+      // TO DO: CREATE A SECTION ON THE DASHBOARD FOR THIS AND MODIFY THIS PART TO WORK WITH IT
+      const btcPrice = data.bitcoin.usd;
+      const btcNairaPrice = Number(btcPrice * 360).toFixed(2);
+      btcUSDPrice.innerHTML = `<div class="bitcoin-usd-price">&#36;${Number(btcPrice)}</div>`;
+      btcNGNPrice.innerHTML = `<div class="bitcoin-naira-price">&#8358;${btcNairaPrice}</div>`;
+    });
+}
+
 // ###################################
 // FUNCTION CALLS
 // ###################################
