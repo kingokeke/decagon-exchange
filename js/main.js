@@ -76,6 +76,14 @@ function btcAddress() {
   return address;
 }
 
+function ethAddress() {
+  let address = '0x';
+  for (let i = 3; i--; ) {
+    address += getRandomInteger(1e16, 1e17).toString(16);
+  }
+  return address.slice(0, 42);
+}
+
 // ###################################
 // FUNCTION CALLS
 // ###################################
