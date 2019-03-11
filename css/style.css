@@ -40,6 +40,9 @@ h1 {
   height: 225px;
   padding: 10px 0px;
 }
+.sidebar {
+  background-color: #1f262d;
+}
 .sidebar-toggle {
   font-size: 1.5em;
 }
@@ -49,6 +52,10 @@ h1 {
 .sidebar a svg {
   font-size: 1.5em;
   vertical-align: text-top;
+}
+.sidebar-dark ul li a:hover,
+.sidebar-dark ul .active a {
+  background-color: var(--green);
 }
 .admin-panel-logo-text {
   text-transform: uppercase;
@@ -81,6 +88,14 @@ h1 {
 .form-wrapper {
   margin: 100px;
 }
+.form-wrapper h2,
+.form-wrapper h3 {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.form-wrapper h3 {
+}
 #login-form,
 #signup-form {
   margin-top: 100px;
@@ -88,7 +103,7 @@ h1 {
 }
 .form-title.login,
 .form-title.signup {
-  font-size: 6rem;
+  font-size: 6.1rem;
 }
 .recaptcha {
   background-color: whitesmoke;
@@ -182,4 +197,23 @@ h1 {
   margin: 0;
   padding: unset;
   padding-top: 20px;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: var(--green);
+}
+#wallets-section {
+  min-height: 100vh;
+}
+.wallet-instance {
+  min-width: 400px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.wallet-instance .card-footer button {
+  padding: 5px 10px;
+  margin: 2px;
+}
+.buy-sell-indicator {
+  height: 360px;
 }
