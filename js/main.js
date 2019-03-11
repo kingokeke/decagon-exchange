@@ -178,8 +178,46 @@ function generateQRCode(address, output) {
   return qrcode;
 }
 
+function addWallet() {
+  const div = document.createElement('div');
+  div.classList.add('col-lg-6', 'wallet-instance');
+  const walletContainer = document.querySelector('.wallet-container');
+  const message = `<div class="card">
+                    <div class="card-body">
+                      <div class="d-flex">
+                        <div>
+                          <h5>Business</h5>
+                          <p>Balance: 3.2 BTC</p>
+                        </div>
+                        <div class="ml-auto">
+                          <button class="btn btn-warning"><i class="fas fa-pencil-alt mr-2"></i>Edit</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="d-flex">
+                        <div>
+                          <button class="btn btn-primary">
+                            <i class="fas fa-money-bill-alt mr-3"></i>Buy
+                          </button>
+                          <button class="btn btn-danger">
+                            <i class="fas fa-money-bill-wave mr-3"></i>Sell
+                          </button>
+                        </div>
+                        <div class="ml-auto">
+                          <button class="btn btn-info"><i class="fas fa-paper-plane mr-3"></i>Send</button>
+                          <button class="btn btn-success"><i class="fas fa-qrcode mr-3"></i>Receive</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>`;
+  div.innerHTML = message;
+  walletContainer.appendChild(div);
+}
 // ###################################
 // FUNCTION CALLS
 // ###################################
 
 // cryptoNews(7, 160, 'bitcoin');
+// const addWalletButton = document.querySelector('.add-wallet-button');
+// addWalletButton.onclick = addWallet;
