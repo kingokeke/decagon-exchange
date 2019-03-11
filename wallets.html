@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="css/datatables.min.css" />
     <link rel="stylesheet" href="css/bootadmin.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Wallets | Decagon Cryptocurrency Exchange</title>
+    <title>Dashboard | Decagon Cryptocurrency Exchange</title>
   </head>
   <body class="bg-light" data-gr-c-s-loaded="true">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <a class="sidebar-toggle mr-5" href="#"><i class="fas fa-bars"></i></a>
+      <a class="sidebar-toggle mr-4 ml-2" href="#"><i class="fas fa-bars"></i></a>
       <a class="navbar-brand dashboard-logo" href="#">
         <!-- <img src="img/logo.png" alt="Decagon Logo" />
         <p class="admin-panel-logo-text">
@@ -36,25 +36,711 @@
     </nav>
 
     <div class="d-flex">
-      <div class="sidebar sidebar-dark bg-dark">
+      <div class="sidebar sidebar-dark">
         <ul class="list-unstyled">
+          <li class="">
+            <a href="dashboard.html"><i class="fas fa-fw fa-chalkboard mr-3"></i>Dashboard</a>
+          </li>
           <li class="active">
-            <a href="#"><i class="fas fa-fw fa-chalkboard mr-3"></i>Dashboard</a>
+            <a href="wallets.html"><i class="fas fa-fw fa-wallet mr-3"></i>Wallets</a>
           </li>
           <li class="">
-            <a href="#"><i class="fas fa-fw fa-wallet mr-3"></i>Wallets</a>
+            <a href="transactions.html"><i class="fas fa-fw fa-dollar-sign mr-3"></i>Transactions</a>
           </li>
           <li class="">
-            <a href="#"><i class="fas fa-fw fa-dollar-sign mr-3"></i>Transactions</a>
+            <a href="reports.html"><i class="fas fa-fw fa-file-alt mr-3"></i>Reports</a>
           </li>
           <li class="">
-            <a href="#"><i class="fas fa-fw fa-file-alt mr-3"></i>Reports</a>
+            <a href="profile.html"><i class="fas fa-fw fa-user mr-3"></i>Profile</a>
           </li>
         </ul>
       </div>
 
-      <div class="content p-4"></div>
+      <div class="content p-4">
+        <div class="card" id="wallets-section">
+          <div class="card-header bg-white font-weight-bold">
+            <h3>Wallets</h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-4 col-lg-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <a
+                    class="nav-link active"
+                    id="bitcoin-wallet-tab"
+                    data-toggle="pill"
+                    href="#wallets-bitcoin"
+                    role="tab"
+                    >Bitcoin</a
+                  >
+                  <a class="nav-link" id="ethereum-wallet-tab" data-toggle="pill" href="#wallets-ethereum" role="tab"
+                    >Ethereum</a
+                  >
+                  <a class="nav-link" id="ripple-wallet-tab" data-toggle="pill" href="#wallets-ripple" role="tab"
+                    >Ripple</a
+                  >
+                  <a class="nav-link" id="litecoin-wallet-tab" data-toggle="pill" href="#wallets-litecoin" role="tab"
+                    >Litecoin</a
+                  >
+                  <a
+                    class="nav-link"
+                    id="bitcoin-cash-wallet-tab"
+                    data-toggle="pill"
+                    href="#wallets-bitcoin-cash"
+                    role="tab"
+                    >Bitcoin Cash</a
+                  >
+                </div>
+              </div>
+              <div class="col-sm-8 col-lg-9">
+                <div class="tab-content" id="v-pills-tabContent">
+                  <div
+                    class="tab-pane fade show active"
+                    id="wallets-bitcoin"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-home-tab"
+                  >
+                    <div class="card">
+                      <div class="card-header">
+                        <div class="d-flex">
+                          <h4>Bitcoin Wallets</h4>
+                          <button
+                            type="button"
+                            class="btn btn-success ml-auto add-wallet-button"
+                            data-toggle="modal"
+                            data-target="#add-bitcoin-wallet-modal"
+                          >
+                            <i class="fas fa-plus-circle mr-2"></i>
+                            Add wallet
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div class="row p-3 wallet-container">
+                          <div class="col-lg-6 wallet-instance">
+                            <div class="card">
+                              <div class="card-body">
+                                <div class="d-flex">
+                                  <div>
+                                    <h5>Bitcoin Wallet #1</h5>
+                                    <p>Balance: 3.2 BTC</p>
+                                  </div>
+                                  <div class="ml-auto">
+                                    <button class="btn btn-warning" data-toggle="modal" data-target="#edit-bitcoin-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="card-footer">
+                                <div class="d-flex">
+                                  <div>
+                                    <button class="btn btn-primary"><i class="fab fa-bitcoin mr-2"></i>Buy</button>
+                                    <button class="btn btn-danger">
+                                      <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                                    </button>
+                                  </div>
+                                  <div class="ml-auto">
+                                    <button class="btn btn-info"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                                    <button class="btn btn-success"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="wallets-ethereum"
+                    role="tabpanel"
+                  >
+                    <div class="card">
+                      <div class="card-header">
+                        <div class="d-flex">
+                          <h4>Ethereum Wallets</h4>
+                          <button
+                            type="button"
+                            class="btn btn-success ml-auto add-wallet-button"
+                            data-toggle="modal"
+                            data-target="#add-ethereum-wallet-modal"
+                          >
+                            <i class="fas fa-plus-circle mr-2"></i>
+                            Add wallet
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div class="row p-3 wallet-container">
+                          <div class="col-lg-6 wallet-instance">
+                            <div class="card">
+                              <div class="card-body">
+                                <div class="d-flex">
+                                  <div>
+                                    <h5>Ethereum wallet #1</h5>
+                                    <p>Balance: 11.3 ETH</p>
+                                  </div>
+                                  <div class="ml-auto">
+                                      <button class="btn btn-warning" data-toggle="modal" data-target="#edit-ethereum-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="card-footer">
+                                <div class="d-flex">
+                                  <div>
+                                    <button class="btn btn-primary"><i class="fab fa-bitcoin mr-2"></i>Buy</button>
+                                    <button class="btn btn-danger">
+                                      <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                                    </button>
+                                  </div>
+                                  <div class="ml-auto">
+                                    <button class="btn btn-info"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                                    <button class="btn btn-success"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="wallets-ripple"
+                    role="tabpanel"
+                  >
+                    <div class="card">
+                      <div class="card-header">
+                        <div class="d-flex">
+                          <h4>Ripple Wallets</h4>
+                          <button
+                            type="button"
+                            class="btn btn-success ml-auto add-wallet-button"
+                            data-toggle="modal"
+                            data-target="#add-ripple-wallet-modal"
+                          >
+                            <i class="fas fa-plus-circle mr-2"></i>
+                            Add wallet
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div class="row p-3 wallet-container">
+                          <div class="col-lg-6 wallet-instance">
+                            <div class="card">
+                              <div class="card-body">
+                                <div class="d-flex">
+                                  <div>
+                                    <h5>Ripple Wallet #1</h5>
+                                    <p>Balance: 3667 XRP</p>
+                                  </div>
+                                  <div class="ml-auto">
+                                      <button class="btn btn-warning" data-toggle="modal" data-target="#edit-ripple-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="card-footer">
+                                <div class="d-flex">
+                                  <div>
+                                    <button class="btn btn-primary"><i class="fab fa-bitcoin mr-2"></i>Buy</button>
+                                    <button class="btn btn-danger">
+                                      <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                                    </button>
+                                  </div>
+                                  <div class="ml-auto">
+                                    <button class="btn btn-info"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                                    <button class="btn btn-success"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="wallets-litecoin"
+                    role="tabpanel"
+                  >
+                    <div class="card">
+                      <div class="card-header">
+                        <div class="d-flex">
+                          <h4>Litecoin Wallets</h4>
+                          <button
+                            type="button"
+                            class="btn btn-success ml-auto add-wallet-button"
+                            data-toggle="modal"
+                            data-target="#add-litecoin-wallet-modal"
+                          >
+                            <i class="fas fa-plus-circle mr-2"></i>
+                            Add wallet
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div class="row p-3 wallet-container">
+                          <div class="col-lg-6 wallet-instance">
+                            <div class="card">
+                              <div class="card-body">
+                                <div class="d-flex">
+                                  <div>
+                                    <h5>Litecoin Wallet #1</h5>
+                                    <p>Balance: 35.9 LTC</p>
+                                  </div>
+                                  <div class="ml-auto">
+                                      <button class="btn btn-warning" data-toggle="modal" data-target="#edit-litecoin-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="card-footer">
+                                <div class="d-flex">
+                                  <div>
+                                    <button class="btn btn-primary"><i class="fab fa-bitcoin mr-2"></i>Buy</button>
+                                    <button class="btn btn-danger">
+                                      <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                                    </button>
+                                  </div>
+                                  <div class="ml-auto">
+                                    <button class="btn btn-info"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                                    <button class="btn btn-success"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="wallets-bitcoin-cash"
+                    role="tabpanel"
+                  >
+                    <div class="card">
+                      <div class="card-header">
+                        <div class="d-flex">
+                          <h4>Bitcoin Cash Wallets</h4>
+                          <button
+                            type="button"
+                            class="btn btn-success ml-auto add-wallet-button"
+                            data-toggle="modal"
+                            data-target="#add-bitcoin-cash-wallet-modal"
+                          >
+                            <i class="fas fa-plus-circle mr-2"></i>
+                            Add wallet
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div class="row p-3 wallet-container">
+                          <div class="col-lg-6 wallet-instance">
+                            <div class="card">
+                              <div class="card-body">
+                                <div class="d-flex">
+                                  <div>
+                                    <h5>Bitcoin Cash Wallet #1</h5>
+                                    <p>Balance: 3.2 BCH</p>
+                                  </div>
+                                  <div class="ml-auto">
+                                      <button class="btn btn-warning" data-toggle="modal" data-target="#edit-bitcoin-cash-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="card-footer">
+                                <div class="d-flex">
+                                  <div>
+                                    <button class="btn btn-primary"><i class="fab fa-bitcoin mr-2"></i>Buy</button>
+                                    <button class="btn btn-danger">
+                                      <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                                    </button>
+                                  </div>
+                                  <div class="ml-auto">
+                                    <button class="btn btn-info"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                                    <button class="btn btn-success"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Add New Wallet Modals -->
+    <div class="modal fade" id="add-bitcoin-wallet-modal" tabindex="-1" role="dialog" style="display: none;">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Add new Bitcoin wallet</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <div class="card-body">
+                <form action="">
+                  <div class="form-group">
+                    <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="new-wallet-name"
+                      placeholder='e.g. "Personal", "Business", etc'
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex">
+              <div class="ml-auto">
+                <button class="btn btn-success">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="add-ethereum-wallet-modal" tabindex="-1" role="dialog" style="display: none;">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Add new Ethereum wallet</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <div class="card-body">
+                <form action="">
+                  <div class="form-group">
+                    <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="new-wallet-name"
+                      placeholder='e.g. "Personal", "Business", etc'
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex">
+              <div class="ml-auto">
+                <button class="btn btn-success">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="add-ripple-wallet-modal" tabindex="-1" role="dialog" style="display: none;">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Add new Ripple wallet</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <div class="card-body">
+                <form action="">
+                  <div class="form-group">
+                    <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="new-wallet-name"
+                      placeholder='e.g. "Personal", "Business", etc'
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex">
+              <div class="ml-auto">
+                <button class="btn btn-success">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="add-litecoin-wallet-modal" tabindex="-1" role="dialog" style="display: none;">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Add new Litecoin wallet</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <div class="card-body">
+                <form action="">
+                  <div class="form-group">
+                    <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="new-wallet-name"
+                      placeholder='e.g. "Personal", "Business", etc'
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex">
+              <div class="ml-auto">
+                <button class="btn btn-success">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="add-bitcoin-cash-wallet-modal" tabindex="-1" role="dialog" style="display: none;">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Add new Bitcoin Cash wallet</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <div class="card-body">
+                <form action="">
+                  <div class="form-group">
+                    <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="new-wallet-name"
+                      placeholder='e.g. "Personal", "Business", etc'
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex">
+              <div class="ml-auto">
+                <button class="btn btn-success">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Wallet Modals -->
+    <div class="modal fade" id="edit-bitcoin-wallet-modal" tabindex="-1" role="dialog" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Edit Bitcoin wallet</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-body">
+                  <form action="">
+                    <div class="form-group">
+                      <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="new-wallet-name"
+                        placeholder='e.g. "Personal", "Business", etc'
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex">
+                <div class="ml-auto">
+                  <button class="btn btn-success">Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="edit-ethereum-wallet-modal" tabindex="-1" role="dialog" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="">Edit Ethereum wallet</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-body">
+                  <form action="">
+                    <div class="form-group">
+                      <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="new-wallet-name"
+                        placeholder='e.g. "Personal", "Business", etc'
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex">
+                <div class="ml-auto">
+                  <button class="btn btn-success">Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="edit-ripple-wallet-modal" tabindex="-1" role="dialog" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Edit Ripple wallet</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-body">
+                  <form action="">
+                    <div class="form-group">
+                      <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="new-wallet-name"
+                        placeholder='e.g. "Personal", "Business", etc'
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex">
+                <div class="ml-auto">
+                  <button class="btn btn-success">Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="edit-litecoin-wallet-modal" tabindex="-1" role="dialog" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Edit Litecoin wallet</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-body">
+                  <form action="">
+                    <div class="form-group">
+                      <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="new-wallet-name"
+                        placeholder='e.g. "Personal", "Business", etc'
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex">
+                <div class="ml-auto">
+                  <button class="btn btn-success">Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="edit-bitcoin-cash-wallet-modal" tabindex="-1" role="dialog" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Edit Bitcoin Cash wallet</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-body">
+                  <form action="">
+                    <div class="form-group">
+                      <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="new-wallet-name"
+                        placeholder='e.g. "Personal", "Business", etc'
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex">
+                <div class="ml-auto">
+                  <button class="btn btn-success">Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/fontawesome.min.js"></script>
