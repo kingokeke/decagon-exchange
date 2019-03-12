@@ -200,7 +200,8 @@ h1 {
 .nav-pills .show > .nav-link {
   background-color: var(--green);
 }
-#wallets-section {
+#wallets-page,
+#transactions-page {
   min-height: 100vh;
 }
 .wallet-instance {
@@ -215,17 +216,20 @@ h1 {
 .buy-sell-indicator {
   height: 360px;
 }
-#wallets-section .nav-link {
+#wallets-page .nav-link,
+#transactions-page .nav-link {
   color: var(--green);
   text-transform: uppercase;
   font-weight: bold;
   color: #444;
 }
-#wallets-section .nav-link.active {
+#wallets-page .nav-link.active,
+#transactions-page .nav-link.active {
   color: white;
 }
-#wallets-section .nav-link i {
+#wallets-page .nav-link i,
+#transactions-page .nav-link i {
   font-size: 2rem;
-  vertical-align: text-top;
+  vertical-align: sub;
   margin-right: 10px;
 }

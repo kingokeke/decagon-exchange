@@ -348,6 +348,10 @@ function addBCHWallet() {
   div.innerHTML = message;
   walletContainer.appendChild(div);
 }
+
+$(document).ready(function() {
+  $('.transactions-datatable').DataTable();
+});
 // ###################################
 // FUNCTION CALLS
 // ###################################
