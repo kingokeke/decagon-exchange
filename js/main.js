@@ -357,13 +357,15 @@ $(document).ready(function() {
 // ###################################
 
 // cryptoNews(7, 160, 'bitcoin');
-const addBitcoinWalletButton = document.querySelector('#add-bitcoin-wallet-button');
-const addEthereumWalletButton = document.querySelector('#add-ethereum-wallet-button');
-const addRippleWalletButton = document.querySelector('#add-ripple-wallet-button');
-const addLitecoinWalletButton = document.querySelector('#add-litecoin-wallet-button');
-const addBitcoinCashWalletButton = document.querySelector('#add-bitcoin-cash-wallet-button');
-addBitcoinWalletButton.onclick = () => addBTCWallet();
-addEthereumWalletButton.onclick = () => addETHWallet();
-addRippleWalletButton.onclick = () => addXRPWallet();
-addLitecoinWalletButton.onclick = () => addLTCWallet();
-addBitcoinCashWalletButton.onclick = () => addBCHWallet();
+// const addBitcoinWalletButton = document.querySelector('#add-bitcoin-wallet-button');
+// const addEthereumWalletButton = document.querySelector('#add-ethereum-wallet-button');
+// const addRippleWalletButton = document.querySelector('#add-ripple-wallet-button');
+// const addLitecoinWalletButton = document.querySelector('#add-litecoin-wallet-button');
+// const addBitcoinCashWalletButton = document.querySelector('#add-bitcoin-cash-wallet-button');
+// addBitcoinWalletButton.onclick = () => addBTCWallet();
+// addEthereumWalletButton.onclick = () => addETHWallet();
+// addRippleWalletButton.onclick = () => addXRPWallet();
+// addLitecoinWalletButton.onclick = () => addLTCWallet();
+// addBitcoinCashWalletButton.onclick = () => addBCHWallet();
+
+// console.log(btcAddress());

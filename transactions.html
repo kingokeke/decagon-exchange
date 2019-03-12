@@ -64,11 +64,11 @@
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-sm-4 col-lg-3">
+              <div class="col-sm-4 col-lg-2">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                   <a
                     class="nav-link active"
-                    id="bitcoin-wallet-tab"
+                    id="bitcoin-transactions-tab"
                     data-toggle="pill"
                     href="#transactions-bitcoin"
                     role="tab"
@@ -76,23 +76,23 @@
                     <i class="cf cf-btc"></i>
                     Bitcoin</a
                   >
-                  <a class="nav-link" id="ethereum-wallet-tab" data-toggle="pill" href="#wallets-ethereum" role="tab">
+                  <a class="nav-link" id="ethereum-transactions-tab" data-toggle="pill" href="#transactions-ethereum" role="tab">
                     <i class="cf cf-eth"></i>
                     Ethereum</a
                   >
-                  <a class="nav-link" id="ripple-wallet-tab" data-toggle="pill" href="#wallets-ripple" role="tab">
+                  <a class="nav-link" id="ripple-transactions-tab" data-toggle="pill" href="#transactions-ripple" role="tab">
                     <i class="cf cf-xrp"></i>
                     Ripple</a
                   >
-                  <a class="nav-link" id="litecoin-wallet-tab" data-toggle="pill" href="#wallets-litecoin" role="tab">
+                  <a class="nav-link" id="litecoin-transactions-tab" data-toggle="pill" href="#transactions-litecoin" role="tab">
                     <i class="cf cf-ltc"></i>
                     Litecoin</a
                   >
                   <a
                     class="nav-link"
-                    id="bitcoin-cash-wallet-tab"
+                    id="bitcoin-cash-transactions-tab"
                     data-toggle="pill"
-                    href="#wallets-bitcoin-cash"
+                    href="#transactions-bitcoin-cash"
                     role="tab"
                   >
                     <i class="cf cf-btc-alt"></i>
@@ -100,57 +100,442 @@
                   >
                 </div>
               </div>
-              <div class="col-sm-8 col-lg-9">
+              <div class="col-sm-8 col-lg-10">
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="transactions-bitcoin" role="tabpanel">
-                    <table
-                      id=""
-                      class="display transactions-datatable table table-hover dataTable no-footer dtr-inline"
-                      style="width:100%"
-                      cellspacing="0"
-                      role="grid"
-                      width="100%"
-                    >
-                      <thead>
-                        <tr role="row">
-                          <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">Name</th>
-                          <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                            Position
-                          </th>
-                          <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                            Office
-                          </th>
-                          <th class="sorting" tabindex="0" rowspan="1" colspan="1">Age</th>
-                          <th class="sorting" tabindex="0" rowspan="1" colspan="1">Start date</th>
-                          <th class="sorting" tabindex="0" rowspan="1" colspan="1">Salary</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="sorting_1" tabindex="0">Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>2011/04/25</td>
-                          <td>$320,800</td>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <th>Name</th>
-                          <th>Position</th>
-                          <th>Office</th>
-                          <th>Age</th>
-                          <th>Start date</th>
-                          <th>Salary</th>
-                        </tr>
-                      </tfoot>
-                    </table>
+                    <div class="card-body transaction-tabs">
+                      <ul class="nav nav-tabs nav-fill mb-3" id="" role="tablist">
+                        <li class="nav-item">
+                          <a
+                            class="nav-link active"
+                            id="bitcoin-buy-sell-transactions"
+                            data-toggle="tab"
+                            href="#bitcoin-buy-sell-tab"
+                            role="tab"
+                            >Buy / Sell</a
+                          >
+                        </li>
+                        <li class="nav-item">
+                          <a
+                            class="nav-link"
+                            id="bitcoin-send-receive-transactions"
+                            data-toggle="tab"
+                            href="#bitcoin-send-receive-tab"
+                            role="tab"
+                            >Send / Receive</a
+                          >
+                        </li>
+                      </ul>
+                      <div class="tab-content" id="">
+                        <div
+                          class="tab-pane fade show active"
+                          id="bitcoin-buy-sell-tab"
+                          role="tabpanel"
+                          aria-labelledby="home-tab-2"
+                        >
+                          <table
+                            id=""
+                            class="display transactions-datatable table table-hover dataTable no-footer dtr-inline"
+                            style="width:100%"
+                            cellspacing="0"
+                            role="grid"
+                            width="100%"
+                          >
+                            <thead>
+                              <tr role="row">
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Timestamp</th>
+                                <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">
+                                  Wallet Name
+                                </th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Type</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Spent</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Received</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Transaction ID</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
+                                <td>Bitcoin Wallet #1</td>
+                                <td>Buy</td>
+                                <td>$2893.63</td>
+                                <td>0.83 BTC</td>
+                                <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
+                              </tr>
+                              <tr>
+                                <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
+                                <td>Bitcoin Wallet #1</td>
+                                <td>Sell</td>
+                                <td>0.83 BTC</td>
+                                <td>$3892.83</td>
+                                <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
+                              </tr>
+                            </tbody>
+                            <tfoot>
+                              <tr>
+                                <th>Timestamp</th>
+                                <th>Wallet Name</th>
+                                <th>Type</th>
+                                <th>Sender Address</th>
+                                <th>Receiver Address</th>
+                                <th>Amount</th>
+                              </tr>
+                            </tfoot>
+                          </table>
+                        </div>
+                        <div
+                          class="tab-pane fade"
+                          id="bitcoin-send-receive-tab"
+                          role="tabpanel"
+                          aria-labelledby="profile-tab-2"
+                        >
+                          <table
+                            id=""
+                            class="display transactions-datatable table table-hover dataTable no-footer dtr-inline"
+                            style="width:100%"
+                            cellspacing="0"
+                            role="grid"
+                            width="100%"
+                          >
+                            <thead>
+                              <tr role="row">
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Timestamp</th>
+                                <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">
+                                  Wallet Name
+                                </th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Type</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Sender Address</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Receiver Address</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Amount</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Transaction ID</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
+                                <td>Bitcoin Wallet #1</td>
+                                <td>Send</td>
+                                <td>1XJtNHgnsgs6dQjneupiMHYOILQ1Bsz</td>
+                                <td>3GuppzVSZrxzaFXRa2VTYCggXEJL0mkU</td>
+                                <td>0.83 BTC</td>
+                                <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
+                              </tr>
+                              <tr>
+                                <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
+                                <td>Bitcoin Wallet #1</td>
+                                <td>Receive</td>
+                                <td>3GuppzVSZrxzaFXRa2VTYCggXEJL0mkU</td>
+                                <td>1XJtNHgnsgs6dQjneupiMHYOILQ1Bsz</td>
+                                <td>0.83 BTC</td>
+                                <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
+                              </tr>
+                            </tbody>
+                            <tfoot>
+                              <tr>
+                                <th>Timestamp</th>
+                                <th>Wallet Name</th>
+                                <th>Type</th>
+                                <th>Sender Address</th>
+                                <th>Receiver Address</th>
+                                <th>Amount</th>
+                                <th>Transaction ID</th>
+                              </tr>
+                            </tfoot>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="tab-pane fade" id="wallets-ethereum" role="tabpanel"></div>
-                  <div class="tab-pane fade" id="wallets-ripple" role="tabpanel"></div>
-                  <div class="tab-pane fade" id="wallets-litecoin" role="tabpanel"></div>
-                  <div class="tab-pane fade" id="wallets-bitcoin-cash" role="tabpanel"></div>
+                  <div class="tab-pane fade" id="transactions-ethereum" role="tabpanel">
+                    <div class="card-body transaction-tabs">
+                      <ul class="nav nav-tabs nav-fill mb-3" id="" role="tablist">
+                        <li class="nav-item">
+                          <a
+                            class="nav-link active"
+                            id="ethereum-buy-sell-transactions"
+                            data-toggle="tab"
+                            href="#ethereum-buy-sell-tab"
+                            role="tab"
+                            >Buy / Sell</a
+                          >
+                        </li>
+                        <li class="nav-item">
+                          <a
+                            class="nav-link"
+                            id="ethereum-send-receive-transactions"
+                            data-toggle="tab"
+                            href="#ethereum-send-receive-tab"
+                            role="tab"
+                            >Send / Receive</a
+                          >
+                        </li>
+                      </ul>
+                      <div class="tab-content" id="">
+                        <div
+                          class="tab-pane fade show active"
+                          id="ethereum-buy-sell-tab"
+                          role="tabpanel"
+                          aria-labelledby="home-tab-2"
+                        >
+                          <table
+                            id=""
+                            class="display transactions-datatable table table-hover dataTable no-footer dtr-inline"
+                            style="width:100%"
+                            cellspacing="0"
+                            role="grid"
+                            width="100%"
+                          >
+                            <thead>
+                              <tr role="row">
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Timestamp</th>
+                                <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">
+                                  Wallet Name
+                                </th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Type</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Spent</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Received</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Transaction ID</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
+                                <td>Ethereum Wallet #1</td>
+                                <td>Buy</td>
+                                <td>$2893.63</td>
+                                <td>0.83 ETH</td>
+                                <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
+                              </tr>
+                              <tr>
+                                <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
+                                <td>Ethereum Wallet #1</td>
+                                <td>Sell</td>
+                                <td>0.83 ETH</td>
+                                <td>$3892.83</td>
+                                <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
+                              </tr>
+                            </tbody>
+                            <tfoot>
+                              <tr>
+                                <th>Timestamp</th>
+                                <th>Wallet Name</th>
+                                <th>Type</th>
+                                <th>Sender Address</th>
+                                <th>Receiver Address</th>
+                                <th>Amount</th>
+                              </tr>
+                            </tfoot>
+                          </table>
+                        </div>
+                        <div
+                          class="tab-pane fade"
+                          id="ethereum-send-receive-tab"
+                          role="tabpanel"
+                          aria-labelledby="profile-tab-2"
+                        >
+                          <table
+                            id=""
+                            class="display transactions-datatable table table-hover dataTable no-footer dtr-inline"
+                            style="width:100%"
+                            cellspacing="0"
+                            role="grid"
+                            width="100%"
+                          >
+                            <thead>
+                              <tr role="row">
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Timestamp</th>
+                                <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">
+                                  Wallet Name
+                                </th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Type</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Sender Address</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Receiver Address</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Amount</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Transaction ID</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
+                                <td>Ethereum Wallet #1</td>
+                                <td>Send</td>
+                                <td>1XJtNHgnsgs6dQjneupiMHYOILQ1Bsz</td>
+                                <td>3GuppzVSZrxzaFXRa2VTYCggXEJL0mkU</td>
+                                <td>0.83 ETH</td>
+                                <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
+                              </tr>
+                              <tr>
+                                <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
+                                <td>Ethereum Wallet #1</td>
+                                <td>Receive</td>
+                                <td>3GuppzVSZrxzaFXRa2VTYCggXEJL0mkU</td>
+                                <td>1XJtNHgnsgs6dQjneupiMHYOILQ1Bsz</td>
+                                <td>0.83 ETH</td>
+                                <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
+                              </tr>
+                            </tbody>
+                            <tfoot>
+                              <tr>
+                                <th>Timestamp</th>
+                                <th>Wallet Name</th>
+                                <th>Type</th>
+                                <th>Sender Address</th>
+                                <th>Receiver Address</th>
+                                <th>Amount</th>
+                                <th>Transaction ID</th>
+                              </tr>
+                            </tfoot>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="transactions-ripple" role="tabpanel">
+                      <div class="card-body transaction-tabs">
+                          <ul class="nav nav-tabs nav-fill mb-3" id="" role="tablist">
+                            <li class="nav-item">
+                              <a
+                                class="nav-link active"
+                                id="ripple-buy-sell-transactions"
+                                data-toggle="tab"
+                                href="#ripple-buy-sell-tab"
+                                role="tab"
+                                >Buy / Sell</a
+                              >
+                            </li>
+                            <li class="nav-item">
+                              <a
+                                class="nav-link"
+                                id="ripple-send-receive-transactions"
+                                data-toggle="tab"
+                                href="#ripple-send-receive-tab"
+                                role="tab"
+                                >Send / Receive</a
+                              >
+                            </li>
+                          </ul>
+                          <div class="tab-content" id="">
+                            <div
+                              class="tab-pane fade show active"
+                              id="ripple-buy-sell-tab"
+                              role="tabpanel"
+                              aria-labelledby="home-tab-2"
+                            >
+                              <table
+                                id=""
+                                class="display transactions-datatable table table-hover dataTable no-footer dtr-inline"
+                                style="width:100%"
+                                cellspacing="0"
+                                role="grid"
+                                width="100%"
+                              >
+                                <thead>
+                                  <tr role="row">
+                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1">Timestamp</th>
+                                    <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">
+                                      Wallet Name
+                                    </th>
+                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1">Type</th>
+                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1">Spent</th>
+                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1">Received</th>
+                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1">Transaction ID</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
+                                    <td>Ripple Wallet #1</td>
+                                    <td>Buy</td>
+                                    <td>$2893.63</td>
+                                    <td>8363 XRP</td>
+                                    <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
+                                    <td>Ripple Wallet #1</td>
+                                    <td>Sell</td>
+                                    <td>8327 XRP</td>
+                                    <td>$3892.83</td>
+                                    <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
+                                  </tr>
+                                </tbody>
+                                <tfoot>
+                                  <tr>
+                                    <th>Timestamp</th>
+                                    <th>Wallet Name</th>
+                                    <th>Type</th>
+                                    <th>Sender Address</th>
+                                    <th>Receiver Address</th>
+                                    <th>Amount</th>
+                                  </tr>
+                                </tfoot>
+                              </table>
+                            </div>
+                            <div
+                              class="tab-pane fade"
+                              id="ripple-send-receive-tab"
+                              role="tabpanel"
+                              aria-labelledby="profile-tab-2"
+                            >
+                              <table
+                                id=""
+                                class="display transactions-datatable table table-hover dataTable no-footer dtr-inline"
+                                style="width:100%"
+                                cellspacing="0"
+                                role="grid"
+                                width="100%"
+                              >
+                                <thead>
+                                  <tr role="row">
+                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1">Timestamp</th>
+                                    <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">
+                                      Wallet Name
+                                    </th>
+                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1">Type</th>
+                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1">Sender Address</th>
+                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1">Receiver Address</th>
+                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1">Amount</th>
+                                    <th class="sorting" tabindex="0" rowspan="1" colspan="1">Transaction ID</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
+                                    <td>Ripple Wallet #1</td>
+                                    <td>Send</td>
+                                    <td>1XJtNHgnsgs6dQjneupiMHYOILQ1Bsz</td>
+                                    <td>3GuppzVSZrxzaFXRa2VTYCggXEJL0mkU</td>
+                                    <td>8323 XRP</td>
+                                    <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
+                                    <td>Ripple Wallet #1</td>
+                                    <td>Receive</td>
+                                    <td>3GuppzVSZrxzaFXRa2VTYCggXEJL0mkU</td>
+                                    <td>1XJtNHgnsgs6dQjneupiMHYOILQ1Bsz</td>
+                                    <td>8338 XRP</td>
+                                    <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
+                                  </tr>
+                                </tbody>
+                                <tfoot>
+                                  <tr>
+                                    <th>Timestamp</th>
+                                    <th>Wallet Name</th>
+                                    <th>Type</th>
+                                    <th>Sender Address</th>
+                                    <th>Receiver Address</th>
+                                    <th>Amount</th>
+                                    <th>Transaction ID</th>
+                                  </tr>
+                                </tfoot>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="tab-pane fade" id="transactions-litecoin" role="tabpanel"></div>
+                  <div class="tab-pane fade" id="transactions-bitcoin-cash" role="tabpanel"></div>
                 </div>
               </div>
             </div>
