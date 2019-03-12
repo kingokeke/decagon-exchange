@@ -94,8 +94,6 @@ h1 {
   text-transform: uppercase;
   font-weight: 700;
 }
-.form-wrapper h3 {
-}
 #login-form,
 #signup-form {
   margin-top: 100px;
@@ -216,4 +214,18 @@ h1 {
 }
 .buy-sell-indicator {
   height: 360px;
+}
+#wallets-section .nav-link {
+  color: var(--green);
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #444;
+}
+#wallets-section .nav-link.active {
+  color: white;
+}
+#wallets-section .nav-link i {
+  font-size: 2rem;
+  vertical-align: text-top;
+  margin-right: 10px;
 }
