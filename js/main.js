@@ -178,35 +178,169 @@ function generateQRCode(address, output) {
   return qrcode;
 }
 
-function addWallet() {
+function addBTCWallet() {
   const div = document.createElement('div');
-  div.classList.add('col-lg-6', 'wallet-instance');
-  const walletContainer = document.querySelector('.wallet-container');
+  div.classList.add('col-12', 'wallet-instance');
+  const walletContainer = document.querySelector('#bitcoin-wallet-container');
   const message = `<div class="card">
                     <div class="card-body">
                       <div class="d-flex">
                         <div>
-                          <h5>Business</h5>
+                          <h5>Bitcoin Wallet #1</h5>
                           <p>Balance: 3.2 BTC</p>
                         </div>
                         <div class="ml-auto">
-                          <button class="btn btn-warning"><i class="fas fa-pencil-alt mr-2"></i>Edit</button>
+                          <button class="btn btn-warning" data-toggle="modal" data-target="#edit-bitcoin-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
                         </div>
                       </div>
                     </div>
                     <div class="card-footer">
                       <div class="d-flex">
                         <div>
-                          <button class="btn btn-primary">
-                            <i class="fas fa-money-bill-alt mr-3"></i>Buy
-                          </button>
-                          <button class="btn btn-danger">
-                            <i class="fas fa-money-bill-wave mr-3"></i>Sell
+                          <button class="btn btn-primary" data-target="#buy-bitcoin-modal" data-toggle="modal"><i class="cf cf-btc mr-2"></i>Buy</button>
+                          <button class="btn btn-danger" data-target="#sell-bitcoin-modal" data-toggle="modal">
+                            <i class="fas fa-money-bill-wave mr-2"></i>Sell
                           </button>
                         </div>
                         <div class="ml-auto">
-                          <button class="btn btn-info"><i class="fas fa-paper-plane mr-3"></i>Send</button>
-                          <button class="btn btn-success"><i class="fas fa-qrcode mr-3"></i>Receive</button>
+                          <button class="btn btn-info" data-target="#send-bitcoin-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                          <button class="btn btn-success" data-target="#receive-bitcoin-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>`;
+  div.innerHTML = message;
+  walletContainer.appendChild(div);
+}
+function addETHWallet() {
+  const div = document.createElement('div');
+  div.classList.add('col-12', 'wallet-instance');
+  const walletContainer = document.querySelector('#ethereum-wallet-container');
+  const message = `<div class="card">
+                    <div class="card-body">
+                      <div class="d-flex">
+                        <div>
+                          <h5>Ethereum wallet #1</h5>
+                          <p>Balance: 11.3 ETH</p>
+                        </div>
+                        <div class="ml-auto">
+                            <button class="btn btn-warning" data-toggle="modal" data-target="#edit-ethereum-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="d-flex">
+                        <div>
+                            <button class="btn btn-primary" data-target="#buy-ethereum-modal" data-toggle="modal"><i class="cf cf-eth mr-2"></i>Buy</button>
+                          <button class="btn btn-danger" data-target="#sell-ethereum-modal" data-toggle="modal">
+                            <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                          </button>
+                        </div>
+                        <div class="ml-auto">
+                          <button class="btn btn-info" data-target="#send-ethereum-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                          <button class="btn btn-success" data-target="#receive-ethereum-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>`;
+  div.innerHTML = message;
+  walletContainer.appendChild(div);
+}
+function addXRPWallet() {
+  const div = document.createElement('div');
+  div.classList.add('col-12', 'wallet-instance');
+  const walletContainer = document.querySelector('#ripple-wallet-container');
+  const message = `<div class="card">
+                    <div class="card-body">
+                      <div class="d-flex">
+                        <div>
+                          <h5>Ripple Wallet #1</h5>
+                          <p>Balance: 3667 XRP</p>
+                        </div>
+                        <div class="ml-auto">
+                            <button class="btn btn-warning" data-toggle="modal" data-target="#edit-ripple-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="d-flex">
+                        <div>
+                            <button class="btn btn-primary" data-target="#buy-ripple-modal" data-toggle="modal"><i class="cf cf-xrp mr-2"></i>Buy</button>
+                          <button class="btn btn-danger" data-target="#sell-ripple-modal" data-toggle="modal">
+                            <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                          </button>
+                        </div>
+                        <div class="ml-auto">
+                          <button class="btn btn-info" data-target="#send-ripple-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                          <button class="btn btn-success" data-target="#receive-ripple-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>`;
+  div.innerHTML = message;
+  walletContainer.appendChild(div);
+}
+function addLTCWallet() {
+  const div = document.createElement('div');
+  div.classList.add('col-12', 'wallet-instance');
+  const walletContainer = document.querySelector('#litecoin-wallet-container');
+  const message = `<div class="card">
+                    <div class="card-body">
+                      <div class="d-flex">
+                        <div>
+                          <h5>Litecoin Wallet #1</h5>
+                          <p>Balance: 35.9 LTC</p>
+                        </div>
+                        <div class="ml-auto">
+                            <button class="btn btn-warning" data-toggle="modal" data-target="#edit-litecoin-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="d-flex">
+                        <div>
+                            <button class="btn btn-primary" data-target="#buy-litecoin-modal" data-toggle="modal"><i class="cf cf-ltc mr-2"></i></i>Buy</button>
+                          <button class="btn btn-danger" data-target="#sell-litecoin-modal" data-toggle="modal">
+                            <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                          </button>
+                        </div>
+                        <div class="ml-auto">
+                          <button class="btn btn-info" data-target="#send-litecoin-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                          <button class="btn btn-success" data-target="#receive-litecoin-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>`;
+  div.innerHTML = message;
+  walletContainer.appendChild(div);
+}
+function addBCHWallet() {
+  const div = document.createElement('div');
+  div.classList.add('col-12', 'wallet-instance');
+  const walletContainer = document.querySelector('#bitcoin-cash-wallet-container');
+  const message = `<div class="card">
+                    <div class="card-body">
+                      <div class="d-flex">
+                        <div>
+                          <h5>Bitcoin Cash Wallet #1</h5>
+                          <p>Balance: 3.2 BCH</p>
+                        </div>
+                        <div class="ml-auto">
+                            <button class="btn btn-warning" data-toggle="modal" data-target="#edit-bitcoin-cash-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="d-flex">
+                        <div>
+                          <button class="btn btn-primary" data-target="#buy-bitcoin-cash-modal" data-toggle="modal"><i class="cf cf-btc-alt mr-2"></i>Buy</button>
+                          <button class="btn btn-danger" data-target="#sell-bitcoin-cash-modal" data-toggle="modal">
+                            <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                          </button>
+                        </div>
+                        <div class="ml-auto">
+                          <button class="btn btn-info" data-target="#send-bitcoin-cash-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                          <button class="btn btn-success" data-target="#receive-bitcoin-cash-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
                         </div>
                       </div>
                     </div>
@@ -219,5 +353,13 @@ function addWallet() {
 // ###################################
 
 // cryptoNews(7, 160, 'bitcoin');
-// const addWalletButton = document.querySelector('.add-wallet-button');
-// addWalletButton.onclick = addWallet;
+const addBitcoinWalletButton = document.querySelector('#add-bitcoin-wallet-button');
+const addEthereumWalletButton = document.querySelector('#add-ethereum-wallet-button');
+const addRippleWalletButton = document.querySelector('#add-ripple-wallet-button');
+const addLitecoinWalletButton = document.querySelector('#add-litecoin-wallet-button');
+const addBitcoinCashWalletButton = document.querySelector('#add-bitcoin-cash-wallet-button');
+addBitcoinWalletButton.onclick = () => addBTCWallet();
+addEthereumWalletButton.onclick = () => addETHWallet();
+addRippleWalletButton.onclick = () => addXRPWallet();
+addLitecoinWalletButton.onclick = () => addLTCWallet();
+addBitcoinCashWalletButton.onclick = () => addBCHWallet();
