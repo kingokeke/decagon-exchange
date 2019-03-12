@@ -78,7 +78,9 @@
                     </button>
                     <!-- <button class="btn btn-lg btn-danger m-3">Delete Account</button> -->
                   </div>
-                  <a href="#" class="delete-account">Delete Account</a>
+                  <a href="#" class="delete-account" data-toggle="modal" data-target="#delete-account-modal"
+                    >Delete Account</a
+                  >
                 </div>
               </div>
             </div>
@@ -164,10 +166,45 @@
           </div>
           <div class="modal-footer">
             <div class="d-flex">
-              <div class="ml-auto justify-content-center text-center">
+              <div class="justify-content-center text-center">
                 <button class="btn btn-success">Update</button>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="delete-account-modal" tabindex="-1" role="dialog" style="display: none;">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="">Delete Account</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+              <div class="card-body text-center">
+                <div class="form-group row">
+                  <label for="edit-profile-password" class="col-12 text-left control-label col-form-label"
+                    >Password</label
+                  >
+                  <div class="col-12">
+                    <input type="password" class="form-control" id="edit-profile-password" placeholder="Password" />
+                  </div>
+                  <!-- <div class="justify-content-center text-center">
+                    <button class="btn btn-success">Delete</button>
+                  </div> -->
+                  <div class="card-body text-center">
+                    <button id="delete-profile-button" type="button" class="btn btn-danger">
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
