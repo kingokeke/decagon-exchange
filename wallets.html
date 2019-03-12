@@ -111,108 +111,183 @@
                     role="tabpanel"
                     aria-labelledby="v-pills-home-tab"
                   >
-                    <div class="card">
-                      <div class="card-header">
-                        <div class="d-flex">
-                          <h4>Bitcoin Wallets</h4>
-                          <button
-                            type="button"
-                            class="btn btn-success ml-auto add-wallet-button"
-                            data-toggle="modal"
-                            data-target="#add-bitcoin-wallet-modal"
-                          >
-                            <i class="fas fa-plus-circle mr-2"></i>
-                            Add wallet
-                          </button>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <div class="row p-3 wallet-container">
-                          <div class="col-lg-6 wallet-instance">
+                    <div class="row">
+                        <div class="col-xl-8">
                             <div class="card">
-                              <div class="card-body">
-                                <div class="d-flex">
-                                  <div>
-                                    <h5>Bitcoin Wallet #1</h5>
-                                    <p>Balance: 3.2 BTC</p>
-                                  </div>
-                                  <div class="ml-auto">
-                                    <button class="btn btn-warning" data-toggle="modal" data-target="#edit-bitcoin-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="card-footer">
-                                <div class="d-flex">
-                                  <div>
-                                    <button class="btn btn-primary" data-target="#buy-bitcoin-modal" data-toggle="modal"><i class="fab fa-bitcoin mr-2"></i>Buy</button>
-                                    <button class="btn btn-danger" data-target="#sell-bitcoin-modal" data-toggle="modal">
-                                      <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                                <div class="card-header">
+                                  <div class="d-flex">
+                                    <h4>Bitcoin Wallets</h4>
+                                    <button
+                                      id="add-bitcoin-wallet-button"
+                                      type="button"
+                                      class="btn btn-success ml-auto "
+                                      data-toggle="modal"
+                                      data-target="#add-bitcoin-wallet-modal"
+                                    >
+                                      <i class="fas fa-plus-circle mr-2"></i>
+                                      Add wallet
                                     </button>
                                   </div>
-                                  <div class="ml-auto">
-                                    <button class="btn btn-info" data-target="#send-bitcoin-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                                    <button class="btn btn-success" data-target="#receive-bitcoin-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                                </div>
+                                <div class="card-body">
+                                  <div class="row p-3 wallet-container" id="bitcoin-wallet-container">
+                                    <div class="col-12 wallet-instance">
+                                      <div class="card">
+                                        <div class="card-body">
+                                          <div class="d-flex">
+                                            <div>
+                                              <h5>Bitcoin Wallet #1</h5>
+                                              <p>Balance: 3.2 BTC</p>
+                                            </div>
+                                            <div class="ml-auto">
+                                              <button class="btn btn-warning" data-toggle="modal" data-target="#edit-bitcoin-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="card-footer">
+                                          <div class="d-flex">
+                                            <div>
+                                              <button class="btn btn-primary" data-target="#buy-bitcoin-modal" data-toggle="modal"><i class="cf cf-btc mr-2"></i>Buy</button>
+                                              <button class="btn btn-danger" data-target="#sell-bitcoin-modal" data-toggle="modal">
+                                                <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                                              </button>
+                                            </div>
+                                            <div class="ml-auto">
+                                              <button class="btn btn-info" data-target="#send-bitcoin-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                                              <button class="btn btn-success" data-target="#receive-bitcoin-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                          </div>
                         </div>
-                      </div>
+                        <div class="col-xl-4">
+                            <div class="price-widget mb-4">
+                                <!-- TradingView Widget BEGIN -->
+                              <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                                {
+                                "symbol": "BITSTAMP:BTCUSD",
+                                "width": "100%",
+                                "locale": "en"
+                              }
+                                </script>
+                              </div>
+                                <!-- TradingView Widget END -->
+                              </div>
+                              <div class="buy-sell-indicator">
+                                <!-- TradingView Widget BEGIN -->
+                              <div class="tradingview-widget-container">
+                                  <div class="tradingview-widget-container__widget"></div>
+                                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+                                  {
+                                  "width": "100%",
+                                  "height": "100%",
+                                  "symbol": "BITSTAMP:BTCUSD",
+                                  "locale": "en",
+                                  "interval": "1h"
+                                }
+                                  </script>
+                                </div>
+                                <!-- TradingView Widget END -->
+                              </div>
+                        </div>
                     </div>
                   </div>
+                
                   <div
                     class="tab-pane fade"
                     id="wallets-ethereum"
                     role="tabpanel"
                   >
-                    <div class="card">
-                      <div class="card-header">
-                        <div class="d-flex">
-                          <h4>Ethereum Wallets</h4>
-                          <button
-                            type="button"
-                            class="btn btn-success ml-auto add-wallet-button"
-                            data-toggle="modal"
-                            data-target="#add-ethereum-wallet-modal"
-                          >
-                            <i class="fas fa-plus-circle mr-2"></i>
-                            Add wallet
-                          </button>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <div class="row p-3 wallet-container">
-                          <div class="col-lg-6 wallet-instance">
-                            <div class="card">
-                              <div class="card-body">
+                    <div class="row">
+                      <div class="col-xl-8">
+                          <div class="card">
+                              <div class="card-header">
                                 <div class="d-flex">
-                                  <div>
-                                    <h5>Ethereum wallet #1</h5>
-                                    <p>Balance: 11.3 ETH</p>
-                                  </div>
-                                  <div class="ml-auto">
-                                      <button class="btn btn-warning" data-toggle="modal" data-target="#edit-ethereum-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
-                                  </div>
+                                  <h4>Ethereum Wallets</h4>
+                                  <button
+                                    id="add-ethereum-wallet-button"
+                                    type="button"
+                                    class="btn btn-success ml-auto "
+                                    data-toggle="modal"
+                                    data-target="#add-ethereum-wallet-modal"
+                                  >
+                                    <i class="fas fa-plus-circle mr-2"></i>
+                                    Add wallet
+                                  </button>
                                 </div>
                               </div>
-                              <div class="card-footer">
-                                <div class="d-flex">
-                                  <div>
-                                      <button class="btn btn-primary" data-target="#buy-ethereum-modal" data-toggle="modal"><i class="fab fa-bitcoin mr-2"></i>Buy</button>
-                                    <button class="btn btn-danger" data-target="#sell-ethereum-modal" data-toggle="modal">
-                                      <i class="fas fa-money-bill-wave mr-2"></i>Sell
-                                    </button>
-                                  </div>
-                                  <div class="ml-auto">
-                                    <button class="btn btn-info" data-target="#send-ethereum-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                                    <button class="btn btn-success" data-target="#receive-ethereum-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                              <div class="card-body">
+                                <div class="row p-3 wallet-container" id="ethereum-wallet-container">
+                                  <div class="col-12 wallet-instance">
+                                    <div class="card">
+                                      <div class="card-body">
+                                        <div class="d-flex">
+                                          <div>
+                                            <h5>Ethereum wallet #1</h5>
+                                            <p>Balance: 11.3 ETH</p>
+                                          </div>
+                                          <div class="ml-auto">
+                                              <button class="btn btn-warning" data-toggle="modal" data-target="#edit-ethereum-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="card-footer">
+                                        <div class="d-flex">
+                                          <div>
+                                              <button class="btn btn-primary" data-target="#buy-ethereum-modal" data-toggle="modal"><i class="cf cf-eth mr-2"></i>Buy</button>
+                                            <button class="btn btn-danger" data-target="#sell-ethereum-modal" data-toggle="modal">
+                                              <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                                            </button>
+                                          </div>
+                                          <div class="ml-auto">
+                                            <button class="btn btn-info" data-target="#send-ethereum-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                                            <button class="btn btn-success" data-target="#receive-ethereum-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
+                      </div>
+                      <div class="col-xl-4">
+                          <div class="price-widget mb-4">
+                             <!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                                {
+                                "symbol": "BITSTAMP:ETHUSD",
+                                "width": "100%",
+                                "locale": "en"
+                              }
+                                </script>
+                              </div>
+                              <!-- TradingView Widget END -->
+                            </div>
+                            <div class="buy-sell-indicator">
+                              <!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+                                {
+                                "width": "100%",
+                                "height": "100%",
+                                "symbol": "BITSTAMP:ETHUSD",
+                                "locale": "en",
+                                "interval": "1h"
+                              }
+                                </script>
+                              </div>
+                              <!-- TradingView Widget END -->
+                            </div>
                       </div>
                     </div>
                   </div>
@@ -221,53 +296,90 @@
                     id="wallets-ripple"
                     role="tabpanel"
                   >
-                    <div class="card">
-                      <div class="card-header">
-                        <div class="d-flex">
-                          <h4>Ripple Wallets</h4>
-                          <button
-                            type="button"
-                            class="btn btn-success ml-auto add-wallet-button"
-                            data-toggle="modal"
-                            data-target="#add-ripple-wallet-modal"
-                          >
-                            <i class="fas fa-plus-circle mr-2"></i>
-                            Add wallet
-                          </button>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <div class="row p-3 wallet-container">
-                          <div class="col-lg-6 wallet-instance">
-                            <div class="card">
-                              <div class="card-body">
+                    <div class="row">
+                      <div class="col-xl-8">
+                          <div class="card">
+                              <div class="card-header">
                                 <div class="d-flex">
-                                  <div>
-                                    <h5>Ripple Wallet #1</h5>
-                                    <p>Balance: 3667 XRP</p>
-                                  </div>
-                                  <div class="ml-auto">
-                                      <button class="btn btn-warning" data-toggle="modal" data-target="#edit-ripple-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
-                                  </div>
+                                  <h4>Ripple Wallets</h4>
+                                  <button
+                                    id="add-ripple-wallet-button"
+                                    type="button"
+                                    class="btn btn-success ml-auto"
+                                    data-toggle="modal"
+                                    data-target="#add-ripple-wallet-modal"
+                                  >
+                                    <i class="fas fa-plus-circle mr-2"></i>
+                                    Add wallet
+                                  </button>
                                 </div>
                               </div>
-                              <div class="card-footer">
-                                <div class="d-flex">
-                                  <div>
-                                      <button class="btn btn-primary" data-target="#buy-ripple-modal" data-toggle="modal"><i class="fab fa-bitcoin mr-2"></i>Buy</button>
-                                    <button class="btn btn-danger" data-target="#sell-ripple-modal" data-toggle="modal">
-                                      <i class="fas fa-money-bill-wave mr-2"></i>Sell
-                                    </button>
-                                  </div>
-                                  <div class="ml-auto">
-                                    <button class="btn btn-info" data-target="#send-ripple-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                                    <button class="btn btn-success" data-target="#receive-ripple-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                              <div class="card-body">
+                                <div class="row p-3 wallet-container" id="ripple-wallet-container">
+                                  <div class="col-12 wallet-instance">
+                                    <div class="card">
+                                      <div class="card-body">
+                                        <div class="d-flex">
+                                          <div>
+                                            <h5>Ripple Wallet #1</h5>
+                                            <p>Balance: 3667 XRP</p>
+                                          </div>
+                                          <div class="ml-auto">
+                                              <button class="btn btn-warning" data-toggle="modal" data-target="#edit-ripple-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="card-footer">
+                                        <div class="d-flex">
+                                          <div>
+                                              <button class="btn btn-primary" data-target="#buy-ripple-modal" data-toggle="modal"><i class="cf cf-xrp mr-2"></i>Buy</button>
+                                            <button class="btn btn-danger" data-target="#sell-ripple-modal" data-toggle="modal">
+                                              <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                                            </button>
+                                          </div>
+                                          <div class="ml-auto">
+                                            <button class="btn btn-info" data-target="#send-ripple-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                                            <button class="btn btn-success" data-target="#receive-ripple-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
+                      </div>
+                      <div class="col-xl-4">
+                          <div class="price-widget mb-4">
+                             <!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                                {
+                                "symbol": "BITSTAMP:XRPUSD",
+                                "width": "100%",
+                                "locale": "en"
+                              }
+                                </script>
+                              </div>
+                              <!-- TradingView Widget END -->
+                            </div>
+                            <div class="buy-sell-indicator">
+                              <!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+                                {
+                                "width": "100%",
+                                "height": "100%",
+                                "symbol": "BITSTAMP:XRPUSD",
+                                "locale": "en",
+                                "interval": "1h"
+                              }
+                                </script>
+                              </div>
+                              <!-- TradingView Widget END -->
+                            </div>
                       </div>
                     </div>
                   </div>
@@ -276,53 +388,90 @@
                     id="wallets-litecoin"
                     role="tabpanel"
                   >
-                    <div class="card">
-                      <div class="card-header">
-                        <div class="d-flex">
-                          <h4>Litecoin Wallets</h4>
-                          <button
-                            type="button"
-                            class="btn btn-success ml-auto add-wallet-button"
-                            data-toggle="modal"
-                            data-target="#add-litecoin-wallet-modal"
-                          >
-                            <i class="fas fa-plus-circle mr-2"></i>
-                            Add wallet
-                          </button>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <div class="row p-3 wallet-container">
-                          <div class="col-lg-6 wallet-instance">
-                            <div class="card">
-                              <div class="card-body">
+                    <div class="row">
+                      <div class="col-xl-8">
+                          <div class="card">
+                              <div class="card-header">
                                 <div class="d-flex">
-                                  <div>
-                                    <h5>Litecoin Wallet #1</h5>
-                                    <p>Balance: 35.9 LTC</p>
-                                  </div>
-                                  <div class="ml-auto">
-                                      <button class="btn btn-warning" data-toggle="modal" data-target="#edit-litecoin-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
-                                  </div>
+                                  <h4>Litecoin Wallets</h4>
+                                  <button
+                                  id="add-litecoin-wallet-button"
+                                    type="button"
+                                    class="btn btn-success ml-auto"
+                                    data-toggle="modal"
+                                    data-target="#add-litecoin-wallet-modal"
+                                  >
+                                    <i class="fas fa-plus-circle mr-2"></i>
+                                    Add wallet
+                                  </button>
                                 </div>
                               </div>
-                              <div class="card-footer">
-                                <div class="d-flex">
-                                  <div>
-                                      <button class="btn btn-primary" data-target="#buy-litecoin-modal" data-toggle="modal"><i class="fab fa-bitcoin mr-2"></i>Buy</button>
-                                    <button class="btn btn-danger" data-target="#sell-litecoin-modal" data-toggle="modal">
-                                      <i class="fas fa-money-bill-wave mr-2"></i>Sell
-                                    </button>
-                                  </div>
-                                  <div class="ml-auto">
-                                    <button class="btn btn-info" data-target="#send-litecoin-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                                    <button class="btn btn-success" data-target="#receive-litecoin-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                              <div class="card-body">
+                                <div class="row p-3 wallet-container" id="litecoin-wallet-container">
+                                  <div class="col-12 wallet-instance">
+                                    <div class="card">
+                                      <div class="card-body">
+                                        <div class="d-flex">
+                                          <div>
+                                            <h5>Litecoin Wallet #1</h5>
+                                            <p>Balance: 35.9 LTC</p>
+                                          </div>
+                                          <div class="ml-auto">
+                                              <button class="btn btn-warning" data-toggle="modal" data-target="#edit-litecoin-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="card-footer">
+                                        <div class="d-flex">
+                                          <div>
+                                              <button class="btn btn-primary" data-target="#buy-litecoin-modal" data-toggle="modal"><i class="cf cf-ltc mr-2"></i></i>Buy</button>
+                                            <button class="btn btn-danger" data-target="#sell-litecoin-modal" data-toggle="modal">
+                                              <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                                            </button>
+                                          </div>
+                                          <div class="ml-auto">
+                                            <button class="btn btn-info" data-target="#send-litecoin-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                                            <button class="btn btn-success" data-target="#receive-litecoin-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
+                      </div>
+                      <div class="col-xl-4">
+                          <div class="price-widget mb-4">
+                             <!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                                {
+                                "symbol": "BITSTAMP:LTCUSD",
+                                "width": "100%",
+                                "locale": "en"
+                              }
+                                </script>
+                              </div>
+                              <!-- TradingView Widget END -->
+                            </div>
+                            <div class="buy-sell-indicator">
+                              <!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+                                {
+                                "width": "100%",
+                                "height": "100%",
+                                "symbol": "BITSTAMP:LTCUSD",
+                                "locale": "en",
+                                "interval": "1h"
+                              }
+                                </script>
+                              </div>
+                              <!-- TradingView Widget END -->
+                            </div>
                       </div>
                     </div>
                   </div>
@@ -331,55 +480,92 @@
                     id="wallets-bitcoin-cash"
                     role="tabpanel"
                   >
-                    <div class="card">
-                      <div class="card-header">
-                        <div class="d-flex">
-                          <h4>Bitcoin Cash Wallets</h4>
-                          <button
-                            type="button"
-                            class="btn btn-success ml-auto add-wallet-button"
-                            data-toggle="modal"
-                            data-target="#add-bitcoin-cash-wallet-modal"
-                          >
-                            <i class="fas fa-plus-circle mr-2"></i>
-                            Add wallet
-                          </button>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <div class="row p-3 wallet-container">
-                          <div class="col-lg-6 wallet-instance">
-                            <div class="card">
-                              <div class="card-body">
-                                <div class="d-flex">
-                                  <div>
-                                    <h5>Bitcoin Cash Wallet #1</h5>
-                                    <p>Balance: 3.2 BCH</p>
-                                  </div>
-                                  <div class="ml-auto">
-                                      <button class="btn btn-warning" data-toggle="modal" data-target="#edit-bitcoin-cash-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
-                                  </div>
-                                </div>
+                   <div class="row">
+                     <div class="col-xl-8">
+                        <div class="card">
+                            <div class="card-header">
+                              <div class="d-flex">
+                                <h4>Bitcoin Cash Wallets</h4>
+                                <button
+                                  id="add-bitcoin-cash-wallet-button"
+                                  type="button"
+                                  class="btn btn-success ml-auto"
+                                  data-toggle="modal"
+                                  data-target="#add-bitcoin-cash-wallet-modal"
+                                >
+                                  <i class="fas fa-plus-circle mr-2"></i>
+                                  Add wallet
+                                </button>
                               </div>
-                              <div class="card-footer">
-                                <div class="d-flex">
-                                  <div>
-                                    <button class="btn btn-primary" data-target="#buy-bitcoin-cash-modal" data-toggle="modal"><i class="fab fa-bitcoin mr-2"></i>Buy</button>
-                                    <button class="btn btn-danger" data-target="#sell-bitcoin-cash-modal" data-toggle="modal">
-                                      <i class="fas fa-money-bill-wave mr-2"></i>Sell
-                                    </button>
-                                  </div>
-                                  <div class="ml-auto">
-                                    <button class="btn btn-info" data-target="#send-bitcoin-cash-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                                    <button class="btn btn-success" data-target="#receive-bitcoin-cash-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                            </div>
+                            <div class="card-body">
+                              <div class="row p-3 wallet-container" id="bitcoin-cash-wallet-container">
+                                <div class="col-12 wallet-instance">
+                                  <div class="card">
+                                    <div class="card-body">
+                                      <div class="d-flex">
+                                        <div>
+                                          <h5>Bitcoin Cash Wallet #1</h5>
+                                          <p>Balance: 3.2 BCH</p>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <button class="btn btn-warning" data-toggle="modal" data-target="#edit-bitcoin-cash-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card-footer">
+                                      <div class="d-flex">
+                                        <div>
+                                          <button class="btn btn-primary" data-target="#buy-bitcoin-cash-modal" data-toggle="modal"><i class="cf cf-btc-alt mr-2"></i>Buy</button>
+                                          <button class="btn btn-danger" data-target="#sell-bitcoin-cash-modal" data-toggle="modal">
+                                            <i class="fas fa-money-bill-wave mr-2"></i>Sell
+                                          </button>
+                                        </div>
+                                        <div class="ml-auto">
+                                          <button class="btn btn-info" data-target="#send-bitcoin-cash-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                                          <button class="btn btn-success" data-target="#receive-bitcoin-cash-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
+                     </div>
+                     <div class="col-xl-4">
+                        <div class="price-widget mb-4">
+                           <!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                                {
+                                "symbol": "BITSTAMP:BCHUSD",
+                                "width": "100%",
+                                "locale": "en"
+                              }
+                                </script>
+                              </div>
+                              <!-- TradingView Widget END -->
+                          </div>
+                          <div class="buy-sell-indicator">
+                            <!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+                                {
+                                "width": "100%",
+                                "height": "100%",
+                                "symbol": "BITSTAMP:BCHUSD",
+                                "locale": "en",
+                                "interval": "1h"
+                              }
+                                </script>
+                              </div>
+                              <!-- TradingView Widget END -->
+                          </div>
                     </div>
+                   </div>
                   </div>
                 </div>
               </div>
@@ -1310,30 +1496,25 @@
                 </button>
               </div>
               <div class="modal-body">
-                <div class="card">
-                  <div class="card-body">
-                    <form action="">
-                      <div class="form-group">
-                        <label for="new-wallet-name" class="font-weight-bold">Wallet Address</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="new-wallet-name"
-                          value=""
-                          disabled
-                        />
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="text-center justify-content-center">
+                        <div class="qrcode-output"></div>
                       </div>
-                    </form>
+                      <form action="">
+                        <div class="form-group">
+                          <label class="font-weight-bold">Wallet Address</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="" value="" disabled>
+                                <div class="input-group-append" style="cursor: pointer">
+                                    <span class="input-group-text" id=""><i class="far fa-clone"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                      </form>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="d-flex">
-                  <div class="ml-auto">
-                    <button class="btn btn-success">Buy</button>
-                  </div>
-                </div>
-              </div>
+                </div> 
             </div>
           </div>
       </div>
@@ -1347,32 +1528,25 @@
               </button>
             </div>
             <div class="modal-body">
-              <div class="card">
-                <div class="card-body">
-                  <div class="text-center justify-content-center">
-                    <div class="qrcode-output"></div>
-                  </div>
-                  <form action="">
-                    <div class="form-group">
-                      <label for="new-wallet-name" class="font-weight-bold">Wallet Address</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="new-wallet-name"
-                        placeholder='e.g. "Personal", "Business", etc'
-                      />
+                <div class="card">
+                  <div class="card-body">
+                    <div class="text-center justify-content-center">
+                      <div class="qrcode-output"></div>
                     </div>
-                  </form>
+                    <form action="">
+                      <div class="form-group">
+                        <label class="font-weight-bold">Wallet Address</label>
+                          <div class="input-group mb-3">
+                              <input type="text" class="form-control" id="" value="" disabled>
+                              <div class="input-group-append" style="cursor: pointer">
+                                  <span class="input-group-text" id=""><i class="far fa-clone"></i></span>
+                              </div>
+                          </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="card-footer">
-              <div class="d-flex">
-                <div class="ml-auto">
-                  <button class="btn btn-success">Buy</button>
-                </div>
-              </div>
-            </div>
+              </div>             
           </div>
         </div>
       </div>
@@ -1380,7 +1554,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Receive Ripple</h5>
+              <h5 class="modal-title" id="">Receive Ripple</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -1393,13 +1567,13 @@
                   </div>
                   <form action="">
                     <div class="form-group">
-                      <label for="new-wallet-name" class="font-weight-bold">Wallet Address</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="new-wallet-name"
-                        disabled
-                      />
+                      <label class="font-weight-bold">Wallet Address</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="" value="" disabled>
+                            <div class="input-group-append" style="cursor: pointer">
+                                <span class="input-group-text" id=""><i class="far fa-clone"></i></span>
+                            </div>
+                        </div>
                     </div>
                   </form>
                 </div>
@@ -1412,35 +1586,31 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="">Buy Litecoin</h5>
+              <h5 class="modal-title" id="">Receive Litecoin</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
             </div>
             <div class="modal-body">
-              <div class="card">
-                <div class="card-body">
-                  <form action="">
-                    <div class="form-group">
-                      <label for="new-wallet-name" class="font-weight-bold">Amount</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="new-wallet-name"
-                        placeholder='e.g. "Personal", "Business", etc'
-                      />
+                <div class="card">
+                  <div class="card-body">
+                    <div class="text-center justify-content-center">
+                      <div class="qrcode-output"></div>
                     </div>
-                  </form>
+                    <form action="">
+                      <div class="form-group">
+                        <label class="font-weight-bold">Wallet Address</label>
+                          <div class="input-group mb-3">
+                              <input type="text" class="form-control" id="" value="" disabled>
+                              <div class="input-group-append" style="cursor: pointer">
+                                  <span class="input-group-text" id=""><i class="far fa-clone"></i></span>
+                              </div>
+                          </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="card-footer">
-              <div class="d-flex">
-                <div class="ml-auto">
-                  <button class="btn btn-success">Buy</button>
-                </div>
-              </div>
-            </div>
+            </div>            
           </div>
         </div>
       </div>
@@ -1448,35 +1618,31 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Buy Bitcoin Cash</h5>
+              <h5 class="modal-title" id="exampleModalCenterTitle">Receive Bitcoin Cash</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
             </div>
             <div class="modal-body">
-              <div class="card">
-                <div class="card-body">
-                  <form action="">
-                    <div class="form-group">
-                      <label for="new-wallet-name" class="font-weight-bold">Amount</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="new-wallet-name"
-                        placeholder='e.g. "Personal", "Business", etc'
-                      />
+                <div class="card">
+                  <div class="card-body">
+                    <div class="text-center justify-content-center">
+                      <div class="qrcode-output"></div>
                     </div>
-                  </form>
+                    <form action="">
+                      <div class="form-group">
+                        <label class="font-weight-bold">Wallet Address</label>
+                          <div class="input-group mb-3">
+                              <input type="text" class="form-control" id="" value="" disabled>
+                              <div class="input-group-append" style="cursor: pointer">
+                                  <span class="input-group-text" id=""><i class="far fa-clone"></i></span>
+                              </div>
+                          </div>                                            
+                      </div>
+                    </form>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="card-footer">
-              <div class="d-flex">
-                <div class="ml-auto">
-                  <button class="btn btn-success">Buy</button>
-                </div>
-              </div>
-            </div>
+              </div> 
           </div>
         </div>
       </div>
