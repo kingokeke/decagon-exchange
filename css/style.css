@@ -233,3 +233,10 @@ h1 {
   vertical-align: sub;
   margin-right: 10px;
 }
+#transactions-page .transaction-tabs a.active {
+  background-color: var(--green);
+}
+.page-item.active .page-link {
+  background-color: var(--green);
+  border-color: var(--green);
+}
