@@ -32,6 +32,7 @@
                       <label for="exampleInputEmail1" class="sr-only">Email address</label>
                       <input
                         type="email"
+                        id="login-email"
                         class="form-control form-control-lg"
                         id="exampleInputEmail1"
                         placeholder="Email"
@@ -41,6 +42,7 @@
                       <label for="exampleInputPassword1" class="sr-only">Password</label>
                       <input
                         type="password"
+                        id="login-password"
                         class="form-control form-control-lg "
                         id="exampleInputPassword1"
                         placeholder="Password"
@@ -65,7 +67,7 @@
                     </div>
                     <br />
                     <div class="form-group text-center">
-                      <button type="button" class="login-button btn btn-outline-info btn-lg btn-block">Log In</button>
+                      <button type="button" id="login-button" class="login-button btn btn-outline-info btn-lg btn-block">Log In</button>
                     </div>
                   </form>
                   <div class="text-center signup-link">
@@ -78,5 +80,9 @@
         </div>
       </div>
     </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script async src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </body>
 </html>
