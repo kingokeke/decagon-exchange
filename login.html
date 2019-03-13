@@ -29,20 +29,15 @@
                   </div>
                   <form method="POST" action="login.html" id="login-form">
                     <div class="form-group">
-                      <label for="exampleInputEmail1" class="sr-only">Email address</label>
-                      <input
-                        type="email"
-                        class="form-control form-control-lg"
-                        id="exampleInputEmail1"
-                        placeholder="Email"
-                      />
+                      <label for="login-email" class="sr-only">Email address</label>
+                      <input type="email" class="form-control form-control-lg" id="login-email" placeholder="Email" />
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1" class="sr-only">Password</label>
+                      <label for="login-password" class="sr-only">Password</label>
                       <input
                         type="password"
                         class="form-control form-control-lg "
-                        id="exampleInputPassword1"
+                        id="login-password"
                         placeholder="Password"
                       />
                     </div>
@@ -65,7 +60,13 @@
                     </div>
                     <br />
                     <div class="form-group text-center">
-                      <button type="button" class="login-button btn btn-outline-info btn-lg btn-block">Log In</button>
+                      <button
+                        type="button"
+                        id="login-button"
+                        class="login-button btn btn-outline-info btn-lg btn-block"
+                      >
+                        Log In
+                      </button>
                     </div>
                   </form>
                   <div class="text-center signup-link">
@@ -78,5 +79,15 @@
         </div>
       </div>
     </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/fontawesome.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/datatables.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/qrcode.min.js"></script>
+    <script src="js/bootadmin.min.js"></script>
+    <script async src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- <script src="js/sweetalert.min.js"></script> -->
+    <script src="js/main.js"></script>
   </body>
 </html>

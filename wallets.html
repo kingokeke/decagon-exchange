@@ -131,35 +131,7 @@
                                 </div>
                                 <div class="card-body">
                                   <div class="row p-3 wallet-container" id="bitcoin-wallet-container">
-                                    <div class="col-12 wallet-instance">
-                                      <div class="card">
-                                        <div class="card-body">
-                                          <div class="d-flex">
-                                            <div>
-                                              <h5>Bitcoin Wallet #1</h5>
-                                              <p>Balance: 3.2 BTC</p>
-                                            </div>
-                                            <div class="ml-auto">
-                                              <button class="btn btn-warning" data-toggle="modal" data-target="#edit-bitcoin-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div class="card-footer">
-                                          <div class="d-flex">
-                                            <div>
-                                              <button class="btn btn-primary" data-target="#buy-bitcoin-modal" data-toggle="modal"><i class="cf cf-btc mr-2"></i>Buy</button>
-                                              <button class="btn btn-danger" data-target="#sell-bitcoin-modal" data-toggle="modal">
-                                                <i class="fas fa-money-bill-wave mr-2"></i>Sell
-                                              </button>
-                                            </div>
-                                            <div class="ml-auto">
-                                              <button class="btn btn-info" data-target="#send-bitcoin-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                                              <button class="btn btn-success" data-target="#receive-bitcoin-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                                   
                                   </div>
                                 </div>
                               </div>
@@ -223,7 +195,7 @@
                               </div>
                               <div class="card-body">
                                 <div class="row p-3 wallet-container" id="ethereum-wallet-container">
-                                  <div class="col-12 wallet-instance">
+                                  <!-- <div class="col-12 wallet-instance">
                                     <div class="card">
                                       <div class="card-body">
                                         <div class="d-flex">
@@ -251,7 +223,7 @@
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
+                                  </div> -->
                                 </div>
                               </div>
                             </div>
@@ -315,7 +287,7 @@
                               </div>
                               <div class="card-body">
                                 <div class="row p-3 wallet-container" id="ripple-wallet-container">
-                                  <div class="col-12 wallet-instance">
+                                  <!-- <div class="col-12 wallet-instance">
                                     <div class="card">
                                       <div class="card-body">
                                         <div class="d-flex">
@@ -343,7 +315,7 @@
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
+                                  </div> -->
                                 </div>
                               </div>
                             </div>
@@ -407,7 +379,7 @@
                               </div>
                               <div class="card-body">
                                 <div class="row p-3 wallet-container" id="litecoin-wallet-container">
-                                  <div class="col-12 wallet-instance">
+                                  <!-- <div class="col-12 wallet-instance">
                                     <div class="card">
                                       <div class="card-body">
                                         <div class="d-flex">
@@ -435,7 +407,7 @@
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
+                                  </div> -->
                                 </div>
                               </div>
                             </div>
@@ -499,7 +471,7 @@
                             </div>
                             <div class="card-body">
                               <div class="row p-3 wallet-container" id="bitcoin-cash-wallet-container">
-                                <div class="col-12 wallet-instance">
+                                <!-- <div class="col-12 wallet-instance">
                                   <div class="card">
                                     <div class="card-body">
                                       <div class="d-flex">
@@ -527,7 +499,7 @@
                                       </div>
                                     </div>
                                   </div>
-                                </div>
+                                </div> -->
                               </div>
                             </div>
                           </div>
@@ -579,7 +551,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle">Add new Bitcoin wallet</h5>
+            <h5 class="modal-title" >Add new Bitcoin wallet</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -589,11 +561,11 @@
               <div class="card-body">
                 <form action="">
                   <div class="form-group">
-                    <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                    <label for="new-bitcoin-wallet-name" class="font-weight-bold">Wallet Name</label>
                     <input
                       type="text"
                       class="form-control"
-                      id="new-wallet-name"
+                      id="new-bitcoin-wallet-name"
                       placeholder='e.g. "Personal", "Business", etc'
                     />
                   </div>
@@ -625,11 +597,11 @@
               <div class="card-body">
                 <form action="">
                   <div class="form-group">
-                    <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                    <label for="new-ethereum-wallet-name" class="font-weight-bold">Wallet Name</label>
                     <input
                       type="text"
                       class="form-control"
-                      id="new-wallet-name"
+                      id="new-ethereum-wallet-name"
                       placeholder='e.g. "Personal", "Business", etc'
                     />
                   </div>
@@ -661,11 +633,11 @@
               <div class="card-body">
                 <form action="">
                   <div class="form-group">
-                    <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                    <label for="new-ripple-wallet-name" class="font-weight-bold">Wallet Name</label>
                     <input
                       type="text"
                       class="form-control"
-                      id="new-wallet-name"
+                      id="new-ripple-wallet-name"
                       placeholder='e.g. "Personal", "Business", etc'
                     />
                   </div>
@@ -697,11 +669,11 @@
               <div class="card-body">
                 <form action="">
                   <div class="form-group">
-                    <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                    <label for="new-litecoin-wallet-name" class="font-weight-bold">Wallet Name</label>
                     <input
                       type="text"
                       class="form-control"
-                      id="new-wallet-name"
+                      id="new-litecoin-wallet-name"
                       placeholder='e.g. "Personal", "Business", etc'
                     />
                   </div>
@@ -733,11 +705,11 @@
               <div class="card-body">
                 <form action="">
                   <div class="form-group">
-                    <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                    <label for="new-bitcoin-cash-wallet-name" class="font-weight-bold">Wallet Name</label>
                     <input
                       type="text"
                       class="form-control"
-                      id="new-wallet-name"
+                      id="new-bitcoin-cash-wallet-name"
                       placeholder='e.g. "Personal", "Business", etc'
                     />
                   </div>
@@ -771,11 +743,11 @@
                 <div class="card-body">
                   <form action="">
                     <div class="form-group">
-                      <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                      <label for="edit-bitcoin-wallet-name" class="font-weight-bold">Wallet Name</label>
                       <input
                         type="text"
                         class="form-control"
-                        id="new-wallet-name"
+                        id="edit-bitcoin-wallet-name"
                         placeholder='e.g. "Personal", "Business", etc'
                       />
                     </div>
@@ -785,6 +757,7 @@
             </div>
             <div class="card-footer">
               <div class="d-flex">
+                  <button class="btn btn-danger">Delete</button>
                 <div class="ml-auto">
                   <button class="btn btn-success">Update</button>
                 </div>
@@ -797,7 +770,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="">Edit Ethereum wallet</h5>
+              <h5 class="modal-title" >Edit Ethereum wallet</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -807,11 +780,11 @@
                 <div class="card-body">
                   <form action="">
                     <div class="form-group">
-                      <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                      <label for="edit-ethereum-wallet-name" class="font-weight-bold">Wallet Name</label>
                       <input
                         type="text"
                         class="form-control"
-                        id="new-wallet-name"
+                        id="edit-ethereum-wallet-name"
                         placeholder='e.g. "Personal", "Business", etc'
                       />
                     </div>
@@ -843,11 +816,11 @@
                 <div class="card-body">
                   <form action="">
                     <div class="form-group">
-                      <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                      <label for="edit-ripple-wallet-name" class="font-weight-bold">Wallet Name</label>
                       <input
                         type="text"
                         class="form-control"
-                        id="new-wallet-name"
+                        id="edit-ripple-wallet-name"
                         placeholder='e.g. "Personal", "Business", etc'
                       />
                     </div>
@@ -879,11 +852,11 @@
                 <div class="card-body">
                   <form action="">
                     <div class="form-group">
-                      <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                      <label for="edit-litecoin-wallet-name" class="font-weight-bold">Wallet Name</label>
                       <input
                         type="text"
                         class="form-control"
-                        id="new-wallet-name"
+                        id="edit-litecoin-wallet-name"
                         placeholder='e.g. "Personal", "Business", etc'
                       />
                     </div>
@@ -915,11 +888,11 @@
                 <div class="card-body">
                   <form action="">
                     <div class="form-group">
-                      <label for="new-wallet-name" class="font-weight-bold">Wallet Name</label>
+                      <label for="edit-bitcoin-cash-wallet-name" class="font-weight-bold">Wallet Name</label>
                       <input
                         type="text"
                         class="form-control"
-                        id="new-wallet-name"
+                        id="edit-bitcoin-cash-wallet-name"
                         placeholder='e.g. "Personal", "Business", etc'
                       />
                     </div>
@@ -943,7 +916,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="">Buy Bitcoin</h5>
+              <h5 class="modal-title" >Buy Bitcoin</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -957,7 +930,7 @@
                       <input
                         type="text"
                         class="form-control"
-                        id=""
+                        
                       />
                     </div>
                     <div class="form-group">
@@ -965,7 +938,7 @@
                         <input
                           type="password"
                           class="form-control"
-                          id=""
+                          
                         />
                       </div>
                   </form>
@@ -986,7 +959,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="">Buy Ethereum</h5>
+            <h5 class="modal-title" >Buy Ethereum</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -1000,7 +973,7 @@
                       <input
                         type="text"
                         class="form-control"
-                        id=""
+                        
                       />
                     </div>
                     <div class="form-group">
@@ -1008,7 +981,7 @@
                         <input
                           type="password"
                           class="form-control"
-                          id=""
+                          
                         />
                       </div>
                   </form>
@@ -1029,7 +1002,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle">Buy Ripple wallet</h5>
+            <h5 class="modal-title" id="exampleModalCenterTitle">Buy Ripple</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -1043,7 +1016,7 @@
                       <input
                         type="text"
                         class="form-control"
-                        id=""
+                        
                       />
                     </div>
                     <div class="form-group">
@@ -1051,7 +1024,7 @@
                         <input
                           type="password"
                           class="form-control"
-                          id=""
+                          
                         />
                       </div>
                   </form>
@@ -1072,7 +1045,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="">Buy Litecoin</h5>
+            <h5 class="modal-title" >Buy Litecoin</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -1086,7 +1059,7 @@
                       <input
                         type="text"
                         class="form-control"
-                        id=""
+                        
                       />
                     </div>
                     <div class="form-group">
@@ -1094,7 +1067,7 @@
                         <input
                           type="password"
                           class="form-control"
-                          id=""
+                          
                         />
                       </div>
                   </form>
@@ -1129,7 +1102,7 @@
                       <input
                         type="text"
                         class="form-control"
-                        id=""
+                        
                       />
                     </div>
                     <div class="form-group">
@@ -1137,7 +1110,7 @@
                         <input
                           type="password"
                           class="form-control"
-                          id=""
+                          
                         />
                       </div>
                   </form>
@@ -1160,7 +1133,7 @@
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="">Sell Bitcoin</h5>
+                <h5 class="modal-title" >Sell Bitcoin</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
@@ -1174,7 +1147,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id=""
+                            
                           />
                         </div>
                         <div class="form-group">
@@ -1182,7 +1155,7 @@
                             <input
                               type="password"
                               class="form-control"
-                              id=""
+                              
                             />
                           </div>
                       </form>
@@ -1203,7 +1176,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="">Sell Ethereum</h5>
+              <h5 class="modal-title" >Sell Ethereum</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -1217,7 +1190,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id=""
+                          
                         />
                       </div>
                       <div class="form-group">
@@ -1225,7 +1198,7 @@
                           <input
                             type="password"
                             class="form-control"
-                            id=""
+                            
                           />
                         </div>
                     </form>
@@ -1260,7 +1233,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id=""
+                          
                         />
                       </div>
                       <div class="form-group">
@@ -1268,7 +1241,7 @@
                           <input
                             type="password"
                             class="form-control"
-                            id=""
+                            
                           />
                         </div>
                     </form>
@@ -1289,7 +1262,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="">Sell Litecoin</h5>
+              <h5 class="modal-title" >Sell Litecoin</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -1303,7 +1276,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id=""
+                          
                         />
                       </div>
                       <div class="form-group">
@@ -1311,7 +1284,7 @@
                           <input
                             type="password"
                             class="form-control"
-                            id=""
+                            
                           />
                         </div>
                     </form>
@@ -1346,7 +1319,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id=""
+                          
                         />
                       </div>
                       <div class="form-group">
@@ -1354,7 +1327,7 @@
                           <input
                             type="password"
                             class="form-control"
-                            id=""
+                            
                           />
                         </div>
                     </form>
@@ -1377,7 +1350,7 @@
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="">Send Bitcoin</h5>
+                <h5 class="modal-title" >Send Bitcoin</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
@@ -1391,7 +1364,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id=""
+                          
                           placeholder=""
                         />
                       </div>
@@ -1400,7 +1373,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id=""
+                            
                             placeholder=""
                           />
                       </div>
@@ -1409,7 +1382,7 @@
                           <input
                             type="password"
                             class="form-control"
-                            id=""
+                            
                             placeholder=""
                           />
                         </div>
@@ -1431,7 +1404,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="">Send Ethereum</h5>
+              <h5 class="modal-title" >Send Ethereum</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -1445,7 +1418,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id=""
+                          
                           placeholder=""
                         />
                       </div>
@@ -1454,7 +1427,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id=""
+                            
                             placeholder=""
                           />
                       </div>
@@ -1463,7 +1436,7 @@
                           <input
                             type="password"
                             class="form-control"
-                            id=""
+                            
                             placeholder=""
                           />
                         </div>
@@ -1499,7 +1472,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id=""
+                          
                           placeholder=""
                         />
                       </div>
@@ -1508,7 +1481,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id=""
+                            
                             placeholder=""
                           />
                       </div>
@@ -1517,7 +1490,7 @@
                           <input
                             type="password"
                             class="form-control"
-                            id=""
+                            
                             placeholder=""
                           />
                         </div>
@@ -1539,7 +1512,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="">Send Litecoin</h5>
+              <h5 class="modal-title" >Send Litecoin</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -1553,7 +1526,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id=""
+                          
                           placeholder=""
                         />
                       </div>
@@ -1562,7 +1535,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id=""
+                            
                             placeholder=""
                           />
                       </div>
@@ -1571,7 +1544,7 @@
                           <input
                             type="password"
                             class="form-control"
-                            id=""
+                            
                             placeholder=""
                           />
                         </div>
@@ -1607,7 +1580,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id=""
+                          
                           placeholder=""
                         />
                       </div>
@@ -1616,7 +1589,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id=""
+                            
                             placeholder=""
                           />
                       </div>
@@ -1625,7 +1598,7 @@
                           <input
                             type="password"
                             class="form-control"
-                            id=""
+                            
                             placeholder=""
                           />
                         </div>
@@ -1649,7 +1622,7 @@
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="">Receive Bitcoin</h5>
+                <h5 class="modal-title" >Receive Bitcoin</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
@@ -1664,9 +1637,9 @@
                         <div class="form-group">
                           <label class="font-weight-bold">Wallet Address</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="" value="" disabled>
+                                <input type="text" class="form-control"  value="" disabled>
                                 <div class="input-group-append" style="cursor: pointer">
-                                    <span class="input-group-text" id=""><i class="far fa-clone"></i></span>
+                                    <span class="input-group-text" ><i class="far fa-clone"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -1681,7 +1654,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="">Receive Ethereum</h5>
+              <h5 class="modal-title" >Receive Ethereum</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -1696,9 +1669,9 @@
                       <div class="form-group">
                         <label class="font-weight-bold">Wallet Address</label>
                           <div class="input-group mb-3">
-                              <input type="text" class="form-control" id="" value="" disabled>
+                              <input type="text" class="form-control"  value="" disabled>
                               <div class="input-group-append" style="cursor: pointer">
-                                  <span class="input-group-text" id=""><i class="far fa-clone"></i></span>
+                                  <span class="input-group-text" ><i class="far fa-clone"></i></span>
                               </div>
                           </div>
                       </div>
@@ -1713,7 +1686,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="">Receive Ripple</h5>
+              <h5 class="modal-title" >Receive Ripple</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -1728,9 +1701,9 @@
                     <div class="form-group">
                       <label class="font-weight-bold">Wallet Address</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="" value="" disabled>
+                            <input type="text" class="form-control"  value="" disabled>
                             <div class="input-group-append" style="cursor: pointer">
-                                <span class="input-group-text" id=""><i class="far fa-clone"></i></span>
+                                <span class="input-group-text" ><i class="far fa-clone"></i></span>
                             </div>
                         </div>
                     </div>
@@ -1745,7 +1718,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="">Receive Litecoin</h5>
+              <h5 class="modal-title" >Receive Litecoin</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -1760,9 +1733,9 @@
                       <div class="form-group">
                         <label class="font-weight-bold">Wallet Address</label>
                           <div class="input-group mb-3">
-                              <input type="text" class="form-control" id="" value="" disabled>
+                              <input type="text" class="form-control"  value="" disabled>
                               <div class="input-group-append" style="cursor: pointer">
-                                  <span class="input-group-text" id=""><i class="far fa-clone"></i></span>
+                                  <span class="input-group-text" ><i class="far fa-clone"></i></span>
                               </div>
                           </div>
                       </div>
@@ -1792,9 +1765,9 @@
                       <div class="form-group">
                         <label class="font-weight-bold">Wallet Address</label>
                           <div class="input-group mb-3">
-                              <input type="text" class="form-control" id="" value="" disabled>
+                              <input type="text" class="form-control"  value="" disabled>
                               <div class="input-group-append" style="cursor: pointer">
-                                  <span class="input-group-text" id=""><i class="far fa-clone"></i></span>
+                                  <span class="input-group-text" ><i class="far fa-clone"></i></span>
                               </div>
                           </div>                                            
                       </div>

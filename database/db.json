@@ -1,0 +1,92 @@
+{
+  "users": [
+    {
+      "first-name": "Kingsley",
+      "last-name": "Okeke",
+      "phone": "11111111111111111",
+      "email": "kingokeke@gmail.com",
+      "password": "111",
+      "country": "Nigeria",
+      "language": "English",
+      "usd-balance": 0,
+      "verification": 0,
+      "is-active": 1,
+      "id": 1
+    }
+  ],
+  "wallets": [
+    {
+      "wallet-address": "15vcMMltX1hS9aMO0x6HG1Pwl52g6Y6",
+      "coin-balance": 0,
+      "coin-name": "BTC",
+      "user-id": 1,
+      "wallet-name": "Personal",
+      "is-wallet-active": 0,
+      "id": 1
+    },
+    {
+      "wallet-address": "3908HP272TtHSDXV5GjVW4cQUBg5JLTc",
+      "coin-balance": 0,
+      "coin-name": "BTC",
+      "user-id": 1,
+      "wallet-name": "Private",
+      "is-wallet-active": 1,
+      "id": 2
+    },
+    {
+      "wallet-address": "1U2bcHpU408NZ6zQOOD6JAS25abCfr1V",
+      "coin-balance": 0,
+      "coin-name": "BTC",
+      "user-id": 1,
+      "wallet-name": "Quick",
+      "is-wallet-active": 1,
+      "id": 3
+    },
+    {
+      "wallet-address": "0xaf4ec3db8215489d83638f2b78f015266923f62f",
+      "coin-balance": 0,
+      "coin-name": "ETH",
+      "user-id": 1,
+      "wallet-name": "ETH 2",
+      "is-wallet-active": 1,
+      "id": 4
+    },
+    {
+      "wallet-address": "rdt7Y4h3nvfYQcKzk1atcVAS31xiVp1SLwY",
+      "coin-balance": 0,
+      "coin-name": "XRP",
+      "user-id": 1,
+      "wallet-name": "Ripped Jeans",
+      "is-wallet-active": 1,
+      "id": 5
+    },
+    {
+      "wallet-address": "MlyCu3bPCGG2yxPmXirM9Ynb2wP2Yh7JkP",
+      "coin-balance": 0,
+      "coin-name": "LTC",
+      "user-id": 1,
+      "wallet-name": "Lite",
+      "is-wallet-active": 1,
+      "id": 6
+    },
+    {
+      "wallet-address": "qgqdgjkb6tuaqeraoufajy8zpvx1lt1mhn0d4uc8",
+      "coin-balance": 0,
+      "coin-name": "BCH",
+      "user-id": 1,
+      "wallet-name": "Cash Money",
+      "is-wallet-active": 1,
+      "id": 7
+    },
+    {
+      "wallet-address": "qy9uhkn4t057p2oo08ggabnaxs7fevzi14lbubg3a",
+      "coin-balance": 0,
+      "coin-name": "BCH",
+      "user-id": 1,
+      "wallet-name": "Izu",
+      "is-wallet-active": 1,
+      "id": 8
+    }
+  ],
+  "transactions": []
+}

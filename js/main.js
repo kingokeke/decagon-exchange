@@ -178,178 +178,378 @@ function generateQRCode(address, output) {
   return qrcode;
 }
 
-function addBTCWallet() {
-  const div = document.createElement('div');
-  div.classList.add('col-12', 'wallet-instance');
-  const walletContainer = document.querySelector('#bitcoin-wallet-container');
-  const message = `<div class="card">
+function listWallets(user_id, coin) {
+  fetch(`http://localhost:3000/wallets?user-id=${user_id}&coin-name=${coin}`)
+    .then(res => res.json())
+    .then(data => {
+      let icon = '';
+      let coinName = '';
+      switch (coin) {
+        case 'BTC':
+          icon = '<i class="cf cf-btc mr-2">';
+          coinName = 'bitcoin';
+          break;
+        case 'ETH':
+          icon = '<i class="cf cf-eth mr-2" />';
+          coinName = 'ethereum';
+          break;
+        case 'LTC':
+          icon = '<i class="cf cf-ltc mr-2" />';
+          coinName = 'litecoin';
+          break;
+        case 'XRP':
+          icon = '<i class="cf cf-xrp mr-2" />';
+          coinName = 'ripple';
+          break;
+        case 'BCH':
+          icon = '<i class="cf cf-btc-alt mr-2" />';
+          coinName = 'bitcoin-cash';
+          break;
+      }
+
+      for (let item of data) {
+        if (item['is-wallet-active']) {
+          const div = document.createElement('div');
+          div.classList.add('col-12', 'wallet-instance');
+          div.id = `${item['id']}`;
+          const walletContainer = document.querySelector(`#${coinName}-wallet-container`);
+          const message = `<div class="card">
                     <div class="card-body">
                       <div class="d-flex">
                         <div>
-                          <h5>Bitcoin Wallet #1</h5>
-                          <p>Balance: 3.2 BTC</p>
+                          <h5>${item['wallet-name']}</h5>
+                          <p>Balance: ${item['coin-balance']} ${coin}</p>
                         </div>
                         <div class="ml-auto">
-                          <button class="btn btn-warning" data-toggle="modal" data-target="#edit-bitcoin-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+                          <button id=${
+                            item.id
+                          }-edit class="btn btn-warning" data-toggle="modal" data-target="#edit-${coinName}-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
                         </div>
                       </div>
                     </div>
                     <div class="card-footer">
                       <div class="d-flex">
                         <div>
-                          <button class="btn btn-primary" data-target="#buy-bitcoin-modal" data-toggle="modal"><i class="cf cf-btc mr-2"></i>Buy</button>
-                          <button class="btn btn-danger" data-target="#sell-bitcoin-modal" data-toggle="modal">
+                          <button id=${
+                            item.id
+                          }-buy class="btn btn-primary buy-button" data-target="#buy-${coinName}-modal" data-toggle="modal">${icon}</i>Buy</button>
+                          <button id=${
+                            item.id
+                          }-sell class="btn btn-danger sell-button" data-target="#sell-${coinName}-modal" data-toggle="modal">
                             <i class="fas fa-money-bill-wave mr-2"></i>Sell
                           </button>
                         </div>
                         <div class="ml-auto">
-                          <button class="btn btn-info" data-target="#send-bitcoin-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                          <button class="btn btn-success" data-target="#receive-bitcoin-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                          <button id=${
+                            item.id
+                          }-send class="btn btn-info" data-target="#send-${coinName}-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                          <button id=${
+                            item.id
+                          }-receive class="btn btn-success" data-target="#receive-${coinName}-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
                         </div>
                       </div>
                     </div>
                   </div>`;
-  div.innerHTML = message;
-  walletContainer.appendChild(div);
+          div.innerHTML = message;
+          walletContainer.appendChild(div);
+        }
+      }
+    });
 }
-function addETHWallet() {
-  const div = document.createElement('div');
-  div.classList.add('col-12', 'wallet-instance');
-  const walletContainer = document.querySelector('#ethereum-wallet-container');
-  const message = `<div class="card">
-                    <div class="card-body">
-                      <div class="d-flex">
-                        <div>
-                          <h5>Ethereum wallet #1</h5>
-                          <p>Balance: 11.3 ETH</p>
-                        </div>
-                        <div class="ml-auto">
-                            <button class="btn btn-warning" data-toggle="modal" data-target="#edit-ethereum-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer">
-                      <div class="d-flex">
-                        <div>
-                            <button class="btn btn-primary" data-target="#buy-ethereum-modal" data-toggle="modal"><i class="cf cf-eth mr-2"></i>Buy</button>
-                          <button class="btn btn-danger" data-target="#sell-ethereum-modal" data-toggle="modal">
-                            <i class="fas fa-money-bill-wave mr-2"></i>Sell
-                          </button>
-                        </div>
-                        <div class="ml-auto">
-                          <button class="btn btn-info" data-target="#send-ethereum-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                          <button class="btn btn-success" data-target="#receive-ethereum-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>`;
-  div.innerHTML = message;
-  walletContainer.appendChild(div);
+
+function addWallet(coin_type, user_id, wallet_name = '') {
+  let walletAddress = '';
+  let walletName = '';
+  switch (coin_type) {
+    case 'BTC':
+      walletAddress = btcAddress();
+      walletName = 'Bitcoin Wallet #1';
+      break;
+    case 'ETH':
+      walletAddress = ethAddress();
+      walletName = 'Ethereum Wallet #1';
+      break;
+    case 'XRP':
+      walletAddress = xrpAddress();
+      walletName = 'Ripple Wallet #1';
+      break;
+    case 'LTC':
+      walletAddress = ltcAddress();
+      walletName = 'Litecoin Wallet #1';
+      break;
+    case 'BCH':
+      walletAddress = bchAddress();
+      walletName = 'Bitcoin Cash Wallet #1';
+      break;
+  }
+
+  if (wallet_name) {
+    walletName = wallet_name;
+  }
+
+  const walletData = {
+    'wallet-address': walletAddress,
+    'coin-balance': 0,
+    'coin-name': coin_type,
+    'user-id': user_id,
+    'wallet-name': walletName,
+    'is-wallet-active': 1,
+  };
+
+  fetch('http://localhost:3000/wallets', {
+    method: 'post',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(walletData),
+  });
 }
-function addXRPWallet() {
-  const div = document.createElement('div');
-  div.classList.add('col-12', 'wallet-instance');
-  const walletContainer = document.querySelector('#ripple-wallet-container');
-  const message = `<div class="card">
-                    <div class="card-body">
-                      <div class="d-flex">
-                        <div>
-                          <h5>Ripple Wallet #1</h5>
-                          <p>Balance: 3667 XRP</p>
-                        </div>
-                        <div class="ml-auto">
-                            <button class="btn btn-warning" data-toggle="modal" data-target="#edit-ripple-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer">
-                      <div class="d-flex">
-                        <div>
-                            <button class="btn btn-primary" data-target="#buy-ripple-modal" data-toggle="modal"><i class="cf cf-xrp mr-2"></i>Buy</button>
-                          <button class="btn btn-danger" data-target="#sell-ripple-modal" data-toggle="modal">
-                            <i class="fas fa-money-bill-wave mr-2"></i>Sell
-                          </button>
-                        </div>
-                        <div class="ml-auto">
-                          <button class="btn btn-info" data-target="#send-ripple-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                          <button class="btn btn-success" data-target="#receive-ripple-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>`;
-  div.innerHTML = message;
-  walletContainer.appendChild(div);
+// addWallet('BTC', 1, 'Bitcoin Wallet #1');
+/**pastack sanbox Payment processor gateway*/
+function payWithPaystack(name, email, phone, fundAmount) {
+  var handler = PaystackPop.setup({
+    key: 'pk_test_b6ff1e69b9f6983bfa479e67bff6f3f7cad03c94', //public key
+    email: email, //customer's email
+    amount: fundAmount, //amount the customer is supposed to pay
+    metadata: {
+      custom_fields: [
+        {
+          display_name: name,
+          variable_name: phone,
+          value: phone, //customer's mobile number
+        },
+      ],
+    },
+    callback: function(response) {
+      /*after the transaction have been completed**/
+
+      /**build and Post transaction history for this user */
+      const user = JSON.parse(localStorage.getItem('user'));
+
+      let transactionObject = {
+        userId: user['id'],
+        reference: response.reference,
+        transaction: response.transaction,
+        amount: fundAmount,
+      };
+
+      $.ajax({
+        url: 'http://localhost:5000/transaction-history',
+        type: 'POST',
+        data: transactionObject,
+        success: function(res) {
+          /**Credit this user with the amount*/
+          user['naira-wallet'] += parseInt(user['naira-wallet']) + fundAmount;
+
+          $.ajax({
+            method: 'PATCH',
+            url: 'http://localhost:5000/users/' + user['id'],
+            data: user,
+          }).done(function(msg) {
+            /**cached this user profile */
+            setLocalStorageValue('user', msg);
+            swal('Successful!', 'Your account has been credited!', 'success');
+            //populatWalletBalance();
+          });
+        },
+      });
+    },
+    onClose: function() {
+      //when the user close the payment modal
+      swal('Cancelled', 'Transaction cancelled!', 'warning');
+    },
+  });
+  handler.openIframe(); //open the paystack's payment modal
 }
-function addLTCWallet() {
-  const div = document.createElement('div');
-  div.classList.add('col-12', 'wallet-instance');
-  const walletContainer = document.querySelector('#litecoin-wallet-container');
-  const message = `<div class="card">
-                    <div class="card-body">
-                      <div class="d-flex">
-                        <div>
-                          <h5>Litecoin Wallet #1</h5>
-                          <p>Balance: 35.9 LTC</p>
-                        </div>
-                        <div class="ml-auto">
-                            <button class="btn btn-warning" data-toggle="modal" data-target="#edit-litecoin-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer">
-                      <div class="d-flex">
-                        <div>
-                            <button class="btn btn-primary" data-target="#buy-litecoin-modal" data-toggle="modal"><i class="cf cf-ltc mr-2"></i></i>Buy</button>
-                          <button class="btn btn-danger" data-target="#sell-litecoin-modal" data-toggle="modal">
-                            <i class="fas fa-money-bill-wave mr-2"></i>Sell
-                          </button>
-                        </div>
-                        <div class="ml-auto">
-                          <button class="btn btn-info" data-target="#send-litecoin-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                          <button class="btn btn-success" data-target="#receive-litecoin-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>`;
-  div.innerHTML = message;
-  walletContainer.appendChild(div);
+
+/**email validator */
+function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
 }
-function addBCHWallet() {
-  const div = document.createElement('div');
-  div.classList.add('col-12', 'wallet-instance');
-  const walletContainer = document.querySelector('#bitcoin-cash-wallet-container');
-  const message = `<div class="card">
-                    <div class="card-body">
-                      <div class="d-flex">
-                        <div>
-                          <h5>Bitcoin Cash Wallet #1</h5>
-                          <p>Balance: 3.2 BCH</p>
-                        </div>
-                        <div class="ml-auto">
-                            <button class="btn btn-warning" data-toggle="modal" data-target="#edit-bitcoin-cash-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer">
-                      <div class="d-flex">
-                        <div>
-                          <button class="btn btn-primary" data-target="#buy-bitcoin-cash-modal" data-toggle="modal"><i class="cf cf-btc-alt mr-2"></i>Buy</button>
-                          <button class="btn btn-danger" data-target="#sell-bitcoin-cash-modal" data-toggle="modal">
-                            <i class="fas fa-money-bill-wave mr-2"></i>Sell
-                          </button>
-                        </div>
-                        <div class="ml-auto">
-                          <button class="btn btn-info" data-target="#send-bitcoin-cash-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                          <button class="btn btn-success" data-target="#receive-bitcoin-cash-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>`;
-  div.innerHTML = message;
-  walletContainer.appendChild(div);
+function makeLogin() {
+  if ($('#login-email').val()) {
+    $.ajax({
+      url: 'http://localhost:3000/users?email=' + $('#login-email').val(),
+      type: 'GET',
+    }).done(email_res => {
+      if (email_res.length > 0) {
+        window.location.href = 'dashboard.html';
+      } else {
+        swal('Email conflict', 'This email address has been taken. Please use a different one!', 'warning');
+        $('#login-email').val('');
+      }
+    });
+  }
+}
+
+function checkAvailability() {
+  if ($('#signup-email').val()) {
+    $.ajax({
+      url: 'http://localhost:3000/users?email=' + $('#signup-email').val(),
+      type: 'GET',
+    }).done(email_res => {
+      if (email_res.length > 0) {
+        swal('Email conflict', 'This email address has been taken. Please use a different one!', 'warning');
+        $('#signup-email').val('');
+      }
+    });
+  }
+}
+
+/**signup button function */
+function makeSignup() {
+  var fname = $('#signup-firstname').val();
+  var lname = $('#signup-lastname').val();
+  var phone = $('#signup-phone').val();
+  var email = $('#signup-email').val();
+  var pwd = $('#signup-password').val();
+  var repeatpwd = $('#signup-confirm').val();
+  var data = {};
+
+  if (fname && lname && pwd && repeatpwd && email && phone) {
+    if (validateEmail(email)) {
+      if (pwd === repeatpwd) {
+        data = {
+          firstname: fname,
+          lastname: lname,
+          phone: phone,
+          email: email,
+          password: pwd,
+          country: 'Nigeria',
+          language: 'English',
+          'usd-balance': 0,
+          verification: 0,
+          'is-active': 1,
+        };
+
+        $.ajax({
+          url: 'http://localhost:3000/users',
+          type: 'POST',
+          data: data,
+          beforeSend: function(e) {
+            if (!validateEmail(email)) {
+              swal('Invalid', 'The email you entered is invalid!', 'warning');
+              return;
+            }
+          },
+          success: function(res) {
+            /**cached this user profile */
+            // setLocalStorageValue('user', res);
+            const coinTypes = ['BTC', 'ETH', 'XRP', 'LTC', 'BCH'];
+            let user_wallets = [];
+            for (let i = coinTypes.length; i--; ) {
+              user_wallets.push(addWallet(coinTypes[i], res[0].id));
+            }
+            $.ajax({
+              url: 'http://localhost:3000/wallets',
+              type: 'POST',
+              data: user_wallets,
+              success: function(res) {
+                /**cached this user profile */
+                // setLocalStorageValue('user', res);
+                //     window.location.href = 'dashboard.html';
+                //     //swal('Successful!', 'Your account was created, Please login!', 'success');
+                //     //populatWalletBalance();
+              },
+            });
+          },
+        });
+      }
+    } else {
+      swal('oops!', 'Please all fields are required!', 'warning');
+    }
+  } else {
+    swal('Error!', 'Please all fields are required!', 'warning');
+  }
+}
+
+function signUpNewUser() {
+  const firstName = document.querySelector('#signup-firstname').value;
+  const lastName = document.querySelector('#signup-lastname').value;
+  const phone = document.querySelector('#signup-phone').value;
+  const email = document.querySelector('#signup-email').value;
+  const password = document.querySelector('#signup-password').value;
+  const confirmation = document.querySelector('#signup-confirm').value;
+
+  if (firstName && lastName && phone && email && password && confirmation && password === confirmation) {
+    const userData = {
+      'first-name': firstName,
+      'last-name': lastName,
+      phone: phone,
+      email: email,
+      password: password,
+      country: 'Nigeria',
+      language: 'English',
+      'usd-balance': 0,
+      verification: 0,
+      'is-active': 1,
+    };
+
+    fetch('http://localhost:3000/users', {
+      method: 'post',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    })
+      .then(res => res.json())
+      .then(data => {
+        let wallets = '';
+        const coinList = ['BTC', 'ETH', 'XRP', 'LTC', 'BCH'];
+        for (let i = coinList.length; i--; ) {
+          wallets += addWallet(coinList[i], data.id);
+          wallets += ',';
+        }
+        const JSONWallet = JSON.parse(wallets);
+        fetch('http://localhost:3000/users', {
+          method: 'post',
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(JSONWallet),
+        });
+      });
+  } else {
+    swal('Error', 'There was an error', 'warning');
+  }
 }
 
 $(document).ready(function() {
+  /**REGISTRATION BUTTON ACTION */
+  // $('#signup-button').on('click', e => {
+  //   e.preventDefault();
+  //   signUpNewUser();
+  //   // makeSignup();
+  // });
+
+  // document.querySelector('#signup-button').onclick = e => {
+  //   e.preventDefault();
+  //   signUpNewUser();
+  // };
+
+  /**EMAIL BUTTON ACTION */
+  $('#signup-email').on('focusout', () => {
+    checkAvailability();
+  });
+
+  /**LOGIN BUTTON ACTION */
+  $('#login-button').on('click', e => {
+    e.preventDefault();
+    makeLogin();
+  });
+
+  /**PAYMENT BUTTON ACTION */
+  $('#deposit').on('click', () => {
+    /**get cached user */
+    // const user = getLocalStorageValue('user');
+    // payWithPaystack(user.firstname + ' ' + user.lastname, user.email, user.phone);
+  });
+
+  // Data Tables functionality
   $('.transactions-datatable').DataTable();
 });
 // ###################################
@@ -369,3 +569,52 @@ $(document).ready(function() {
 // addBitcoinCashWalletButton.onclick = () => addBCHWallet();
 
 // console.log(btcAddress());
+document.querySelector('#add-bitcoin-wallet-modal .btn-success').onclick = () => {
+  const bitcoinWalletName = document.querySelector('#new-bitcoin-wallet-name').value;
+  addWallet('BTC', 1, bitcoinWalletName);
+};
+document.querySelector('#add-ethereum-wallet-modal .btn-success').onclick = () => {
+  const ethereumWalletName = document.querySelector('#new-ethereum-wallet-name').value;
+  addWallet('ETH', 1, ethereumWalletName);
+};
+document.querySelector('#add-ripple-wallet-modal .btn-success').onclick = () => {
+  const rippleWalletName = document.querySelector('#new-ripple-wallet-name').value;
+  addWallet('XRP', 1, rippleWalletName);
+};
+document.querySelector('#add-litecoin-wallet-modal .btn-success').onclick = () => {
+  const litecoinWalletName = document.querySelector('#new-litecoin-wallet-name').value;
+  addWallet('LTC', 1, litecoinWalletName);
+};
+document.querySelector('#add-bitcoin-cash-wallet-modal .btn-success').onclick = () => {
+  const bitcoinCashWalletName = document.querySelector('#new-bitcoin-cash-wallet-name').value;
+  addWallet('BCH', 1, bitcoinCashWalletName);
+};
+
+listWallets(1, 'BTC');
+listWallets(1, 'ETH');
+listWallets(1, 'XRP');
+listWallets(1, 'LTC');
+listWallets(1, 'BCH');
+
+function createTransactionID() {
+  let transactionID = '';
+  const characterList = generateCharacterList('numbers', 'lowercase', 'uppercase');
+  for (let i = 60; i--; ) {
+    transactionID += characterList[getRandomInteger(0, characterList.length)];
+  }
+  return transactionID;
+}
+console.log(cre)
+//
+function createTransaction(wallet_name, type) {
+  const transactionDetails = {
+    timestamp: new Date(),
+    'wallet-name': wallet_name,
+    type: type,
+    'transaction-id': createTransactionID(),
+  };
+
+  if (type === 'Buy') {
+    transactionDetails['spent'] = `$1000`;
+  }
+}
