@@ -11,7 +11,7 @@
       "usd-balance": "1387.20",
       "verification": "0",
       "is-active": "1",
-      "id": 1
+      "id": 3
     },
     {
       "firstname": "izu",
@@ -34,10 +34,23 @@
       "password": "kings",
       "country": "Nigeria",
       "language": "English",
-      "usd-balance": "343.25",
+      "usd-balance": "43.25",
       "verification": "0",
       "is-active": "1",
-      "id": 3
+      "id": 1
+    },
+    {
+      "firstname": "joseph",
+      "lastname": "joseph",
+      "phone": "997766",
+      "email": "joseph@gmail.com",
+      "password": "kings",
+      "country": "Nigeria",
+      "language": "English",
+      "usd-balance": "0",
+      "verification": "0",
+      "is-active": "0",
+      "id": 10
     }
   ],
   "wallets": [
@@ -68,7 +81,7 @@
     {
       "wallet-name": "Solomon Wallet",
       "wallet-address": "1TByjiNneL9rNwcM1bxi4y4oOzrbCxoP0G",
-      "coin-balance": "0.16068578",
+      "coin-balance": "0.23805562",
       "coin-symbol": "BTC",
       "coin-name": "bitcoin",
       "user-id": "1",
@@ -144,6 +157,56 @@
       "user-id": "1",
       "is-wallet-active": "1",
       "id": 11
+    },
+    {
+      "wallet-name": "Kings",
+      "wallet-address": "36X9OLX3Tezqto51HKn09GppsKze6Yx",
+      "coin-balance": "0",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "1",
+      "is-wallet-active": "1",
+      "id": 12
+    },
+    {
+      "wallet-name": "Kings",
+      "wallet-address": "1al1oCjT5XIMmASG4cvwZixec9lHDcF",
+      "coin-balance": "0",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "1",
+      "is-wallet-active": "1",
+      "id": 13
+    },
+    {
+      "wallet-name": "Kings",
+      "wallet-address": "3UDq4Qh4K9Fj5T9oqaYbwBPZsEahYVCiA",
+      "coin-balance": "0",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "1",
+      "is-wallet-active": "1",
+      "id": 14
+    },
+    {
+      "wallet-name": "Kings",
+      "wallet-address": "1Yww2P87Oy8Tth2J54i7nzd0XgCctfk8J6",
+      "coin-balance": "0",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "1",
+      "is-wallet-active": "1",
+      "id": 15
+    },
+    {
+      "wallet-name": "Kings",
+      "wallet-address": "1O1xhL62KDcL1GM8wyI9yQ1DDZ8CYN8",
+      "coin-balance": "0",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "1",
+      "is-wallet-active": "0",
+      "id": 16
     }
   ],
   "transactions": [

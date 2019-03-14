@@ -25,6 +25,7 @@ function makeLogin() {
           }
           if (user.password === password) {
             setLocalStorageValue("user", user);
+
             window.location.href = "dashboard.html";
           } else {
             swal(

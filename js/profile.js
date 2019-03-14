@@ -1,8 +1,8 @@
 $(document).ready(function() {
-  const user = getLocalStorageValue("user");
-  if (!user) {
-    window.location.href = "login.html";
-  }
+  //   const user = getLocalStorageValue("user");
+  //   if (!user) {
+  //     window.location.href = "login.html";
+  //   }
   populateUserProfileForEdit();
   displayUserData();
   /**UPDATE BUTTON ACTION */
@@ -19,7 +19,8 @@ $(document).ready(function() {
   /**DELETE ACCOUNT BUTTON ACTION */
   $("#delete-profile-button").on("click", e => {
     e.preventDefault();
-    deleteProfile($("#delete-profile-password").val());
+    // deleteProfile($("#delete-profile-password").val());
+    isUserAccountEmpty($("#delete-profile-password").val());
   });
 });
 /**cached this user */
@@ -94,17 +95,7 @@ function saveUpdate() {
     swal("Oops!", "Please all fields are required!", "warning");
   }
 }
-
-function displayUserData() {
-  const user = getLocalStorageValue("user");
-  $("#display-name").text(user.firstname);
-  $("#profile-user-name").text(user.firstname + " " + user.lastname);
-  $("#profile-email").text(user.email);
-  $("#profile-phone").text(user.phone);
-  $("#profile-country").text(user.country);
-}
-
-function deleteProfile(password) {
+function isUserAccountEmpty(password) {
   if (!password) {
     swal("Oops", "Please provide your password!", "warning");
     return;
@@ -119,6 +110,53 @@ function deleteProfile(password) {
     return;
   }
 
+  $.ajax({
+    url: "http://localhost:3000/wallets?user-id=" + user.id,
+    type: "Get",
+    success: function(res) {
+      /**CHECK IF THIS USER HAS MONEY IN ANY OF THE WALLETS */
+      console.log(res);
+      for (let wallet of res) {
+        console.log(wallet);
+        if (wallet["coin-balance"] == 0) {
+          continue;
+        } else {
+          swal(
+            "FAILED",
+            "Please note that you cannot delete your account with fund!",
+            "warning"
+          );
+
+          return;
+        }
+      }
+      if (user["usd-balance"] == 0) {
+        deleteProfile(password);
+      } else {
+        swal(
+          "FAILED",
+          "Please note that you cannot delete your account with fund!",
+          "warning"
+        );
+      }
+    },
+    fail: function(e) {
+      swal("Error", e, "warning");
+    }
+  });
+}
+
+function displayUserData() {
+  const user = getLocalStorageValue("user");
+  $("#display-name").text(user.firstname);
+  $("#profile-user-name").text(user.firstname + " " + user.lastname);
+  $("#profile-email").text(user.email);
+  $("#profile-phone").text(user.phone);
+  $("#profile-country").text(user.country);
+}
+
+function deleteProfile(password) {
+  const user = getLocalStorageValue("user");
   swal({
     title: "Are you serious?",
     text: " You are about to DELETE your account!",
