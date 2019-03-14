@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars, no-undef */
-
+let user = getLocalStorageValue('user');
 $(document).ready(function() {
   // Helper function to populate transactions table
   $('#page-title').click(() => {
@@ -200,10 +200,10 @@ $(document).ready(function() {
   $('.transactions-datatable').DataTable();
 });
 
-const user = getLocalStorageValue('user');
-if (!user) {
-  window.location.href = 'login.html';
-}
+// const user = getLocalStorageValue('user');
+// if (!user) {
+//   window.location.href = 'login.html';
+// }
 
 // ###################################
 // FUNCTION CALLS

@@ -1,51 +1,43 @@
 $(document).ready(function() {
-  const user = getLocalStorageValue("user");
-  if (!user) {
-    window.location.href = "login.html";
-  }
+  // const user = getLocalStorageValue("user");
+  // if (!user) {
+  //   window.location.href = "login.html";
+  // }
   //payWithPaystack("505000");
   //payWithPaypal("55000");
   /**ADD FUND VIA PAYSTACK BUTTON ACTION */
-  $("#paystack-payment-processor").on("click", e => {
+  $('#paystack-payment-processor').on('click', e => {
     e.preventDefault();
-    let fundAmount = $("#account-funding-amount").val();
+    let fundAmount = $('#account-funding-amount').val();
     if (!fundAmount) {
-      swal("Oops", "You didn't provide amount. Try again!", "warning");
+      swal('Oops', "You didn't provide amount. Try again!", 'warning');
       return;
     }
     if (fundAmount == 0) {
-      swal(
-        "Oops",
-        "Please provide amount greater than zero. Try again!",
-        "warning"
-      );
+      swal('Oops', 'Please provide amount greater than zero. Try again!', 'warning');
       return;
     }
     payWithPaystack(fundAmount);
   });
   /**ADD FUND VIA PAYPAL BUTTON ACTION */
-  $("#paypal-payment-processor").on("click", e => {
+  $('#paypal-payment-processor').on('click', e => {
     e.preventDefault();
 
-    let fundAmount = $("#account-funding-amount").val();
+    let fundAmount = $('#account-funding-amount').val();
     if (!fundAmount) {
-      swal("Oops", "You didn't provide amount. Try again!", "warning");
+      swal('Oops', "You didn't provide amount. Try again!", 'warning');
       return;
     }
     if (fundAmount == 0) {
-      swal(
-        "Oops",
-        "Please provide amount greater than zero. Try again!",
-        "warning"
-      );
+      swal('Oops', 'Please provide amount greater than zero. Try again!', 'warning');
       return;
     }
     payWithPaypal(fundAmount);
-    $("#paypal-payment-processor").hide();
+    $('#paypal-payment-processor').hide();
   });
 
   /**SET USER BALANCE */
-  $("#account-balance").text(getUserCurrentBalance());
+  $('#account-balance').text(getUserCurrentBalance());
   //jQuery("#account-balance").val(getUserCurrentBalance());
 });
 /** 
@@ -92,28 +84,24 @@ $(document).userTimeout({
 });
 */
 /**pastack sanbox Payment processor gateway*/
-function payWithPaystack(fundAmount = "5000") {
+function payWithPaystack(fundAmount = '5000') {
   if (!fundAmount) {
-    swal("Oops", "You didn't provide amount. Try again!", "warning");
+    swal('Oops', "You didn't provide amount. Try again!", 'warning');
     return;
   }
   if (fundAmount < 5000) {
-    swal(
-      "Payment Error",
-      "Deposite Amount too small. The mimimum you can deposite is N5,000.",
-      "warning"
-    );
+    swal('Payment Error', 'Deposite Amount too small. The mimimum you can deposite is N5,000.', 'warning');
     return;
   }
   /**Get cached user */
-  const user = getLocalStorageValue("user");
+  //const user = getLocalStorageValue('user');
 
-  name = user.firstname + " " + user.lastname;
+  name = user.firstname + ' ' + user.lastname;
   email = user.email;
   phone = user.phone;
 
   var handler = PaystackPop.setup({
-    key: "pk_test_b6ff1e69b9f6983bfa479e67bff6f3f7cad03c94", //public key
+    key: 'pk_test_b6ff1e69b9f6983bfa479e67bff6f3f7cad03c94', //public key
     email: email, //customer's email
     amount: fundAmount, //amount the customer is supposed to pay
     metadata: {
@@ -121,71 +109,66 @@ function payWithPaystack(fundAmount = "5000") {
         {
           display_name: name,
           variable_name: phone,
-          value: phone //customer's mobile number
-        }
-      ]
+          value: phone, //customer's mobile number
+        },
+      ],
     },
     callback: function(response) {
       /*after the transaction have been completed**/
 
       /**build and Post transaction history for this user */
-      const user = getLocalStorageValue("user");
+      //const user = getLocalStorageValue('user');
 
       let transactionObject = {
-        userId: user["id"],
+        userId: user['id'],
         reference: response.reference,
         transaction: response.transaction,
         amount: fundAmount,
-        paymentProcessor: "Paystack"
+        paymentProcessor: 'Paystack',
       };
 
       $.ajax({
-        url: "http://localhost:3000/account-funding-transaction",
-        type: "POST",
+        url: 'http://localhost:3000/account-funding-transaction',
+        type: 'POST',
         data: transactionObject,
         success: function(res) {
           /**Credit this user with the amount*/
-          const amt = user["usd-balance"];
-          const oldAmount = parseFloat(amt) + parseFloat(fundAmount) / 360;
-          user["usd-balance"] = oldAmount;
+          let amount = parseFloat(user['usd-balance']) + parseFloat(fundAmount) / 360;
+          user['usd-balance'] = amount.toFixed(2);
+
+          // const amt = user['usd-balance'];
+          // const oldAmount = parseFloat(amt) + parseFloat(fundAmount) / 360;
+          // user['usd-balance'] = oldAmount;
 
           $.ajax({
-            method: "PATCH",
-            url: "http://localhost:3000/users/" + user["id"],
-            data: user
+            method: 'PATCH',
+            url: 'http://localhost:3000/users/' + user['id'],
+            data: user,
           }).done(function(msg) {
             /**cached this user profile */
-            setLocalStorageValue("user", msg);
-            swal(
-              "Successful!",
-              "Your account has been credited and updated!",
-              "success"
-            );
+            setLocalStorageValue('user', msg);
+            // swal('Successful!', 'Your account has been credited and updated!', 'success');
             /**SET USER BALANCE */
-            $("#account-balance").text(getUserCurrentBalance());
+            $('#account-balance').text(getUserCurrentBalance());
           });
-        }
+        },
       });
     },
     onClose: function() {
       //when the user close the payment modal
-      swal("Cancelled", "Transaction cancelled!", "warning");
-    }
+      swal('Cancelled', 'Transaction cancelled!', 'warning');
+    },
   });
   handler.openIframe(); //open the paystack's payment modal
 }
 
 /**Paypal sanbox Payment processor gateway*/
-function payWithPaypal(fundAmount = "10") {
+function payWithPaypal(fundAmount = '10') {
   paypal
     .Buttons({
       createOrder: function(data, actions) {
         if (fundAmount < 10) {
-          swal(
-            "Payment Error",
-            "Deposite Amount too small. The mimimum you can deposite is $10.",
-            "warning"
-          );
+          swal('Payment Error', 'Deposite Amount too small. The mimimum you can deposite is $10.', 'warning');
           return;
         }
         // Set up the transaction
@@ -193,62 +176,58 @@ function payWithPaypal(fundAmount = "10") {
           purchase_units: [
             {
               amount: {
-                value: fundAmount
-              }
-            }
-          ]
+                value: fundAmount,
+              },
+            },
+          ],
         });
       },
       onApprove: function(data, actions) {
         return actions.order.capture().then(function(details) {
-          alert("Transaction completed by " + details.payer.name.given_name);
+          alert('Transaction completed by ' + details.payer.name.given_name);
 
           /*after the transaction have been completed**/
 
           /**build and Post transaction history for this user */
-          const user = getLocalStorageValue("user");
+          //const user = getLocalStorageValue('user');
 
           let transactionObject = {
-            userId: user["id"],
+            userId: user['id'],
             reference: response.reference,
             transaction: response.transaction,
             amount: fundAmount,
-            paymentProcessor: "Paypal"
+            paymentProcessor: 'Paypal',
           };
 
           $.ajax({
-            url: "http://localhost:3000/account-funding-transaction",
-            type: "POST",
+            url: 'http://localhost:3000/account-funding-transaction',
+            type: 'POST',
             data: transactionObject,
             success: function(res) {
               /**Credit this user with the amount*/
-              user["usd-balance"] +=
-                parseFloat(user["usd-balance"]) + parseFloat(fundAmount);
+              let amount = parseFloat(user['usd-balance']) + parseFloat(fundAmount);
+              user['usd-balance'] = amount.toFixed(3);
 
               $.ajax({
-                method: "PATCH",
-                url: "http://localhost:3000/users/" + user["id"],
-                data: user
+                method: 'PATCH',
+                url: 'http://localhost:3000/users/' + user['id'],
+                data: user,
               }).done(function(res) {
                 /**cached this user profile */
-                setLocalStorageValue("user", res);
-                swal(
-                  "Successful!",
-                  "Your account has been credited and updated!",
-                  "success"
-                );
+                setLocalStorageValue('user', res);
+                swal('Successful!', 'Your account has been credited and updated!', 'success');
               });
-            }
+            },
           });
         });
-      }
+      },
     })
-    .render("#paypal-button-container");
+    .render('#paypal-button-container');
 }
 
 function getUserCurrentBalance() {
-  const user = getLocalStorageValue("user");
-  return user["usd-balance"];
+  const user = getLocalStorageValue('user');
+  return user['usd-balance'];
 }
 /**cached this user */
 function setLocalStorageValue(key, value) {
