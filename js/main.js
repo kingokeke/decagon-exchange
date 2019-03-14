@@ -185,6 +185,13 @@ $(document).ready(function() {
     });
   });
 
+  $('#display-name').text(user.firstname);
+  /**LOGOUT BUTTON ACTION */
+  $('#logout-button').on('click', e => {
+    e.preventDefault();
+    logout();
+  });
+
   $('.input-group-append').on('click', '.edit-wallet-button', function() {
     copyText(`.input.wallet-address`);
   });
@@ -192,6 +199,12 @@ $(document).ready(function() {
   // Data Tables functionality
   $('.transactions-datatable').DataTable();
 });
+
+const user = getLocalStorageValue('user');
+if (!user) {
+  window.location.href = 'login.html';
+}
+
 // ###################################
 // FUNCTION CALLS
 // ###################################
@@ -446,7 +459,14 @@ function cryptoNews(number_of_articles, number_of_chars, query = '', type = '') 
       document.querySelector('.cryptocurrency-news ul').appendChild(attribution);
     });
 }
-
+/**Delete this item from cached memory */
+function removeLocalStorageValue(key) {
+  window.localStorage.removeItem(key);
+}
+function logout() {
+  removeLocalStorageValue('user');
+  window.location.href = 'login.html';
+}
 function generateCharacterList(...types) {
   // Helper function to generate list of characters for wallet addresses
   const array = [];
@@ -550,6 +570,9 @@ function getCurrentCryptoPrice(coin) {
   });
 }
 function generateQRCode(address, output) {
+  // Function to generate qrcode for wallet addresses
+  // Please note that qrcode.min.js must be included
+  // on the HTML page before this function is invoked
   let walletType = '';
   switch (address[0]) {
     case '1':
@@ -631,6 +654,11 @@ function createTransaction(wallet_name, wallet_id, user_id, coin_symbol, transac
     url: 'http://localhost:3000/transactions',
     data: transactionDetails,
   });
+}
+
+/**Get ached user */
+function getLocalStorageValue(key) {
+  return JSON.parse(window.localStorage.getItem(key));
 }
 
 function addWallet(coin_symbol, user_id, wallet_name = '') {

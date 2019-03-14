@@ -1,18 +1,52 @@
 $(document).ready(function() {
+  const user = getLocalStorageValue("user");
+  if (!user) {
+    window.location.href = "login.html";
+  }
   //payWithPaystack("505000");
   //payWithPaypal("55000");
   /**ADD FUND VIA PAYSTACK BUTTON ACTION */
   $("#paystack-payment-processor").on("click", e => {
     e.preventDefault();
-    payWithPaystack($("#account-funding-amount").val());
+    let fundAmount = $("#account-funding-amount").val();
+    if (!fundAmount) {
+      swal("Oops", "You didn't provide amount. Try again!", "warning");
+      return;
+    }
+    if (fundAmount == 0) {
+      swal(
+        "Oops",
+        "Please provide amount greater than zero. Try again!",
+        "warning"
+      );
+      return;
+    }
+    payWithPaystack(fundAmount);
   });
   /**ADD FUND VIA PAYPAL BUTTON ACTION */
   $("#paypal-payment-processor").on("click", e => {
     e.preventDefault();
 
-    payWithPaypal($("#account-funding-amount").val());
+    let fundAmount = $("#account-funding-amount").val();
+    if (!fundAmount) {
+      swal("Oops", "You didn't provide amount. Try again!", "warning");
+      return;
+    }
+    if (fundAmount == 0) {
+      swal(
+        "Oops",
+        "Please provide amount greater than zero. Try again!",
+        "warning"
+      );
+      return;
+    }
+    payWithPaypal(fundAmount);
     $("#paypal-payment-processor").hide();
   });
+
+  /**SET USER BALANCE */
+  $("#account-balance").text(getUserCurrentBalance());
+  //jQuery("#account-balance").val(getUserCurrentBalance());
 });
 /** 
 $(document).userTimeout({
@@ -58,12 +92,12 @@ $(document).userTimeout({
 });
 */
 /**pastack sanbox Payment processor gateway*/
-function payWithPaystack(fundAmount) {
+function payWithPaystack(fundAmount = "5000") {
   if (!fundAmount) {
     swal("Oops", "You didn't provide amount. Try again!", "warning");
     return;
   }
-  if (fundAmount <= 4999) {
+  if (fundAmount < 5000) {
     swal(
       "Payment Error",
       "Deposite Amount too small. The mimimum you can deposite is N5,000.",
@@ -111,8 +145,9 @@ function payWithPaystack(fundAmount) {
         data: transactionObject,
         success: function(res) {
           /**Credit this user with the amount*/
-          user["naira-wallet"] +=
-            parseInt(user["naira-wallet"]) + fundAmount / 360;
+          const amt = user["usd-balance"];
+          const oldAmount = parseFloat(amt) + parseFloat(fundAmount) / 360;
+          user["usd-balance"] = oldAmount;
 
           $.ajax({
             method: "PATCH",
@@ -126,6 +161,8 @@ function payWithPaystack(fundAmount) {
               "Your account has been credited and updated!",
               "success"
             );
+            /**SET USER BALANCE */
+            $("#account-balance").text(getUserCurrentBalance());
           });
         }
       });
@@ -139,15 +176,11 @@ function payWithPaystack(fundAmount) {
 }
 
 /**Paypal sanbox Payment processor gateway*/
-function payWithPaypal(fundAmount = "9") {
+function payWithPaypal(fundAmount = "10") {
   paypal
     .Buttons({
       createOrder: function(data, actions) {
-        if (fundAmount == "") {
-          swal("Oops", "You didn't provide amount. Try again!", "warning");
-          return;
-        }
-        if (fundAmount <= 9) {
+        if (fundAmount < 10) {
           swal(
             "Payment Error",
             "Deposite Amount too small. The mimimum you can deposite is $10.",
@@ -189,15 +222,16 @@ function payWithPaypal(fundAmount = "9") {
             data: transactionObject,
             success: function(res) {
               /**Credit this user with the amount*/
-              user["usd-balance"] += parseInt(user["usd-balance"]) + fundAmount;
+              user["usd-balance"] +=
+                parseFloat(user["usd-balance"]) + parseFloat(fundAmount);
 
               $.ajax({
                 method: "PATCH",
                 url: "http://localhost:3000/users/" + user["id"],
                 data: user
-              }).done(function(msg) {
+              }).done(function(res) {
                 /**cached this user profile */
-                setLocalStorageValue("user", msg);
+                setLocalStorageValue("user", res);
                 swal(
                   "Successful!",
                   "Your account has been credited and updated!",
@@ -212,6 +246,10 @@ function payWithPaypal(fundAmount = "9") {
     .render("#paypal-button-container");
 }
 
+function getUserCurrentBalance() {
+  const user = getLocalStorageValue("user");
+  return user["usd-balance"];
+}
 /**cached this user */
 function setLocalStorageValue(key, value) {
   window.localStorage.setItem(key, JSON.stringify(value));

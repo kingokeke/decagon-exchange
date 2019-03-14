@@ -28,11 +28,11 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
             <a href="#" id="dd_user" class="nav-link dropdown-toggle profile-icon" data-toggle="dropdown"
-              ><i class="fas fa-user mr-4"></i><span class="logged-in-user-name">John Doe</span></a
+              ><i class="fas fa-user mr-4"></i><span class="logged-in-user-name" id="display-name" ></span></a
             >
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="#" class="dropdown-item">Profile</a>
-              <a href="#" class="dropdown-item">Logout</a>
+        
+                <a href="#" class="dropdown-item" id="logout-button">Logout</a>
             </div>
           </li>
         </ul>
@@ -66,7 +66,7 @@
             <h3>Wallets</h3>
             <div class="ml-auto">
               <div id="wallet-funds">
-                Account Balance: $<span id="account-balance">2000</span>
+                Account Balance: $<span id="account-balance"></span>
               </div>
               <button class="btn btn-success" data-target="#fund-account-modal" data-toggle="modal">Fund Account</button>
             </div>
