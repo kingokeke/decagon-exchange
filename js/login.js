@@ -15,6 +15,14 @@ function makeLogin() {
       }).done(response => {
         if (response.length > 0) {
           const user = response[0];
+          if (user["is-active"] == 0) {
+            swal(
+              "Deleted",
+              "You have deleted your account. Signup again!",
+              "warning"
+            );
+            return;
+          }
           if (user.password === password) {
             setLocalStorageValue("user", user);
             window.location.href = "dashboard.html";
