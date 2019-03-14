@@ -142,6 +142,49 @@ $(document).ready(function() {
     });
   });
 
+  $('#wallets-page').on('click', '.buy-button', function() {
+    $.get(`http://localhost:3000/wallets?id=${$(this).val()}`, walletData => {
+      $(`#${walletData[0]['coin-symbol'].toLowerCase()}-buy-button`).click(function() {
+        if ($(`#${walletData[0]['coin-symbol'].toLowerCase()}-buy-amount`).val()) {
+          const buyAmount = $(`#${walletData[0]['coin-symbol'].toLowerCase()}-buy-amount`).val();
+          console.log(buyAmount);
+          let coinBalance = walletData[0]['coin-balance'];
+          console.log(coinBalance);
+          const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+          const url = `https://api.coingecko.com/api/v3/simple/price?ids=${walletData[0][
+            'coin-name'
+          ].toLowerCase()}&vs_currencies=usd`;
+          $.get(`http://localhost:3000/users?id=${walletData[0]['user-id']}`, userData => {
+            let accountBalance = parseFloat(userData[0]['usd-balance']);
+            console.log(accountBalance);
+            $.get(`${proxyurl + url}`, coinData => {
+              const currentPrice = coinData[`${walletData[0]['coin-name']}`]['usd'];
+              const coinEquivalent = (parseFloat(buyAmount) / parseFloat(currentPrice)).toFixed(8);
+              accountBalance = parseFloat(accountBalance) - parseFloat(buyAmount);
+              coinBalance = parseFloat(coinBalance) + parseFloat(coinEquivalent);
+              userData[0]['usd-balance'] = String(Number(accountBalance).toFixed(2));
+              walletData[0]['coin-balance'] = String(Number(coinBalance).toFixed(8));
+              $.ajax({
+                type: 'PUT',
+                url: `http://localhost:3000/users/${userData[0]['id']}`,
+                data: userData[0],
+                success: function(res) {
+                  $.ajax({
+                    type: 'PUT',
+                    url: `http://localhost:3000/wallets/${walletData[0]['id']}`,
+                    data: walletData[0],
+                  });
+                },
+              });
+            });
+          });
+        } else {
+          alert('Enter an amount to sell');
+        }
+      });
+    });
+  });
+
   $('.input-group-append').on('click', '.edit-wallet-button', function() {
     copyText(`.input.wallet-address`);
   });
@@ -643,7 +686,3 @@ function addWallet(coin_symbol, user_id, wallet_name = '') {
     data: walletData,
   });
 }
-
-document.querySelector('.edit-wallet-button').onclick = () => {
-  alert('Yea');
-};

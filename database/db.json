@@ -8,7 +8,7 @@
       "password": "111",
       "country": "Nigeria",
       "language": "English",
-      "usd-balance": "2774.32",
+      "usd-balance": "1000.00",
       "verification": "0",
       "is-active": "1",
       "id": 1
@@ -42,7 +42,7 @@
     {
       "wallet-name": "Solomon Wallet",
       "wallet-address": "1TByjiNneL9rNwcM1bxi4y4oOzrbCxoP0G",
-      "coin-balance": "0.10000000",
+      "coin-balance": "0.76068578",
       "coin-symbol": "BTC",
       "coin-name": "bitcoin",
       "user-id": "1",
