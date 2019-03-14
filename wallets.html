@@ -48,9 +48,9 @@
           <li class="">
             <a href="transactions.html"><i class="fas fa-fw fa-dollar-sign mr-3"></i>Transactions</a>
           </li>
-          <li class="">
+          <!-- <li class="">
             <a href="reports.html"><i class="fas fa-fw fa-file-alt mr-3"></i>Reports</a>
-          </li>
+          </li> -->
           <li class="">
             <a href="profile.html"><i class="fas fa-fw fa-user mr-3"></i>Profile</a>
           </li>
@@ -59,8 +59,14 @@
 
       <div class="content p-4">
         <div class="card" id="wallets-page">
-          <div class="card-header bg-white font-weight-bold">
+          <div class="d-flex card-header bg-white font-weight-bold">
             <h3>Wallets</h3>
+            <div class="ml-auto">
+              <div id="wallet-funds">
+                Account Balance: $<span id="account-balance">2000</span>
+              </div>
+              <button class="btn btn-success" data-target="#fund-account-modal" data-toggle="modal">Fund Account</button>
+            </div>
           </div>
           <div class="card-body">
             <div class="row">
@@ -113,7 +119,7 @@
                   >
                     <div class="row">
                         <div class="col-xl-8">
-                            <div class="card">
+                            <div class="card mb-4" id="wallet-ancestor">
                                 <div class="card-header">
                                   <div class="d-flex">
                                     <h4>Bitcoin Wallets</h4>
@@ -1364,7 +1370,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          
+                          id="send-btc-amount"
                           placeholder=""
                         />
                       </div>
@@ -1373,19 +1379,19 @@
                           <input
                             type="text"
                             class="form-control"
-                            
+                            id="send-btc-address"
                             placeholder=""
                           />
                       </div>
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                           <label for="" class="font-weight-bold">Password</label>
                           <input
                             type="password"
                             class="form-control"
-                            
+                            id="send"
                             placeholder=""
                           />
-                        </div>
+                        </div> -->
                     </form>
                   </div>
                 </div>
@@ -1393,7 +1399,7 @@
               <div class="card-footer">
                 <div class="d-flex">
                   <div class="ml-auto">
-                    <button class="btn btn-success">Send</button>
+                    <button class="btn btn-success" id="send-btc-modal-button">Send</button>
                   </div>
                 </div>
               </div>
@@ -1447,7 +1453,7 @@
             <div class="card-footer">
               <div class="d-flex">
                 <div class="ml-auto">
-                  <button class="btn btn-success">Send</button>
+                  <button class="btn btn-success" id="send-eth-modal-button">Send</button>
                 </div>
               </div>
             </div>
@@ -1501,7 +1507,7 @@
             <div class="card-footer">
               <div class="d-flex">
                 <div class="ml-auto">
-                  <button class="btn btn-success">Send</button>
+                  <button class="btn btn-success" id="send-xrp-modal-button">Send</button>
                 </div>
               </div>
             </div>
@@ -1555,7 +1561,7 @@
             <div class="card-footer">
               <div class="d-flex">
                 <div class="ml-auto">
-                  <button class="btn btn-success">Send</button>
+                  <button class="btn btn-success" id="send-ltc-modal-button">Send</button>
                 </div>
               </div>
             </div>
@@ -1609,7 +1615,7 @@
             <div class="card-footer">
               <div class="d-flex">
                 <div class="ml-auto">
-                  <button class="btn btn-success">Send</button>
+                  <button class="btn btn-success" id="send-bch-modal-button">Send</button>
                 </div>
               </div>
             </div>
@@ -1631,13 +1637,13 @@
                   <div class="card">
                     <div class="card-body">
                       <div class="text-center justify-content-center">
-                        <div class="qrcode-output"></div>
+                        <div id="btc-qrcode-output" class="qrcode-output"></div>
                       </div>
                       <form action="">
                         <div class="form-group">
                           <label class="font-weight-bold">Wallet Address</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control"  value="" disabled>
+                                <input type="text" class="form-control wallet-address"  value="" disabled>
                                 <div class="input-group-append" style="cursor: pointer">
                                     <span class="input-group-text" ><i class="far fa-clone"></i></span>
                                 </div>
@@ -1663,13 +1669,13 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="text-center justify-content-center">
-                      <div class="qrcode-output"></div>
+                      <div id="eth-qrcode-output" class="qrcode-output"></div>
                     </div>
                     <form action="">
                       <div class="form-group">
                         <label class="font-weight-bold">Wallet Address</label>
                           <div class="input-group mb-3">
-                              <input type="text" class="form-control"  value="" disabled>
+                              <input type="text" class="form-control wallet-address"  value="" disabled>
                               <div class="input-group-append" style="cursor: pointer">
                                   <span class="input-group-text" ><i class="far fa-clone"></i></span>
                               </div>
@@ -1695,13 +1701,13 @@
               <div class="card">
                 <div class="card-body">
                   <div class="text-center justify-content-center">
-                    <div class="qrcode-output"></div>
+                    <div id="xrp-qrcode-output" class="qrcode-output"></div>
                   </div>
                   <form action="">
                     <div class="form-group">
                       <label class="font-weight-bold">Wallet Address</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control"  value="" disabled>
+                            <input type="text" class="form-control wallet-address"  value="" disabled>
                             <div class="input-group-append" style="cursor: pointer">
                                 <span class="input-group-text" ><i class="far fa-clone"></i></span>
                             </div>
@@ -1727,13 +1733,13 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="text-center justify-content-center">
-                      <div class="qrcode-output"></div>
+                      <div id="ltc-qrcode-output" class="qrcode-output"></div>
                     </div>
                     <form action="">
                       <div class="form-group">
                         <label class="font-weight-bold">Wallet Address</label>
                           <div class="input-group mb-3">
-                              <input type="text" class="form-control"  value="" disabled>
+                              <input type="text" class="form-control wallet-address"  value="" disabled>
                               <div class="input-group-append" style="cursor: pointer">
                                   <span class="input-group-text" ><i class="far fa-clone"></i></span>
                               </div>
@@ -1759,13 +1765,13 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="text-center justify-content-center">
-                      <div class="qrcode-output"></div>
+                      <div id="bch-qrcode-output"class="qrcode-output"></div>
                     </div>
                     <form action="">
                       <div class="form-group">
                         <label class="font-weight-bold">Wallet Address</label>
                           <div class="input-group mb-3">
-                              <input type="text" class="form-control"  value="" disabled>
+                              <input type="text" class="form-control wallet-address"  value="" disabled>
                               <div class="input-group-append" style="cursor: pointer">
                                   <span class="input-group-text" ><i class="far fa-clone"></i></span>
                               </div>
@@ -1778,6 +1784,46 @@
           </div>
         </div>
       </div>
+
+      <!-- Fund Account Modal -->
+      <div class="modal fade" id="fund-account-modal" tabindex="-1" role="dialog" style="display: none;">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" >Fund Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="card">
+                  <div class="card-body">
+                    <form action="">
+                      <div class="form-group">
+                        <label class="font-weight-bold">Amount</label>
+                          <div class="input-group mb-3">
+                              <input type="text" class="form-control"  value="" id="account-funding-amount">                              
+                          </div>
+                      </div>
+                      <div class="row payment-options">
+                        <div class="col text-center">
+                          <div class="paystack-image" id="paystack-payment-processor">
+                            <img src="img/paystack-logo.png" alt="" class="img-fluid">
+                          </div>
+                        </div>
+                        <div class="col text-center">
+                            <div class="paypal-image" id="paypal-payment-processor">
+                              <img src="img/paypal-logo.png" alt="" class="img-fluid">
+                            </div>
+                          </div>
+                      </div>                      
+                    </form>
+                  </div>
+                </div>
+              </div>            
+            </div>
+          </div>
+        </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/fontawesome.min.js"></script>

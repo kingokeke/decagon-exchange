@@ -281,3 +281,32 @@ h1 {
   padding: 2px;
   border-radius: 3px;
 }
+#wallet-funds {
+  display: inline;
+  margin-right: 20px;
+  font-size: 1.5em;
+  vertical-align: middle;
+}
+.paystack-image,
+.paypal-image {
+  padding: 10px;
+  cursor: pointer;
+}
+.paystack-image img,
+.paypal-image img {
+  height: 30px;
+}
+.paystack-image:hover,
+.paypal-image:hover {
+  background-color: var(--lime);
+}
+
+.payment-options {
+  font-weight: bold;
+}
+.qrcode-output img {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  margin-bottom: 40px;
+}

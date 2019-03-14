@@ -48,9 +48,9 @@
           <li class="active">
             <a href="transactions.html"><i class="fas fa-fw fa-dollar-sign mr-3"></i>Transactions</a>
           </li>
-          <li class="">
+          <!-- <li class="">
             <a href="reports.html"><i class="fas fa-fw fa-file-alt mr-3"></i>Reports</a>
-          </li>
+          </li> -->
           <li class="">
             <a href="profile.html"><i class="fas fa-fw fa-user mr-3"></i>Profile</a>
           </li>
@@ -60,7 +60,7 @@
       <div class="content p-4">
         <div class="card" id="transactions-page">
           <div class="card-header bg-white font-weight-bold">
-            <h3>Transactions</h3>
+            <h3 id="page-title">Transactions</h3>
           </div>
           <div class="card-body">
             <div class="row">
@@ -153,8 +153,8 @@
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">Transaction ID</th>
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr>
+                            <tbody id="btc-buy-sell-transactions-table">
+                              <tr class="d-none">
                                 <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
                                 <td>Bitcoin Wallet #1</td>
                                 <td>Buy</td>
@@ -162,14 +162,7 @@
                                 <td>0.83 BTC</td>
                                 <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
                               </tr>
-                              <tr>
-                                <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
-                                <td>Bitcoin Wallet #1</td>
-                                <td>Sell</td>
-                                <td>0.83 BTC</td>
-                                <td>$3892.83</td>
-                                <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
-                              </tr>
+                              
                             </tbody>
                             <tfoot>
                               <tr>
@@ -210,25 +203,15 @@
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">Transaction ID</th>
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr>
-                                <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
-                                <td>Bitcoin Wallet #1</td>
-                                <td>Send</td>
-                                <td>1XJtNHgnsgs6dQjneupiMHYOILQ1Bsz</td>
-                                <td>3GuppzVSZrxzaFXRa2VTYCggXEJL0mkU</td>
-                                <td>0.83 BTC</td>
-                                <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
-                              </tr>
-                              <tr>
-                                <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
-                                <td>Bitcoin Wallet #1</td>
-                                <td>Receive</td>
-                                <td>3GuppzVSZrxzaFXRa2VTYCggXEJL0mkU</td>
-                                <td>1XJtNHgnsgs6dQjneupiMHYOILQ1Bsz</td>
-                                <td>0.83 BTC</td>
-                                <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
-                              </tr>
+                            <tbody id="btc-send-receive-transactions-table">
+                                <tr class="d-none">
+                                    <td class="sorting_1" tabindex="0">Feb 25th 2019 15:32</td>
+                                    <td>Ripple Wallet #1</td>
+                                    <td>Sell</td>
+                                    <td>8327 XRP</td>
+                                    <td>$3892.83</td>
+                                    <td>SZrxzaFXRa2VTYCggXEJL0mkUnsgs6dQjneupiMHYOILQ1Bsz</td>
+                                  </tr>
                             </tbody>
                             <tfoot>
                               <tr>
