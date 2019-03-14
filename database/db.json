@@ -8,21 +8,21 @@
       "password": "111",
       "country": "Nigeria",
       "language": "English",
-      "usd-balance": 0,
-      "verification": 0,
-      "is-active": 1,
+      "usd-balance": "2774.32",
+      "verification": "0",
+      "is-active": "1",
       "id": 1
     }
   ],
   "wallets": [
     {
-      "wallet-name": "Office BTC Wallet",
+      "wallet-name": "Third Wallet",
       "wallet-address": "3PUsqnyecMXfe6ruVw1c2y8kzrkEBGVyP",
-      "coin-balance": "0.5",
+      "coin-balance": "-0.25",
       "coin-symbol": "BTC",
       "coin-name": "bitcoin",
       "user-id": "1",
-      "is-wallet-active": "1",
+      "is-wallet-active": "0",
       "id": 1
     },
     {
@@ -40,11 +40,11 @@
       "id": 3
     },
     {
-      "wallet-name": "Ngozi",
+      "wallet-name": "Solomon Wallet",
       "wallet-address": "1TByjiNneL9rNwcM1bxi4y4oOzrbCxoP0G",
-      "coin-balance": "0",
+      "coin-balance": "0.10000000",
       "coin-symbol": "BTC",
-      "coin-name": "Bitcoin",
+      "coin-name": "bitcoin",
       "user-id": "1",
       "is-wallet-active": "1",
       "id": 4
@@ -70,14 +70,24 @@
       "id": 6
     },
     {
-      "wallet-name": "Wallet 2",
+      "wallet-name": "Next Wallet",
       "wallet-address": "3860pESWqrEXD1rQugDv0yxaakvZ71xMr",
-      "coin-balance": "1.5",
+      "coin-balance": "0",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "1",
+      "is-wallet-active": "0",
+      "id": 7
+    },
+    {
+      "wallet-name": "Izukinguuuu",
+      "wallet-address": "1ZBfX3AtBVdtzOVUy1lCmxphO3kl2Ck7p0",
+      "coin-balance": "0.10000000",
       "coin-symbol": "BTC",
       "coin-name": "bitcoin",
       "user-id": "1",
       "is-wallet-active": "1",
-      "id": 7
+      "id": 8
     }
   ],
   "transactions": [

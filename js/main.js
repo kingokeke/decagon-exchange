@@ -38,9 +38,30 @@ $(document).ready(function() {
   $('#wallets-page').on('click', '.edit-wallet-button', function() {
     $.get(`http://localhost:3000/wallets?id=${$(this).val()}`, data => {
       $(`#edit-${data[0]['coin-name']}-wallet-name`).val(`${data[0]['wallet-name']}`);
+      $(`#update-${data[0]['coin-symbol'].toLowerCase()}-wallet-name-button`).click(function() {
+        data[0]['wallet-name'] = $(`#edit-${data[0]['coin-name']}-wallet-name`).val();
+        $.ajax({
+          type: 'PUT',
+          url: `http://localhost:3000/wallets/${data[0]['id']}`,
+          data: data[0],
+        });
+      });
+      $(`#delete-${data[0]['coin-symbol'].toLowerCase()}-wallet-name-button`).click(function() {
+        if (data[0]['coin-balance'] <= 0) {
+          data[0]['is-wallet-active'] = 0;
+          $.ajax({
+            type: 'PUT',
+            url: `http://localhost:3000/wallets/${data[0]['id']}`,
+            data: data[0],
+          });
+        } else {
+          alert('Account is not empty');
+        }
+      });
     });
   });
 
+  // Wallet Receive Button Functionality
   $('#wallets-page').on('click', '.receive-button', function() {
     $.get(`http://localhost:3000/wallets?id=${$(this).val()}`, data => {
       if ($(`#${data[0]['coin-symbol'].toLowerCase()}-qrcode-output`).html()) {
@@ -51,6 +72,7 @@ $(document).ready(function() {
     });
   });
 
+  // Wallet Send Button Functionality
   $('#wallets-page').on('click', '.send-button', function() {
     $.get(`http://localhost:3000/wallets?id=${$(this).val()}`, senderData => {
       $(`#send-${senderData[0]['coin-symbol'].toLowerCase()}-modal-button`).click(function() {
@@ -63,13 +85,59 @@ $(document).ready(function() {
             type: 'PUT',
             url: `http://localhost:3000/wallets/${receiverData[0]['id']}`,
             data: receiverData[0],
-          });
-          $.ajax({
-            type: 'PUT',
-            url: `http://localhost:3000/wallets/${senderData[0]['id']}`,
-            data: senderData[0],
+            success: function(res) {
+              $.ajax({
+                type: 'PUT',
+                url: `http://localhost:3000/wallets/${senderData[0]['id']}`,
+                data: senderData[0],
+              });
+            },
           });
         });
+      });
+    });
+  });
+
+  $('#wallets-page').on('click', '.sell-button', function() {
+    $.get(`http://localhost:3000/wallets?id=${$(this).val()}`, walletData => {
+      $(`#${walletData[0]['coin-symbol'].toLowerCase()}-sell-button`).click(function() {
+        if ($(`#${walletData[0]['coin-symbol'].toLowerCase()}-sell-amount`).val()) {
+          const sellAmount = $(`#${walletData[0]['coin-symbol'].toLowerCase()}-sell-amount`).val();
+          console.log(sellAmount);
+          let coinBalance = walletData[0]['coin-balance'];
+          console.log(coinBalance);
+          const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+          const url = `https://api.coingecko.com/api/v3/simple/price?ids=${walletData[0][
+            'coin-name'
+          ].toLowerCase()}&vs_currencies=usd`;
+          $.get(`http://localhost:3000/users?id=${walletData[0]['user-id']}`, userData => {
+            let accountBalance = parseFloat(userData[0]['usd-balance']);
+            console.log(accountBalance);
+            $.get(`${proxyurl + url}`, coinData => {
+              const currentPrice = coinData[`${walletData[0]['coin-name']}`]['usd'];
+              const usdEquivalent = (parseFloat(currentPrice) * parseFloat(sellAmount)).toFixed(2);
+              accountBalance = parseFloat(accountBalance) + parseFloat(usdEquivalent);
+              coinBalance = parseFloat(coinBalance) - parseFloat(sellAmount);
+
+              userData[0]['usd-balance'] = String(Number(accountBalance).toFixed(2));
+              walletData[0]['coin-balance'] = String(Number(coinBalance).toFixed(8));
+              $.ajax({
+                type: 'PUT',
+                url: `http://localhost:3000/users/${userData[0]['id']}`,
+                data: userData[0],
+                success: function(res) {
+                  $.ajax({
+                    type: 'PUT',
+                    url: `http://localhost:3000/wallets/${walletData[0]['id']}`,
+                    data: walletData[0],
+                  });
+                },
+              });
+            });
+          });
+        } else {
+          alert('Enter an amount to sell');
+        }
       });
     });
   });
@@ -169,7 +237,7 @@ function listWallets(user_id, coin) {
     }
 
     for (let item of data) {
-      if (item['is-wallet-active']) {
+      if (item['is-wallet-active'] != 0) {
         const myDiv = $(`<div id=${item['id']} class='col-12 wallet-instance'></div>`);
         const message = `<div class="card">
                   <div class="card-body">
@@ -433,19 +501,11 @@ function generateTransactionID() {
 
 function getCurrentCryptoPrice(coin) {
   const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-  const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd';
+  const url = `https://api.coingecko.com/api/v3/simple/price?ids=${coin}&vs_currencies=usd`;
   $.get(`${proxyurl + url}`, data => {
     return data[coin]['usd'];
   });
-  // fetch(proxyurl + url, { method: 'GET' })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     // TO DO: CREATE A SECTION ON THE DASHBOARD FOR THIS AND MODIFY THIS PART TO WORK WITH IT
-  //     const btcPrice = data.bitcoin.usd;
-
-  //   });
 }
-
 function generateQRCode(address, output) {
   let walletType = '';
   switch (address[0]) {
