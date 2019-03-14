@@ -67,10 +67,10 @@
                     <img src="img/profile-image.png" class="img-fluid" alt="" />
                   </div>
                   <div class="user-details">
-                    <p id="profile-user-name">User</p>
-                    <p id="profile-email">example@gmail.com</p>
-                    <p id="profile-phone">+2348102159211</p>
-                    <p id="profile-country">Nigeria</p>
+                    <p id="profile-user-name"></p>
+                    <p id="profile-email"></p>
+                    <p id="profile-phone"></p>
+                    <p id="profile-country"></p>
                   </div>
                   <div id="profile-buttons">
                     <button class="btn btn-lg btn-success m-3" data-toggle="modal" data-target="#edit-profile-modal">
@@ -167,7 +167,9 @@
           <div class="modal-footer">
             <div class="d-flex">
               <div class="justify-content-center text-center">
-                <button class="btn btn-success">Update</button>
+                <button class="btn btn-success" id="update-button">
+                  Update
+                </button>
               </div>
             </div>
           </div>
@@ -218,5 +220,7 @@
     <script src="js/qrcode.min.js"></script>
     <script src="js/bootadmin.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+    <script async src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </body>
 </html>

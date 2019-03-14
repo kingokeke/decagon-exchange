@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="css/datatables.min.css" />
     <link rel="stylesheet" href="css/bootadmin.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <script src="https://www.paypal.com/sdk/js?client-id=AX6dj-drsf_6dFWJ7NdIvdkB-xGHuWvEeMa8xIt2I31OPRBtzch7vc05KmlyI3WgnPQUgQAUZ6WnGyqd"></script>
+      
     <title>Dashboard | Decagon Cryptocurrency Exchange</title>
   </head>
   <body class="bg-light" data-gr-c-s-loaded="true">
@@ -1802,19 +1805,22 @@
                       <div class="form-group">
                         <label class="font-weight-bold">Amount</label>
                           <div class="input-group mb-3">
-                              <input type="text" class="form-control"  value="" id="account-funding-amount">                              
+                              <input type="text" class="form-control"  value="0" id="account-funding-amount">                              
                           </div>
                       </div>
                       <div class="row payment-options">
                         <div class="col text-center">
+                            <a href="js/paystack.html">
                           <div class="paystack-image" id="paystack-payment-processor">
-                            <img src="img/paystack-logo.png" alt="" class="img-fluid">
+                            <img src="img/paystack-logo.png" alt="payWithPaystack" class="img-fluid">
                           </div>
+                          </a>
                         </div>
                         <div class="col text-center">
                             <div class="paypal-image" id="paypal-payment-processor">
                               <img src="img/paypal-logo.png" alt="" class="img-fluid">
                             </div>
+                             <div id="paypal-button-container"></div>
                           </div>
                       </div>                      
                     </form>
@@ -1832,6 +1838,12 @@
     <script src="js/moment.min.js"></script>
     <script src="js/qrcode.min.js"></script>
     <script src="js/bootadmin.min.js"></script>
+    <script
+      async
+      src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"
+    ></script>
     <script src="js/main.js"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script src="js/payments-gateways.js"></script>
   </body>
 </html>
