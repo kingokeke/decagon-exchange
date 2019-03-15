@@ -51,6 +51,84 @@
       "verification": "0",
       "is-active": "0",
       "id": 10
+    },
+    {
+      "firstname": "Kelis",
+      "lastname": "Handsome",
+      "phone": "89879826398",
+      "email": "magadonpay@gmail.com",
+      "password": "1111",
+      "country": "Nigeria",
+      "language": "English",
+      "usd-balance": "371.82",
+      "verification": "0",
+      "is-active": "1",
+      "id": 11
+    },
+    {
+      "firstname": "Izu",
+      "lastname": "Baby",
+      "phone": "87698402969877589",
+      "email": "izubaby@gmail.com",
+      "password": "1111",
+      "country": "Nigeria",
+      "language": "English",
+      "usd-balance": "0",
+      "verification": "0",
+      "is-active": "1",
+      "id": 12
+    },
+    {
+      "firstname": "King",
+      "lastname": "Ogbodo",
+      "phone": "87987023908232",
+      "email": "kingogbodo@gmail.com",
+      "password": "1111",
+      "country": "Nigeria",
+      "language": "English",
+      "usd-balance": "0",
+      "verification": "0",
+      "is-active": "1",
+      "id": 13
+    },
+    {
+      "firstname": "Beans",
+      "lastname": "Stalks",
+      "phone": "7692-096985820930",
+      "email": "beanstalk@gmail.com",
+      "password": "1111",
+      "country": "Nigeria",
+      "language": "English",
+      "usd-balance": "155.56",
+      "verification": "0",
+      "is-active": "1",
+      "id": 14
+    },
+    {
+      "firstname": "Kingsley",
+      "lastname": "Okeke",
+      "phone": "123456789",
+      "email": "kingsleyokeke@gmail.com",
+      "password": "1111",
+      "country": "Nigeria",
+      "language": "English",
+      "usd-balance": "3833.33",
+      "verification": "0",
+      "is-active": "1",
+      "id": 15
+    },
+    {
+      "firstname": "Solomon",
+      "lastname": "Ogbodo",
+      "phone": "123454321",
+      "email": "solomonogbodo@gmail.com",
+      "password": "1111",
+      "country": "Nigeria",
+      "language": "English",
+      "usd-balance": "1276.98",
+      "verification": "0",
+      "is-active": "1",
+      "id": 16
     }
   ],
   "wallets": [
@@ -227,6 +305,56 @@
       "user-id": "1",
       "is-wallet-active": "1",
       "id": 18
+    },
+    {
+      "wallet-name": "My BTC Wallet",
+      "wallet-address": "35HobfNPopcnXzL4RPeSmsmp3ohVJZAUyu",
+      "coin-balance": "0",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "1",
+      "is-wallet-active": "1",
+      "id": 19
+    },
+    {
+      "wallet-name": "Business",
+      "wallet-address": "32xXFC5YxKGMh8lAjJ0nQ0HKkGyqAoJT",
+      "coin-balance": "0.0616",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "11",
+      "is-wallet-active": "1",
+      "id": 20
+    },
+    {
+      "wallet-name": "Bean BTC",
+      "wallet-address": "3PyTmgZV3GQuNSwveKST60gr8hv261tJg8",
+      "coin-balance": "0.04299999999999999",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "14",
+      "is-wallet-active": "1",
+      "id": 21
+    },
+    {
+      "wallet-name": "King Wallet",
+      "wallet-address": "1zEfEGcYzYBH343uyAbXh4vSJlnuCv6SK5",
+      "coin-balance": "0.1",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "15",
+      "is-wallet-active": "1",
+      "id": 22
+    },
+    {
+      "wallet-name": "Solo",
+      "wallet-address": "3rGPQsoIQABy8RXcNF4hoBaDHy25zb9f",
+      "coin-balance": "0.0859",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "16",
+      "is-wallet-active": "1",
+      "id": 23
     }
   ],
   "transactions": [
@@ -497,6 +625,126 @@
       "amount-spent": "0.1",
       "amount-received": "385.19",
       "id": 20
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 07:35:50 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "20",
+      "transaction-type": "buy",
+      "transaction-id": "5fUggEi1y3PmPBD52aCBYwHr7Uq2hkoayQwFgC1fM1cEWDroZ870yvBcfqpr",
+      "user-id": "11",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "100",
+      "amount-received": "0.0258",
+      "id": 21
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 07:42:21 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "20",
+      "transaction-type": "sell",
+      "transaction-id": "YK7BkC7lVkyvW9g6irtXP0lFL3rJyDRjeIyOn7liIK8qOv9KShoFrDFPSmD9",
+      "user-id": "11",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "0.05",
+      "amount-received": "194.04",
+      "id": 22
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 07:42:21 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "20",
+      "transaction-type": "sell",
+      "transaction-id": "CX2thxpnaaKmTA6vGrPtn94vfqmNZtwD3UP5RYVXwQqZ0OjutDtapLlkTET8",
+      "user-id": "11",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "0.05",
+      "amount-received": "194.04",
+      "id": 23
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 07:42:21 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "20",
+      "transaction-type": "sell",
+      "transaction-id": "w1VwKhc1ils1DsZWRc3CLvGncRMUhw1mn0LBDvGpO1PWe0airc2V39PBz9Xt",
+      "user-id": "11",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "0.05",
+      "amount-received": "194.04",
+      "id": 24
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 08:25:09 GMT",
+      "wallet-name": "Bean BTC",
+      "wallet-id": "21",
+      "transaction-type": "buy",
+      "transaction-id": "PDDzkPsT99rsJTENE0jCciV6sSy7QualjyHKL26fG0JPVNzhgKldGLcWTJ1c",
+      "user-id": "14",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "400",
+      "amount-received": "0.1030",
+      "id": 25
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 08:28:11 GMT",
+      "wallet-name": "Bean BTC",
+      "wallet-id": "21",
+      "transaction-type": "send",
+      "transaction-id": "vUKjtPMcPk0s3TMO9PVK0MaydYgggCCHn0hEiJINgcZ21mEgWG8TwHxo4rM9",
+      "user-id": "14",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "amount-transferred": "0.01",
+      "sender-address": "3PyTmgZV3GQuNSwveKST60gr8hv261tJg8",
+      "receiver-address": "32xXFC5YxKGMh8lAjJ0nQ0HKkGyqAoJT",
+      "id": 26
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 09:28:40 GMT",
+      "wallet-name": "Solo",
+      "wallet-id": "23",
+      "transaction-type": "send",
+      "transaction-id": "GcgPG0HDvCcr0Z2DPw2gTziOPTQBKl7yu9fisWyGWXgCWU8iiZawYl7hm2Vs",
+      "user-id": "16",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "amount-transferred": "0.1",
+      "sender-address": "3rGPQsoIQABy8RXcNF4hoBaDHy25zb9f",
+      "receiver-address": "1zEfEGcYzYBH343uyAbXh4vSJlnuCv6SK5",
+      "id": 27
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 09:28:40 GMT",
+      "wallet-name": "King Wallet",
+      "wallet-id": "22",
+      "transaction-type": "receive",
+      "transaction-id": "hKmrbn6wuKAai59ATry2JDZyobiS9ILN4eLo5K7FwLALjzcILgheLE5SI5ib",
+      "user-id": "15",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "amount-transferred": "0.1",
+      "sender-address": "3rGPQsoIQABy8RXcNF4hoBaDHy25zb9f",
+      "receiver-address": "1zEfEGcYzYBH343uyAbXh4vSJlnuCv6SK5",
+      "id": 28
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 09:29:12 GMT",
+      "wallet-name": "Solo",
+      "wallet-id": "23",
+      "transaction-type": "sell",
+      "transaction-id": "O3nBF8Ns2B9TxBfu6TVXnG2AsVLhkNcwO6eYOxpUwKx6Tgb9o3I5uaZpPNz2",
+      "user-id": "16",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "0.2",
+      "amount-received": "776.98",
+      "id": 29
     }
   ],
   "account-funding-transaction": [
@@ -691,6 +939,110 @@
       "amount": "5000",
       "paymentProcessor": "Paystack",
       "id": 24
+    },
+    {
+      "userId": "11",
+      "reference": "T418006794404439",
+      "transaction": "130379096",
+      "amount": "100000",
+      "paymentProcessor": "Paystack",
+      "id": 25
+    },
+    {
+      "userId": "11",
+      "reference": "T741516641664788",
+      "transaction": "130379411",
+      "amount": "100000",
+      "paymentProcessor": "Paystack",
+      "id": 26
+    },
+    {
+      "userId": "14",
+      "reference": "T658601854404220",
+      "transaction": "130396216",
+      "amount": "200000",
+      "paymentProcessor": "Paystack",
+      "id": 27
+    },
+    {
+      "userId": "15",
+      "reference": "T661103522006660",
+      "transaction": "130415861",
+      "amount": "300000",
+      "paymentProcessor": "Paystack",
+      "id": 28
+    },
+    {
+      "userId": "15",
+      "reference": "T678830367780253",
+      "transaction": "130417354",
+      "amount": "300000",
+      "paymentProcessor": "Paystack",
+      "id": 29
+    },
+    {
+      "userId": "15",
+      "reference": "T708124262528260",
+      "transaction": "130418159",
+      "amount": "360000",
+      "paymentProcessor": "Paystack",
+      "id": 30
+    },
+    {
+      "userId": "15",
+      "reference": "T173867768956917",
+      "transaction": "130419418",
+      "amount": "360000",
+      "paymentProcessor": "Paystack",
+      "id": 31
+    },
+    {
+      "userId": "15",
+      "reference": "T781575916440125",
+      "transaction": "130419718",
+      "amount": "360000",
+      "paymentProcessor": "Paystack",
+      "id": 32
+    },
+    {
+      "userId": "15",
+      "reference": "T858500255122595",
+      "transaction": "130419956",
+      "amount": "360000",
+      "paymentProcessor": "Paystack",
+      "id": 33
+    },
+    {
+      "userId": "16",
+      "reference": "T612846519919304",
+      "transaction": "130421266",
+      "amount": "360000",
+      "paymentProcessor": "Paystack",
+      "id": 34
+    },
+    {
+      "userId": "16",
+      "reference": "T481256615365471",
+      "transaction": "130425257",
+      "amount": "360000",
+      "paymentProcessor": "Paystack",
+      "id": 35
+    },
+    {
+      "userId": "16",
+      "reference": "T341209159510185",
+      "transaction": "130426355",
+      "amount": "360000",
+      "paymentProcessor": "Paystack",
+      "id": 36
+    },
+    {
+      "userId": "16",
+      "reference": "T468360302065105",
+      "transaction": "130426747",
+      "amount": "360000",
+      "paymentProcessor": "Paystack",
+      "id": 37
     }
   ]
 }

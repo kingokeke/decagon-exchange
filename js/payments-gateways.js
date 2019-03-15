@@ -32,7 +32,11 @@ $(document).ready(function() {
       swal('Oops', 'Please provide amount greater than zero. Try again!', 'warning');
       return;
     }
-    payWithPaypal(fundAmount);
+    if (fundAmount < 10) {
+      swal('Payment Error', 'Deposite Amount too small. The mimimum you can deposite is $10.', 'warning');
+      return;
+    }
+    payWithPaypal();
     $('#paypal-payment-processor').hide();
   });
 
@@ -90,7 +94,7 @@ function payWithPaystack(fundAmount = '5000') {
     return;
   }
   if (fundAmount < 5000) {
-    swal('Payment Error', 'Deposite Amount too small. The mimimum you can deposite is N5,000.', 'warning');
+    swal('Payment Error', 'Deposite Amount too small. The mimimum you can deposit is N5,000.', 'warning');
     return;
   }
   /**Get cached user */
@@ -103,7 +107,7 @@ function payWithPaystack(fundAmount = '5000') {
   var handler = PaystackPop.setup({
     key: 'pk_test_b6ff1e69b9f6983bfa479e67bff6f3f7cad03c94', //public key
     email: email, //customer's email
-    amount: fundAmount, //amount the customer is supposed to pay
+    amount: fundAmount * 100, //amount the customer is supposed to pay
     metadata: {
       custom_fields: [
         {
@@ -133,8 +137,12 @@ function payWithPaystack(fundAmount = '5000') {
         data: transactionObject,
         success: function(res) {
           /**Credit this user with the amount*/
-          let amount = parseFloat(user['usd-balance']) + parseFloat(fundAmount) / 360;
-          user['usd-balance'] = amount.toFixed(2);
+          if (user['usd-balance'] == 0) {
+            user['usd-balance'] = (parseFloat(fundAmount) / 360).toFixed(2);
+          } else {
+            let amount = parseFloat(user['usd-balance']) + parseFloat(fundAmount) / 360;
+            user['usd-balance'] = amount.toFixed(2);
+          }
 
           // const amt = user['usd-balance'];
           // const oldAmount = parseFloat(amt) + parseFloat(fundAmount) / 360;
@@ -163,10 +171,19 @@ function payWithPaystack(fundAmount = '5000') {
 }
 
 /**Paypal sanbox Payment processor gateway*/
-function payWithPaypal(fundAmount = '10') {
+function payWithPaypal() {
   paypal
     .Buttons({
       createOrder: function(data, actions) {
+        let fundAmount = $('#account-funding-amount').val();
+        if (!fundAmount) {
+          swal('Oops', "You didn't provide amount. Try again!", 'warning');
+          return;
+        }
+        if (fundAmount == 0) {
+          swal('Oops', 'Please provide amount greater than zero. Try again!', 'warning');
+          return;
+        }
         if (fundAmount < 10) {
           swal('Payment Error', 'Deposite Amount too small. The mimimum you can deposite is $10.', 'warning');
           return;

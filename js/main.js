@@ -1,105 +1,97 @@
 /* eslint-disable no-unused-vars, no-undef */
-let user = getLocalStorageValue("user");
+const PORT = `3000`;
+let user = getLocalStorageValue('user');
 $(document).ready(function() {
   // Helper function to populate transactions table
-  $("#page-title").click(() => {
-    createTransaction("Personal BTC Wallet", 1, 1, "BTC", "send");
+  $('#page-title').click(() => {
+    createTransaction('Personal BTC Wallet', 1, 1, 'BTC', 'send');
   });
 
-  if ($("#wallets-page")) {
-    $("#add-bitcoin-wallet-modal .btn-success").click(() => {
-      const bitcoinWalletName = $("#new-bitcoin-wallet-name").val();
-      addWallet("BTC", 1, bitcoinWalletName);
+  if ($('#wallets-page')) {
+    $('#add-bitcoin-wallet-modal .btn-success').click(() => {
+      const bitcoinWalletName = $('#new-bitcoin-wallet-name').val();
+      addWallet('BTC', user.id, bitcoinWalletName);
     });
-    $("#add-ethereum-wallet-modal .btn-success").click(() => {
-      const ethereumWalletName = $("#new-ethereum-wallet-name").val();
-      addWallet("ETH", 1, ethereumWalletName);
+    $('#add-ethereum-wallet-modal .btn-success').click(() => {
+      const ethereumWalletName = $('#new-ethereum-wallet-name').val();
+      addWallet('ETH', user.id, ethereumWalletName);
     });
-    $("#add-ripple-wallet-modal .btn-success").click(() => {
-      const rippleWalletName = $("#new-ripple-wallet-name").val();
-      addWallet("XRP", 1, rippleWalletName);
+    $('#add-ripple-wallet-modal .btn-success').click(() => {
+      const rippleWalletName = $('#new-ripple-wallet-name').val();
+      addWallet('XRP', user.id, rippleWalletName);
     });
-    $("#add-litecoin-wallet-modal .btn-success").click(() => {
-      const litecoinWalletName = $("#new-litecoin-wallet-name").val();
-      addWallet("LTC", 1, litecoinWalletName);
+    $('#add-litecoin-wallet-modal .btn-success').click(() => {
+      const litecoinWalletName = $('#new-litecoin-wallet-name').val();
+      addWallet('LTC', user.id, litecoinWalletName);
     });
-    $("#add-bitcoin-cash-wallet-modal .btn-success").click(() => {
-      const bitcoinCashWalletName = $("#new-bitcoin-cash-wallet-name").val();
-      addWallet("BCH", 1, bitcoinCashWalletName);
+    $('#add-bitcoin-cash-wallet-modal .btn-success').click(() => {
+      const bitcoinCashWalletName = $('#new-bitcoin-cash-wallet-name').val();
+      addWallet('BCH', user.id, bitcoinCashWalletName);
     });
   }
-  listWallets(user.id, "BTC");
-  listWallets(user.id, "ETH");
-  listWallets(user.id, "XRP");
-  listWallets(user.id, "LTC");
-  listWallets(user.id, "BCH");
-  listTransactions(user.id, "BTC");
+  listWallets(user.id, 'BTC');
+  listWallets(user.id, 'ETH');
+  listWallets(user.id, 'XRP');
+  listWallets(user.id, 'LTC');
+  listWallets(user.id, 'BCH');
+  listTransactions(user.id, 'BTC');
 
-  $("#wallets-page").on("click", ".edit-wallet-button", function() {
-    $.get(`http://localhost:3000/wallets?id=${$(this).val()}`, data => {
-      $(`#edit-${data[0]["coin-name"]}-wallet-name`).val(
-        `${data[0]["wallet-name"]}`
-      );
-      $(
-        `#update-${data[0]["coin-symbol"].toLowerCase()}-wallet-name-button`
-      ).click(function() {
-        data[0]["wallet-name"] = $(
-          `#edit-${data[0]["coin-name"]}-wallet-name`
-        ).val();
+  //$('#account-balance').val
+
+  $('#wallets-page').on('click', '.edit-wallet-button', function() {
+    $.get(`http://localhost:${PORT}/wallets?id=${$(this).val()}`, data => {
+      $(`#edit-${data[0]['coin-name']}-wallet-name`).val(`${data[0]['wallet-name']}`);
+      $(`#update-${data[0]['coin-symbol'].toLowerCase()}-wallet-name-button`).click(function() {
+        data[0]['wallet-name'] = $(`#edit-${data[0]['coin-name']}-wallet-name`).val();
         $.ajax({
-          type: "PUT",
-          url: `http://localhost:3000/wallets/${data[0]["id"]}`,
-          data: data[0]
+          type: 'PUT',
+          url: `http://localhost:${PORT}/wallets/${data[0]['id']}`,
+          data: data[0],
         });
       });
-      $(
-        `#delete-${data[0]["coin-symbol"].toLowerCase()}-wallet-name-button`
-      ).click(function() {
-        if (data[0]["coin-balance"] <= 0) {
-          data[0]["is-wallet-active"] = 0;
+      $(`#delete-${data[0]['coin-symbol'].toLowerCase()}-wallet-name-button`).click(function() {
+        if (data[0]['coin-balance'] <= 0) {
+          data[0]['is-wallet-active'] = 0;
           $.ajax({
-            type: "PUT",
-            url: `http://localhost:3000/wallets/${data[0]["id"]}`,
-            data: data[0]
+            type: 'PUT',
+            url: `http://localhost:${PORT}/wallets/${data[0]['id']}`,
+            data: data[0],
           });
         } else {
-          alert("Account is not empty");
+          alert('Account is not empty');
         }
       });
     });
   });
 
   // Wallet Receive Button Functionality
-  $("#wallets-page").on("click", ".receive-button", function() {
-    $.get(`http://localhost:3000/wallets?id=${$(this).val()}`, data => {
-      if ($(`#${data[0]["coin-symbol"].toLowerCase()}-qrcode-output`).html()) {
-        $(`#${data[0]["coin-symbol"].toLowerCase()}-qrcode-output`).html("");
+  $('#wallets-page').on('click', '.receive-button', function() {
+    $.get(`http://localhost:${PORT}/wallets?id=${$(this).val()}`, data => {
+      if ($(`#${data[0]['coin-symbol'].toLowerCase()}-qrcode-output`).html()) {
+        $(`#${data[0]['coin-symbol'].toLowerCase()}-qrcode-output`).html('');
       }
-      generateQRCode(
-        `${data[0]["wallet-address"]}`,
-        `#${data[0]["coin-symbol"].toLowerCase()}-qrcode-output`
-      );
-      $(`input.wallet-address`).val(`${data[0]["wallet-address"]}`);
+      generateQRCode(`${data[0]['wallet-address']}`, `#${data[0]['coin-symbol'].toLowerCase()}-qrcode-output`);
+      $(`input.wallet-address`).val(`${data[0]['wallet-address']}`);
     });
   });
 
   // Wallet Send Button Functionality
-  $("#wallets-page").on("click", ".send-button", function() {
-    $.get(`http://localhost:3000/wallets?id=${$(this).val()}`, senderData => {
+  $('#wallets-page').on('click', '.send-button', function() {
+    $.get(`http://localhost:${PORT}/wallets?id=${$(this).val()}`, senderData => {
       $(`#send-${senderData[0]['coin-symbol'].toLowerCase()}-modal-button`).click(function() {
         const sendAmount = $(`#send-${senderData[0]['coin-symbol'].toLowerCase()}-amount`).val();
         const sendAddress = $(`#send-${senderData[0]['coin-symbol'].toLowerCase()}-address`).val();
-        $.get(`http://localhost:3000/wallets?wallet-address=${sendAddress}`, receiverData => {
+        $.get(`http://localhost:${PORT}/wallets?wallet-address=${sendAddress}`, receiverData => {
           receiverData[0]['coin-balance'] = parseFloat(receiverData[0]['coin-balance']) + parseFloat(sendAmount);
           senderData[0]['coin-balance'] = parseFloat(senderData[0]['coin-balance']) - parseFloat(sendAmount);
           $.ajax({
             type: 'PUT',
-            url: `http://localhost:3000/wallets/${receiverData[0]['id']}`,
+            url: `http://localhost:${PORT}/wallets/${receiverData[0]['id']}`,
             data: receiverData[0],
             success: function(res) {
               $.ajax({
                 type: 'PUT',
-                url: `http://localhost:3000/wallets/${senderData[0]['id']}`,
+                url: `http://localhost:${PORT}/wallets/${senderData[0]['id']}`,
                 data: senderData[0],
                 success: function(res) {
                   const sendTransactions = {
@@ -117,7 +109,7 @@ $(document).ready(function() {
                   };
                   $.ajax({
                     method: 'POST',
-                    url: 'http://localhost:3000/transactions/',
+                    url: `http://localhost:${PORT}/transactions/`,
                     data: sendTransactions,
                     success: function(res) {
                       const receiveTransactions = {
@@ -133,16 +125,16 @@ $(document).ready(function() {
                         'sender-address': `${senderData[0]['wallet-address']}`,
                         'receiver-address': `${sendAddress}`,
                       };
-                     // setTimeout(() => {
-                        $.ajax({
-                          method: 'POST',
-                          url: 'http://localhost:3000/transactions/',
-                          data: receiveTransactions,
-                          success: function(res) {
-                            alert('success');
-                          }
-                        });
-                    //  }, 5000);
+                      // setTimeout(() => {
+                      $.ajax({
+                        method: 'POST',
+                        url: `http://localhost:${PORT}/transactions/`,
+                        data: receiveTransactions,
+                        success: function(res) {
+                          alert('success');
+                        },
+                      });
+                      //  }, 5000);
                     },
                   });
                 },
@@ -154,8 +146,8 @@ $(document).ready(function() {
     });
   });
 
-  $("#wallets-page").on("click", ".sell-button", function() {
-    $.get(`http://localhost:3000/wallets?id=${$(this).val()}`, walletData => {
+  $('#wallets-page').on('click', '.sell-button', function() {
+    $.get(`http://localhost:${PORT}/wallets?id=${$(this).val()}`, walletData => {
       $(`#${walletData[0]['coin-symbol'].toLowerCase()}-sell-button`).click(function() {
         if ($(`#${walletData[0]['coin-symbol'].toLowerCase()}-sell-amount`).val()) {
           const sellAmount = $(`#${walletData[0]['coin-symbol'].toLowerCase()}-sell-amount`).val();
@@ -166,7 +158,7 @@ $(document).ready(function() {
           const url = `https://api.coingecko.com/api/v3/simple/price?ids=${walletData[0][
             'coin-name'
           ].toLowerCase()}&vs_currencies=usd`;
-          $.get(`http://localhost:3000/users?id=${walletData[0]['user-id']}`, userData => {
+          $.get(`http://localhost:${PORT}/users?id=${walletData[0]['user-id']}`, userData => {
             let accountBalance = parseFloat(userData[0]['usd-balance']);
             console.log(accountBalance);
             $.get(`${proxyurl + url}`, coinData => {
@@ -178,14 +170,14 @@ $(document).ready(function() {
               walletData[0]['coin-balance'] = String(Number(coinBalance).toFixed(4));
               $.ajax({
                 type: 'PUT',
-                url: `http://localhost:3000/users/${userData[0]['id']}`,
+                url: `http://localhost:${PORT}/users/${userData[0]['id']}`,
                 data: userData[0],
                 success: function(res) {
                   /**UPDATED USER PROFILE WITH THE CURRENT RESPONSE */
-                  setLocalStorageValue("user", res);
+                  setLocalStorageValue('user', res);
                   $.ajax({
                     type: 'PUT',
-                    url: `http://localhost:3000/wallets/${walletData[0]['id']}`,
+                    url: `http://localhost:${PORT}/wallets/${walletData[0]['id']}`,
                     data: walletData[0],
                     success: function(res) {
                       createTransaction(
@@ -203,19 +195,18 @@ $(document).ready(function() {
                     },
                   });
                 },
-              })
-            })            
-          })
-         } else {
-            // alert("Enter an amount to sell");  Crosscheck lajter
-          }
+              });
+            });
+          });
+        } else {
+          // alert("Enter an amount to sell");  Crosscheck lajter
         }
-      );
+      });
     });
   });
 
-  $("#wallets-page").on("click", ".buy-button", function() {
-    $.get(`http://localhost:3000/wallets?id=${$(this).val()}`, walletData => {
+  $('#wallets-page').on('click', '.buy-button', function() {
+    $.get(`http://localhost:${PORT}/wallets?id=${$(this).val()}`, walletData => {
       $(`#${walletData[0]['coin-symbol'].toLowerCase()}-buy-button`).click(function() {
         if ($(`#${walletData[0]['coin-symbol'].toLowerCase()}-buy-amount`).val()) {
           const buyAmount = $(`#${walletData[0]['coin-symbol'].toLowerCase()}-buy-amount`).val();
@@ -226,7 +217,7 @@ $(document).ready(function() {
           const url = `https://api.coingecko.com/api/v3/simple/price?ids=${walletData[0][
             'coin-name'
           ].toLowerCase()}&vs_currencies=usd`;
-          $.get(`http://localhost:3000/users?id=${walletData[0]['user-id']}`, userData => {
+          $.get(`http://localhost:${PORT}/users?id=${walletData[0]['user-id']}`, userData => {
             let accountBalance = parseFloat(userData[0]['usd-balance']);
             console.log(accountBalance);
             $.get(`${proxyurl + url}`, coinData => {
@@ -238,12 +229,13 @@ $(document).ready(function() {
               walletData[0]['coin-balance'] = String(Number(coinBalance).toFixed(4));
               $.ajax({
                 type: 'PUT',
-                url: `http://localhost:3000/users/${userData[0]['id']}`,
+                url: `http://localhost:${PORT}/users/${userData[0]['id']}`,
                 data: userData[0],
                 success: function(res) {
+                  setLocalStorageValue('user', res);
                   $.ajax({
                     type: 'PUT',
-                    url: `http://localhost:3000/wallets/${walletData[0]['id']}`,
+                    url: `http://localhost:${PORT}/wallets/${walletData[0]['id']}`,
                     data: walletData[0],
                     success: function(res) {
                       createTransaction(
@@ -260,26 +252,25 @@ $(document).ready(function() {
                       );
                     },
                   });
-                }
-              })
-            })
-          })
-          } else {
-            alert("Enter an amount to sell");
-          }
+                },
+              });
+            });
+          });
+        } else {
+          alert('Enter an amount to sell');
         }
-      );
+      });
     });
   });
 
-  $("#display-name").text(user.firstname);
+  $('#display-name').text(user.firstname);
   /**LOGOUT BUTTON ACTION */
-  $("#logout-button").on("click", e => {
+  $('#logout-button').on('click', e => {
     e.preventDefault();
     logout();
   });
 
-  $(".input-group-append").on("click", ".edit-wallet-button", function() {
+  $('.input-group-append').on('click', '.edit-wallet-button', function() {
     copyText(`.input.wallet-address`);
   });
 
@@ -292,7 +283,7 @@ $(document).ready(function() {
   }, 1000);
 
   // Data Tables functionality
-  $(".transactions-datatable").DataTable();
+  $('.transactions-datatable').DataTable();
 });
 
 // const user = getLocalStorageValue('user');
@@ -324,76 +315,49 @@ $(document).ready(function() {
 function copyText(target) {
   const copyText = document.querySelector(target);
   copyText.select();
-  document.execCommand("copy");
+  document.execCommand('copy');
 }
 
 function listTransactions(user_id, coin_symbol) {
-  $.get(
-    `http://localhost:3000/transactions?user-id=${user_id}&coin-symbol=${coin_symbol}`,
-    data => {
-      for (let item of data) {
-        if (
-          item["transaction-type"] === "buy" ||
-          item["transaction-type"] === "sell"
-        ) {
-          let message = ``;
-          const tr = $(`<tr id=${item["id"]}></tr>`);
-          message += `<td class="sorting_1" tabindex="0">${
-            item["timestamp"]
-          }</td>`;
-          message += `<td>${item["wallet-name"]}</td>`;
-          message += `<td style="text-transform: capitalize;">${
-            item["transaction-type"]
-          }</td>`;
-          if (item["transaction-type"] === "buy") {
-            message += `<td>$${item["amount-spent"]}</td>`;
-            message += `<td>${item["amount-received"]} ${
-              item["coin-symbol"]
-            }</td>`;
-          }
-          if (item["transaction-type"] === "sell") {
-            message += `<td>${item["amount-spent"]} ${
-              item["coin-symbol"]
-            }</td>`;
-            message += `<td>$${item["amount-received"]}</td>`;
-          }
-          message += `<td>${item["transaction-id"]}</td>`;
-          tr.append(message);
-          $(`#${coin_symbol.toLowerCase()}-buy-sell-transactions-table`).append(
-            tr
-          );
+  $.get(`http://localhost:${PORT}/transactions?user-id=${user_id}&coin-symbol=${coin_symbol}`, data => {
+    for (let item of data) {
+      if (item['transaction-type'] === 'buy' || item['transaction-type'] === 'sell') {
+        let message = ``;
+        const tr = $(`<tr id=${item['id']}></tr>`);
+        message += `<td class="sorting_1" tabindex="0">${item['timestamp']}</td>`;
+        message += `<td>${item['wallet-name']}</td>`;
+        message += `<td style="text-transform: capitalize;">${item['transaction-type']}</td>`;
+        if (item['transaction-type'] === 'buy') {
+          message += `<td>$${item['amount-spent']}</td>`;
+          message += `<td>${item['amount-received']} ${item['coin-symbol']}</td>`;
         }
-        if (
-          item["transaction-type"] === "send" ||
-          item["transaction-type"] === "receive"
-        ) {
-          let message = ``;
-          const tr = $(`<tr id=${item["id"]}></tr>`);
-          message += `<td class="sorting_1" tabindex="0">${
-            item["timestamp"]
-          }</td>`;
-          message += `<td>${item["wallet-name"]}</td>`;
-          message += `<td style="text-transform: capitalize;">${
-            item["transaction-type"]
-          }</td>`;
-          message += `<td>$${item["sender-address"]}</td>`;
-          message += `<td>$${item["receiver-address"]}</td>`;
-          message += `<td>${item["amount-transferred"]} ${
-            item["coin-symbol"]
-          }</td>`;
-          message += `<td>${item["transaction-id"]}</td>`;
-          tr.append(message);
-          $(
-            `#${coin_symbol.toLowerCase()}-send-receive-transactions-table`
-          ).append(tr);
+        if (item['transaction-type'] === 'sell') {
+          message += `<td>${item['amount-spent']} ${item['coin-symbol']}</td>`;
+          message += `<td>$${item['amount-received']}</td>`;
         }
+        message += `<td>${item['transaction-id']}</td>`;
+        tr.append(message);
+        $(`#${coin_symbol.toLowerCase()}-buy-sell-transactions-table`).append(tr);
+      }
+      if (item['transaction-type'] === 'send' || item['transaction-type'] === 'receive') {
+        let message = ``;
+        const tr = $(`<tr id=${item['id']}></tr>`);
+        message += `<td class="sorting_1" tabindex="0">${item['timestamp']}</td>`;
+        message += `<td>${item['wallet-name']}</td>`;
+        message += `<td style="text-transform: capitalize;">${item['transaction-type']}</td>`;
+        message += `<td>$${item['sender-address']}</td>`;
+        message += `<td>$${item['receiver-address']}</td>`;
+        message += `<td>${item['amount-transferred']} ${item['coin-symbol']}</td>`;
+        message += `<td>${item['transaction-id']}</td>`;
+        tr.append(message);
+        $(`#${coin_symbol.toLowerCase()}-send-receive-transactions-table`).append(tr);
       }
     }
-  );
+  });
 }
 
 function listWallets(user_id, coin) {
-  $.get(`http://localhost:3000/wallets?user-id=${user_id}&coin-symbol=${coin}&_sort=views&_order=asc`, data => {
+  $.get(`http://localhost:${PORT}/wallets?user-id=${user_id}&coin-symbol=${coin}&_sort=views&_order=asc`, data => {
     let icon = '';
 
     switch (coin) {
@@ -414,64 +378,53 @@ function listWallets(user_id, coin) {
         break;
     }
 
-      for (let item of data) {
-        if (item["is-wallet-active"] != 0) {
-          const myDiv = $(
-            `<div id=${item["id"]} class='col-12 wallet-instance'></div>`
-          );
-          const message = `<div class="card">
+    for (let item of data) {
+      if (item['is-wallet-active'] != 0) {
+        const myDiv = $(`<div id=${item['id']} class='col-12 wallet-instance'></div>`);
+        const message = `<div class="card">
                   <div class="card-body">
                     <div class="d-flex">
                       <div>
-                        <h5>${item["wallet-name"]}</h5>
-                        <p>Balance: ${item["coin-balance"]} ${coin}</p>
+                        <h5>${item['wallet-name']}</h5>
+                        <p>Balance: ${item['coin-balance']} ${coin}</p>
                       </div>
                       <div class="ml-auto">
                         <button value=${
                           item.id
                         } class="btn btn-warning edit-wallet-button" data-toggle="modal" data-target="#edit-${
-            item["coin-name"]
-          }-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
+          item['coin-name']
+        }-wallet-modal"><i class="fas fa-pencil-alt mr-1"></i>Edit</button>
                       </div>
                     </div>
                   </div>
                   <div class="card-footer">
                     <div class="d-flex">
                       <div>
-                        <button value=${
-                          item.id
-                        } class="btn btn-primary buy-button" data-target="#buy-${
-            item["coin-name"]
-          }-modal" data-toggle="modal">${icon}</i>Buy</button>
-                        <button value=${
-                          item.id
-                        } class="btn btn-danger sell-button" data-target="#sell-${
-            item["coin-name"]
-          }-modal" data-toggle="modal">
+                        <button value=${item.id} class="btn btn-primary buy-button" data-target="#buy-${
+          item['coin-name']
+        }-modal" data-toggle="modal">${icon}</i>Buy</button>
+                        <button value=${item.id} class="btn btn-danger sell-button" data-target="#sell-${
+          item['coin-name']
+        }-modal" data-toggle="modal">
                           <i class="fas fa-money-bill-wave mr-2"></i>Sell
                         </button>
                       </div>
                       <div class="ml-auto">
-                        <button value=${
-                          item.id
-                        } class="btn btn-info send-button" data-target="#send-${
-            item["coin-name"]
-          }-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                        <button value=${
-                          item.id
-                        } class="btn btn-success receive-button" data-target="#receive-${
-            item["coin-name"]
-          }-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
+                        <button value=${item.id} class="btn btn-info send-button" data-target="#send-${
+          item['coin-name']
+        }-modal" data-toggle="modal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                        <button value=${item.id} class="btn btn-success receive-button" data-target="#receive-${
+          item['coin-name']
+        }-modal" data-toggle="modal"><i class="fas fa-qrcode mr-2"></i>Receive</button>
                       </div>
                     </div>
                   </div>
                 </div>`;
-          myDiv.append(message);
-          $(`#${item["coin-name"]}-wallet-container`).append(myDiv);
-        }
+        myDiv.append(message);
+        $(`#${item['coin-name']}-wallet-container`).append(myDiv);
       }
     }
-  );
+  });
 }
 /**Get ached user */
 function getLocalStorageValue(key) {
@@ -483,29 +436,11 @@ function setLocalStorageValue(key, value) {
 }
 
 //
-function cryptoNews(
-  number_of_articles,
-  number_of_chars,
-  query = "",
-  type = ""
-) {
-  const MONTHS = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
-  ];
-  const API_KEY = "f6968066194849a19cf97a517a1cd3b3";
-  const SOURCE = "crypto-coins-news";
-  const TYPE = type === "top" ? "top-headlines" : "everything";
+function cryptoNews(number_of_articles, number_of_chars, query = '', type = '') {
+  const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const API_KEY = 'f6968066194849a19cf97a517a1cd3b3';
+  const SOURCE = 'crypto-coins-news';
+  const TYPE = type === 'top' ? 'top-headlines' : 'everything';
   const url = `https://newsapi.org/v2/${TYPE}?q=${query}&sources=${SOURCE}&sortBy=publishedAt&apiKey=${API_KEY}`;
   const req = new Request(url);
   fetch(req)
@@ -515,9 +450,7 @@ function cryptoNews(
         const item = data.articles[i];
         const post = `
       <div class="ml-3">
-      <h4><a href="${item.url}" target="_blank" class="m-b-0 font-medium p-0">${
-          item.title
-        }</a></h4>
+      <h4><a href="${item.url}" target="_blank" class="m-b-0 font-medium p-0">${item.title}</a></h4>
       <p class="text-muted">
         ${item.description.slice(0, number_of_chars)}... <br />
         <a href="${item.url}" target="_blank">Read more</a>
@@ -526,36 +459,19 @@ function cryptoNews(
       <div class="ml-4 mr-3">
       <div class="text-center">
       <h5 class="text-muted m-b-0">${new Date(item.publishedAt).getDate()}</h5>
-      <span class="text-muted font-16">${
-        MONTHS[new Date(item.publishedAt).getMonth()]
-      }</span>
+      <span class="text-muted font-16">${MONTHS[new Date(item.publishedAt).getMonth()]}</span>
       </div>
       </div>
       `;
-        const article = document.createElement("li");
-        article.classList.add(
-          "d-flex",
-          "no-block",
-          "card-body",
-          "border-top",
-          "article"
-        );
+        const article = document.createElement('li');
+        article.classList.add('d-flex', 'no-block', 'card-body', 'border-top', 'article');
         article.innerHTML = post;
-        document.querySelector(".cryptocurrency-news ul").appendChild(article);
+        document.querySelector('.cryptocurrency-news ul').appendChild(article);
       }
-      const attribution = document.createElement("li");
-      attribution.classList.add(
-        "d-flex",
-        "no-block",
-        "card-body",
-        "border-top",
-        "article",
-        "small"
-      );
+      const attribution = document.createElement('li');
+      attribution.classList.add('d-flex', 'no-block', 'card-body', 'border-top', 'article', 'small');
       attribution.innerHTML = `<div class="text-center w-100"><p>Powered by <a href="https://newsapi.org" target="_blank">News API</a></p></div>`;
-      document
-        .querySelector(".cryptocurrency-news ul")
-        .appendChild(attribution);
+      document.querySelector('.cryptocurrency-news ul').appendChild(attribution);
     });
 }
 /**Delete this item from cached memory */
@@ -563,24 +479,24 @@ function removeLocalStorageValue(key) {
   window.localStorage.removeItem(key);
 }
 function logout() {
-  removeLocalStorageValue("user");
-  window.location.href = "login.html";
+  removeLocalStorageValue('user');
+  window.location.href = 'login.html';
 }
 function generateCharacterList(...types) {
   // Helper function to generate list of characters for wallet addresses
   const array = [];
   for (let i = types.length; i--; ) {
-    if (types[i] === "numbers") {
+    if (types[i] === 'numbers') {
       for (let i = 48; i <= 57; i++) {
         array[array.length] = String.fromCharCode(i);
       }
     }
-    if (types[i] === "uppercase") {
+    if (types[i] === 'uppercase') {
       for (let i = 65; i <= 90; i++) {
         array[array.length] = String.fromCharCode(i);
       }
     }
-    if (types[i] === "lowercase") {
+    if (types[i] === 'lowercase') {
       for (let i = 97; i <= 122; i++) {
         array[array.length] = String.fromCharCode(i);
       }
@@ -599,13 +515,9 @@ function getRandomInteger(min, max) {
 
 function btcAddress() {
   // Function to generate random mock BTC and BCH addresses for user wallets
-  const startNumber = ["1", "3"];
+  const startNumber = ['1', '3'];
   let address = startNumber[Math.round(Math.random())];
-  const characterList = generateCharacterList(
-    "numbers",
-    "lowercase",
-    "uppercase"
-  );
+  const characterList = generateCharacterList('numbers', 'lowercase', 'uppercase');
   const addressLength = getRandomInteger(30, 34);
   for (let i = addressLength; i--; ) {
     address += characterList[getRandomInteger(0, characterList.length)];
@@ -615,7 +527,7 @@ function btcAddress() {
 
 function ethAddress() {
   // Function to generate random mock ETH addresses for user wallets
-  let address = "0x";
+  let address = '0x';
   for (let i = 3; i--; ) {
     address += getRandomInteger(1e16, 1e17).toString(16);
   }
@@ -624,13 +536,9 @@ function ethAddress() {
 
 function xrpAddress() {
   // Function to generate random mock XRP addresses for user wallets
-  let address = "r";
-  let characterList = generateCharacterList(
-    "numbers",
-    "lowercase",
-    "uppercase"
-  );
-  characterList = characterList.filter(x => !["0", "O", "I", "l"].includes(x));
+  let address = 'r';
+  let characterList = generateCharacterList('numbers', 'lowercase', 'uppercase');
+  characterList = characterList.filter(x => !['0', 'O', 'I', 'l'].includes(x));
   const addressLength = getRandomInteger(25, 35);
   for (let i = addressLength; i--; ) {
     address += characterList[getRandomInteger(0, characterList.length)];
@@ -640,8 +548,8 @@ function xrpAddress() {
 
 function bchAddress() {
   // Function to generate random mock BCH addresses for user wallets
-  let address = "q";
-  const characterList = generateCharacterList("numbers", "lowercase");
+  let address = 'q';
+  const characterList = generateCharacterList('numbers', 'lowercase');
   const addressLength = getRandomInteger(38, 42);
   for (let i = addressLength; i--; ) {
     address += characterList[getRandomInteger(0, characterList.length)];
@@ -651,12 +559,8 @@ function bchAddress() {
 
 function ltcAddress() {
   // Function to generate random mock LTC addresses for user wallets
-  let address = "M";
-  const characterList = generateCharacterList(
-    "numbers",
-    "lowercase",
-    "uppercase"
-  );
+  let address = 'M';
+  const characterList = generateCharacterList('numbers', 'lowercase', 'uppercase');
   const addressLength = getRandomInteger(32, 36);
   for (let i = addressLength; i--; ) {
     address += characterList[getRandomInteger(0, characterList.length)];
@@ -665,12 +569,8 @@ function ltcAddress() {
 }
 
 function generateTransactionID() {
-  let transactionID = "";
-  const characterList = generateCharacterList(
-    "numbers",
-    "lowercase",
-    "uppercase"
-  );
+  let transactionID = '';
+  const characterList = generateCharacterList('numbers', 'lowercase', 'uppercase');
   for (let i = 60; i--; ) {
     transactionID += characterList[getRandomInteger(0, characterList.length)];
   }
@@ -678,41 +578,41 @@ function generateTransactionID() {
 }
 
 function getCurrentCryptoPrice(coin) {
-  const proxyurl = "https://cors-anywhere.herokuapp.com/";
+  const proxyurl = 'https://cors-anywhere.herokuapp.com/';
   const url = `https://api.coingecko.com/api/v3/simple/price?ids=${coin}&vs_currencies=usd`;
   $.get(`${proxyurl + url}`, data => {
-    return data[coin]["usd"];
+    return data[coin]['usd'];
   });
 }
 function generateQRCode(address, output) {
   // Function to generate qrcode for wallet addresses
   // Please note that qrcode.min.js must be included
   // on the HTML page before this function is invoked
-  let walletType = "";
+  let walletType = '';
   switch (address[0]) {
-    case "1":
-    case "3":
-      walletType = "bitcoin";
+    case '1':
+    case '3':
+      walletType = 'bitcoin';
       break;
-    case "0":
-      walletType = "ethereum";
+    case '0':
+      walletType = 'ethereum';
       break;
-    case "r":
-      walletType = "ripple";
+    case 'r':
+      walletType = 'ripple';
       break;
-    case "q":
-      walletType = "bitcoincash";
+    case 'q':
+      walletType = 'bitcoincash';
       break;
-    case "M":
-      walletType = "litecoin";
+    case 'M':
+      walletType = 'litecoin';
       break;
   }
   const qrcode = new QRCode(document.querySelector(output), {
     text: `${walletType}:${address}`,
     width: 200,
     height: 200,
-    colorDark: "#000000",
-    colorLight: "#ffffff"
+    colorDark: '#000000',
+    colorLight: '#ffffff',
   });
   return qrcode;
 }
@@ -735,22 +635,22 @@ function createTransaction(
   receiver_address = ''
 ) {
   const coinName = (() => {
-    if (coin_symbol === "BTC") return "Bitcoin";
-    if (coin_symbol === "ETH") return "Ethereum";
-    if (coin_symbol === "LTC") return "Litecoin";
-    if (coin_symbol === "XRP") return "Ripple";
-    if (coin_symbol === "BCH") return "Bitcoin Cash";
+    if (coin_symbol === 'BTC') return 'Bitcoin';
+    if (coin_symbol === 'ETH') return 'Ethereum';
+    if (coin_symbol === 'LTC') return 'Litecoin';
+    if (coin_symbol === 'XRP') return 'Ripple';
+    if (coin_symbol === 'BCH') return 'Bitcoin Cash';
   })();
 
   const transactionDetails = {
     timestamp: new Date().toUTCString(),
-    "wallet-name": wallet_name,
-    "wallet-id": wallet_id,
-    "transaction-type": transaction_type, // Buy, Sell, Receive, Send
-    "transaction-id": generateTransactionID(),
-    "user-id": user_id,
-    "coin-symbol": coin_symbol,
-    "coin-name": coinName
+    'wallet-name': wallet_name,
+    'wallet-id': wallet_id,
+    'transaction-type': transaction_type, // Buy, Sell, Receive, Send
+    'transaction-id': generateTransactionID(),
+    'user-id': user_id,
+    'coin-symbol': coin_symbol,
+    'coin-name': coinName,
   };
 
   if (transaction_type === 'buy') {
@@ -776,42 +676,42 @@ function createTransaction(
   }
 
   $.ajax({
-    method: "POST",
-    url: "http://localhost:3000/transactions",
-    data: transactionDetails
+    method: 'POST',
+    url: `http://localhost:${PORT}/transactions`,
+    data: transactionDetails,
   });
 }
 
-function addWallet(coin_symbol, user_id, wallet_name = "") {
-  let walletAddress = "";
-  let walletName = "";
-  let coinName = "";
+function addWallet(coin_symbol, user_id, wallet_name = '') {
+  let walletAddress = '';
+  let walletName = '';
+  let coinName = '';
 
   switch (coin_symbol) {
-    case "BTC":
+    case 'BTC':
       walletAddress = btcAddress();
-      walletName = "Bitcoin Wallet #1";
-      coinName = "bitcoin";
+      walletName = 'Bitcoin Wallet #1';
+      coinName = 'bitcoin';
       break;
-    case "ETH":
+    case 'ETH':
       walletAddress = ethAddress();
-      walletName = "Ethereum Wallet #1";
-      coinName = "ethereum";
+      walletName = 'Ethereum Wallet #1';
+      coinName = 'ethereum';
       break;
-    case "XRP":
+    case 'XRP':
       walletAddress = xrpAddress();
-      walletName = "Ripple Wallet #1";
-      coinName = "ripple";
+      walletName = 'Ripple Wallet #1';
+      coinName = 'ripple';
       break;
-    case "LTC":
+    case 'LTC':
       walletAddress = ltcAddress();
-      walletName = "Litecoin Wallet #1";
-      coinName = "litecoin";
+      walletName = 'Litecoin Wallet #1';
+      coinName = 'litecoin';
       break;
-    case "BCH":
+    case 'BCH':
       walletAddress = bchAddress();
-      walletName = "Bitcoin Cash Wallet #1";
-      coinName = "bitcoin cash";
+      walletName = 'Bitcoin Cash Wallet #1';
+      coinName = 'bitcoin cash';
       break;
   }
 
@@ -820,18 +720,18 @@ function addWallet(coin_symbol, user_id, wallet_name = "") {
   }
 
   const walletData = {
-    "wallet-name": walletName,
-    "wallet-address": walletAddress,
-    "coin-balance": 0,
-    "coin-symbol": coin_symbol,
-    "coin-name": coinName,
-    "user-id": user_id,
-    "is-wallet-active": 1
+    'wallet-name': walletName,
+    'wallet-address': walletAddress,
+    'coin-balance': 0,
+    'coin-symbol': coin_symbol,
+    'coin-name': coinName,
+    'user-id': user_id,
+    'is-wallet-active': 1,
   };
 
   $.ajax({
-    method: "POST",
-    url: "http://localhost:3000/wallets",
-    data: walletData
+    method: 'POST',
+    url: `http://localhost:${PORT}/wallets`,
+    data: walletData,
   });
 }
