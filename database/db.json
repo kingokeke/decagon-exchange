@@ -11,7 +11,7 @@
       "usd-balance": "2160.42",
       "verification": "0",
       "is-active": "1",
-      "id": 1
+      "id": 3
     },
     {
       "firstname": "izu",
@@ -34,10 +34,23 @@
       "password": "kings",
       "country": "Nigeria",
       "language": "English",
-      "usd-balance": "343.25",
+      "usd-balance": "43.25",
       "verification": "0",
       "is-active": "1",
-      "id": 3
+      "id": 1
+    },
+    {
+      "firstname": "joseph",
+      "lastname": "joseph",
+      "phone": "997766",
+      "email": "joseph@gmail.com",
+      "password": "kings",
+      "country": "Nigeria",
+      "language": "English",
+      "usd-balance": "0",
+      "verification": "0",
+      "is-active": "0",
+      "id": 10
     }
   ],
   "wallets": [
@@ -68,7 +81,7 @@
     {
       "wallet-name": "Solomon Wallet",
       "wallet-address": "1TByjiNneL9rNwcM1bxi4y4oOzrbCxoP0G",
-      "coin-balance": "0.16068578",
+      "coin-balance": "0.23805562",
       "coin-symbol": "BTC",
       "coin-name": "bitcoin",
       "user-id": "1",
