@@ -129,6 +129,32 @@
       "verification": "0",
       "is-active": "1",
       "id": 16
+    },
+    {
+      "firstname": "Donald",
+      "lastname": "Trump",
+      "phone": "080773889",
+      "email": "trump@gmail.com",
+      "password": "d",
+      "country": "Nigeria",
+      "language": "English",
+      "usd-balance": "850.92",
+      "verification": "0",
+      "is-active": "1",
+      "id": 17
+    },
+    {
+      "firstname": "Donald21",
+      "lastname": "Trump22",
+      "phone": "09008899",
+      "email": "trump22@gmail.com",
+      "password": "s",
+      "country": "Nigeria",
+      "language": "English",
+      "usd-balance": "1572.07",
+      "verification": "0",
+      "is-active": "1",
+      "id": 18
     }
   ],
   "wallets": [
@@ -355,6 +381,56 @@
       "user-id": "16",
       "is-wallet-active": "1",
       "id": 23
+    },
+    {
+      "wallet-name": "Personal",
+      "wallet-address": "1lnUmHSy5xy7cvV4rTmoplK5SkPWfV1",
+      "coin-balance": "-0.0001",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "17",
+      "is-wallet-active": "0",
+      "id": 24
+    },
+    {
+      "wallet-name": "Personal",
+      "wallet-address": "3KvKQjwIQtOEOzq9YU4dsWtUhfGhCfX",
+      "coin-balance": "0",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "17",
+      "is-wallet-active": "1",
+      "id": 25
+    },
+    {
+      "wallet-name": "Business",
+      "wallet-address": "1QLOBSoFeNteIoiKoPaKtwPIXIR1jvK9",
+      "coin-balance": "0.004400000000000001",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "18",
+      "is-wallet-active": "1",
+      "id": 26
+    },
+    {
+      "wallet-name": "Personal Wallet",
+      "wallet-address": "30LsSoNtQgH8zhnoLOZXNF1EMRH83MVRYf",
+      "coin-balance": "0.02",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "18",
+      "is-wallet-active": "1",
+      "id": 27
+    },
+    {
+      "wallet-name": "Home Care",
+      "wallet-address": "1B0dcrWNCGkrNG9LIyWkRZCgwg2yz4Q",
+      "coin-balance": "0",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "18",
+      "is-wallet-active": "0",
+      "id": 28
     }
   ],
   "transactions": [
@@ -745,6 +821,257 @@
       "amount-spent": "0.2",
       "amount-received": "776.98",
       "id": 29
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 09:52:49 GMT",
+      "wallet-name": "Personal",
+      "wallet-id": "24",
+      "transaction-type": "buy",
+      "transaction-id": "8nZqLsoxWpyx0kamXuk3HgNHwwWlcIsXpQHSgZLzEIVEcdFtqLgfIvkmRhRE",
+      "user-id": "17",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "34",
+      "amount-received": "0.0087",
+      "id": 30
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 10:06:33 GMT",
+      "wallet-name": "Personal",
+      "wallet-id": "24",
+      "transaction-type": "sell",
+      "transaction-id": "9ypCQwd1zzrpZQDD9QXg6F4IqhTdqWrTcEZpuD9si4CndBmPOBSdllex1ZoP",
+      "user-id": "17",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "0.08",
+      "amount-received": "311.92",
+      "id": 31
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 10:16:12 GMT",
+      "wallet-name": "Personal",
+      "wallet-id": "24",
+      "transaction-type": "buy",
+      "transaction-id": "49VdheyEFxL5su4sHEhz7YE8UP3afxc3aV5GS2vRbww7HsB1APdjgYbJ4iED",
+      "user-id": "17",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "200",
+      "amount-received": "0.0514",
+      "id": 32
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 10:16:45 GMT",
+      "wallet-name": "Personal",
+      "wallet-id": "24",
+      "transaction-type": "buy",
+      "transaction-id": "zw7iYJSkCKTUUAcgrWxIphUvNPKMNoJWUSAmCOgDv5P8hXJdr4EinNgcp6iD",
+      "user-id": "17",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "77",
+      "amount-received": "0.0198",
+      "id": 33
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 11:24:37 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "26",
+      "transaction-type": "sell",
+      "transaction-id": "VsaQrQP3lJir4ZJPYz6dftZ8Z9rx2tZ50J2Qf8ujZyVuHQKG6CajN4VNQXYK",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "0",
+      "amount-received": "0.00",
+      "id": 34
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 11:24:38 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "26",
+      "transaction-type": "sell",
+      "transaction-id": "lUOCkDcArPkZGIyAMqQUdzXHQyTt8yYCG4TDmDKx7ODLsXTVdBcZ1W118NJQ",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "0",
+      "amount-received": "0.00",
+      "id": 35
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 11:25:38 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "26",
+      "transaction-type": "sell",
+      "transaction-id": "dpW4evTCcpjP1Mzlkpq56cw4jWk7vck2tDCSEHAVChsb6sBWwfo2JGy3vPNc",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "0",
+      "amount-received": "0.00",
+      "id": 36
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 11:27:29 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "26",
+      "transaction-type": "buy",
+      "transaction-id": "78DGUW1KBXzDm10AmfCz9EIN8KDPUbJ9WzzgeMjN1u8PB4UUxYcxBzsLkyuP",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "0",
+      "amount-received": "0.0000",
+      "id": 37
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 11:46:25 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "26",
+      "transaction-type": "buy",
+      "transaction-id": "Gk6SEqAt860j83ISAZoaBF8Hya6Ck9KvwKguOyyXXBNQz63F9S63ltPpw9Hw",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "700",
+      "amount-received": "0.1792",
+      "id": 38
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 11:46:25 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "26",
+      "transaction-type": "buy",
+      "transaction-id": "NxDbDsjIqHPIQpIUhmvfdS7zFE7HkHYCcaOl8NIYqpMUe4qJIeIYQtl4cgaS",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "700",
+      "amount-received": "0.1792",
+      "id": 39
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 11:51:56 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "26",
+      "transaction-type": "buy",
+      "transaction-id": "b9SZAdNBr4c7Sm3GmARKCcPdMgZyat7hX4VNOaX478AQdIsgVdtoQhKBCVLA",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "400",
+      "amount-received": "0.1022",
+      "id": 40
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 11:52:40 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "26",
+      "transaction-type": "buy",
+      "transaction-id": "NQmCAHNEV1MFQNEES4JkpCuaEWqehDvxgCvIU29nsctGi0Qc7hAe5qvqTs7M",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "100",
+      "amount-received": "0.0255",
+      "id": 41
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 11:55:24 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "26",
+      "transaction-type": "buy",
+      "transaction-id": "vPtIMXZPY5ha8QaQOfvxYakqhm2ZKZsQz0hJ22IvDiF3Lu6ELPoNbwvKM4HV",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "400",
+      "amount-received": "0.1022",
+      "id": 42
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 11:57:37 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "26",
+      "transaction-type": "buy",
+      "transaction-id": "JNTvDQUYR7OggXSu6H1WAjIpN95N21eXIFX4Ko4oIECX4czuBPvhFWcZ1dqg",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "60",
+      "amount-received": "0.0153",
+      "id": 43
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 11:57:48 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "26",
+      "transaction-type": "sell",
+      "transaction-id": "mor3S3zISfDCA3qRQgwf3g07j8kYxF3rHqURITbG6rRRfqw4NMQ9jCP2Y2ag",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "0.4",
+      "amount-received": "1565.41",
+      "id": 44
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 12:02:06 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "26",
+      "transaction-type": "send",
+      "transaction-id": "KfY5sKlQ4XXVx1LI2EgDI7QZXIW1FQbFTBARgbMQluBoEt75Yh90dbnoQhnw",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "amount-transferred": "0.02",
+      "sender-address": "1QLOBSoFeNteIoiKoPaKtwPIXIR1jvK9",
+      "receiver-address": "30LsSoNtQgH8zhnoLOZXNF1EMRH83MVRYf",
+      "id": 45
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 12:02:06 GMT",
+      "wallet-name": "Business",
+      "wallet-id": "26",
+      "transaction-type": "send",
+      "transaction-id": "zAZaLnnkKY1WNijb6Zfd1H5XnmVCWTqY8qm4hkyTOefCozJSMxG9D8XfGAxt",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "amount-transferred": "0.02",
+      "sender-address": "1QLOBSoFeNteIoiKoPaKtwPIXIR1jvK9",
+      "receiver-address": "30LsSoNtQgH8zhnoLOZXNF1EMRH83MVRYf",
+      "id": 46
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 12:02:06 GMT",
+      "wallet-name": "Personal Wallet",
+      "wallet-id": "27",
+      "transaction-type": "receive",
+      "transaction-id": "KKY3IoA2zRoITVRVivH2BKJDBY0orYhlC0o2na4WKC7jArRQD22YPNuU8BQC",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "amount-transferred": "0.02",
+      "sender-address": "1QLOBSoFeNteIoiKoPaKtwPIXIR1jvK9",
+      "receiver-address": "30LsSoNtQgH8zhnoLOZXNF1EMRH83MVRYf",
+      "id": 47
+    },
+    {
+      "timestamp": "Fri, 15 Mar 2019 12:02:06 GMT",
+      "wallet-name": "Personal Wallet",
+      "wallet-id": "27",
+      "transaction-type": "receive",
+      "transaction-id": "Y3V3Ay6J9XTBQireKGCSVoTfpAfC4T8fRZOrNB25UDXEi9bfNaC1eUbnwp6m",
+      "user-id": "18",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "amount-transferred": "0.02",
+      "sender-address": "1QLOBSoFeNteIoiKoPaKtwPIXIR1jvK9",
+      "receiver-address": "30LsSoNtQgH8zhnoLOZXNF1EMRH83MVRYf",
+      "id": 48
     }
   ],
   "account-funding-transaction": [
@@ -1043,6 +1370,30 @@
       "amount": "360000",
       "paymentProcessor": "Paystack",
       "id": 37
+    },
+    {
+      "userId": "17",
+      "reference": "T007286281881306",
+      "transaction": "130458309",
+      "amount": "306000",
+      "paymentProcessor": "Paystack",
+      "id": 38
+    },
+    {
+      "userId": "18",
+      "reference": "T178123670022861",
+      "transaction": "130495155",
+      "amount": "300000",
+      "paymentProcessor": "Paystack",
+      "id": 39
+    },
+    {
+      "userId": "18",
+      "reference": "T020130029250268",
+      "transaction": "130496544",
+      "amount": "300000",
+      "paymentProcessor": "Paystack",
+      "id": 40
     }
   ]
 }
