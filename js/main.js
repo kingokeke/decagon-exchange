@@ -90,6 +90,51 @@ $(document).ready(function() {
                 type: 'PUT',
                 url: `http://localhost:3000/wallets/${senderData[0]['id']}`,
                 data: senderData[0],
+                success: function(res) {
+                  const sendTransactions = {
+                    timestamp: new Date().toUTCString(),
+                    'wallet-name': `${senderData[0]['wallet-name']}`,
+                    'wallet-id': `${senderData[0]['id']}`,
+                    'transaction-type': `send`, // Buy, Sell, Receive, Send
+                    'transaction-id': generateTransactionID(),
+                    'user-id': `${senderData[0]['user-id']}`,
+                    'coin-symbol': `${senderData[0]['coin-symbol']}`,
+                    'coin-name': `${senderData[0]['coin-name']}`,
+                    'amount-transferred': `${sendAmount}`,
+                    'sender-address': `${senderData[0]['wallet-address']}`,
+                    'receiver-address': `${sendAddress}`,
+                  };
+                  $.ajax({
+                    method: 'POST',
+                    url: 'http://localhost:3000/transactions/',
+                    data: sendTransactions,
+                    success: function(res) {
+                      const receiveTransactions = {
+                        timestamp: new Date().toUTCString(),
+                        'wallet-name': `${receiverData[0]['wallet-name']}`,
+                        'wallet-id': `${receiverData[0]['id']}`,
+                        'transaction-type': `receive`, // Buy, Sell, Receive, Send
+                        'transaction-id': generateTransactionID(),
+                        'user-id': `${receiverData[0]['user-id']}`,
+                        'coin-symbol': `${receiverData[0]['coin-symbol']}`,
+                        'coin-name': `${receiverData[0]['coin-name']}`,
+                        'amount-transferred': `${sendAmount}`,
+                        'sender-address': `${senderData[0]['wallet-address']}`,
+                        'receiver-address': `${sendAddress}`,
+                      };
+                     // setTimeout(() => {
+                        $.ajax({
+                          method: 'POST',
+                          url: 'http://localhost:3000/transactions/',
+                          data: receiveTransactions,
+                          success: function(res) {
+                            alert('success');
+                          }
+                        });
+                    //  }, 5000);
+                    },
+                  });
+                },
               });
             },
           });
@@ -118,9 +163,8 @@ $(document).ready(function() {
               const usdEquivalent = (parseFloat(currentPrice) * parseFloat(sellAmount)).toFixed(2);
               accountBalance = parseFloat(accountBalance) + parseFloat(usdEquivalent);
               coinBalance = parseFloat(coinBalance) - parseFloat(sellAmount);
-
               userData[0]['usd-balance'] = String(Number(accountBalance).toFixed(2));
-              walletData[0]['coin-balance'] = String(Number(coinBalance).toFixed(8));
+              walletData[0]['coin-balance'] = String(Number(coinBalance).toFixed(4));
               $.ajax({
                 type: 'PUT',
                 url: `http://localhost:3000/users/${userData[0]['id']}`,
@@ -130,6 +174,20 @@ $(document).ready(function() {
                     type: 'PUT',
                     url: `http://localhost:3000/wallets/${walletData[0]['id']}`,
                     data: walletData[0],
+                    success: function(res) {
+                      createTransaction(
+                        `${walletData[0]['wallet-name']}`,
+                        `${walletData[0]['id']}`,
+                        `${userData[0]['id']}`,
+                        `${walletData[0]['coin-symbol']}`,
+                        `sell`,
+                        sellAmount,
+                        usdEquivalent,
+                        '',
+                        '',
+                        ''
+                      );
+                    },
                   });
                 },
               });
@@ -159,11 +217,11 @@ $(document).ready(function() {
             console.log(accountBalance);
             $.get(`${proxyurl + url}`, coinData => {
               const currentPrice = coinData[`${walletData[0]['coin-name']}`]['usd'];
-              const coinEquivalent = (parseFloat(buyAmount) / parseFloat(currentPrice)).toFixed(8);
+              const coinEquivalent = (parseFloat(buyAmount) / parseFloat(currentPrice)).toFixed(4);
               accountBalance = parseFloat(accountBalance) - parseFloat(buyAmount);
               coinBalance = parseFloat(coinBalance) + parseFloat(coinEquivalent);
               userData[0]['usd-balance'] = String(Number(accountBalance).toFixed(2));
-              walletData[0]['coin-balance'] = String(Number(coinBalance).toFixed(8));
+              walletData[0]['coin-balance'] = String(Number(coinBalance).toFixed(4));
               $.ajax({
                 type: 'PUT',
                 url: `http://localhost:3000/users/${userData[0]['id']}`,
@@ -173,6 +231,20 @@ $(document).ready(function() {
                     type: 'PUT',
                     url: `http://localhost:3000/wallets/${walletData[0]['id']}`,
                     data: walletData[0],
+                    success: function(res) {
+                      createTransaction(
+                        `${walletData[0]['wallet-name']}`,
+                        `${walletData[0]['id']}`,
+                        `${userData[0]['id']}`,
+                        `${walletData[0]['coin-symbol']}`,
+                        `buy`,
+                        buyAmount,
+                        coinEquivalent,
+                        '',
+                        '',
+                        ''
+                      );
+                    },
                   });
                 },
               });
@@ -195,6 +267,14 @@ $(document).ready(function() {
   $('.input-group-append').on('click', '.edit-wallet-button', function() {
     copyText(`.input.wallet-address`);
   });
+
+  // Show full page LoadingOverlay
+  $.LoadingOverlay('show');
+
+  // Hide it after 3 seconds
+  setTimeout(function() {
+    $.LoadingOverlay('hide');
+  }, 1000);
 
   // Data Tables functionality
   $('.transactions-datatable').DataTable();
@@ -271,7 +351,7 @@ function listTransactions(user_id, coin_symbol) {
 }
 
 function listWallets(user_id, coin) {
-  $.get(`http://localhost:3000/wallets?user-id=${user_id}&coin-symbol=${coin}`, data => {
+  $.get(`http://localhost:3000/wallets?user-id=${user_id}&coin-symbol=${coin}&_sort-asc`, data => {
     let icon = '';
 
     switch (coin) {
@@ -607,7 +687,18 @@ function validateEmail(email) {
   return re.test(String(email).toLowerCase());
 }
 
-function createTransaction(wallet_name, wallet_id, user_id, coin_symbol, transaction_type) {
+function createTransaction(
+  wallet_name,
+  wallet_id,
+  user_id,
+  coin_symbol,
+  transaction_type,
+  amount_spent = '',
+  amount_received = '',
+  amount_transferred = '',
+  sender_address = '',
+  receiver_address = ''
+) {
   const coinName = (() => {
     if (coin_symbol === 'BTC') return 'Bitcoin';
     if (coin_symbol === 'ETH') return 'Ethereum';
@@ -628,25 +719,25 @@ function createTransaction(wallet_name, wallet_id, user_id, coin_symbol, transac
   };
 
   if (transaction_type === 'buy') {
-    transactionDetails['amount-spent'] = `1000`;
-    transactionDetails['amount-received'] = '3';
+    transactionDetails['amount-spent'] = amount_spent;
+    transactionDetails['amount-received'] = amount_received;
   }
 
   if (transaction_type === 'sell') {
-    transactionDetails['amount-spent'] = `3`;
-    transactionDetails['amount-received'] = '1000';
+    transactionDetails['amount-spent'] = amount_spent;
+    transactionDetails['amount-received'] = amount_received;
   }
 
   if (transaction_type === 'send') {
-    transactionDetails['amount-transferred'] = '2.12';
-    transactionDetails['sender-address'] = btcAddress();
-    transactionDetails['receiver-address'] = btcAddress();
+    transactionDetails['amount-transferred'] = amount_transferred;
+    transactionDetails['sender-address'] = sender_address;
+    transactionDetails['receiver-address'] = receiver_address;
   }
 
   if (transaction_type === 'receive') {
-    transactionDetails['amount-transferred'] = '2.9';
-    transactionDetails['sender-address'] = btcAddress();
-    transactionDetails['receiver-address'] = btcAddress();
+    transactionDetails['amount-transferred'] = amount_transferred;
+    transactionDetails['sender-address'] = sender_address;
+    transactionDetails['receiver-address'] = receiver_address;
   }
 
   $.ajax({

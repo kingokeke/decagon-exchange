@@ -8,7 +8,7 @@
       "password": "111",
       "country": "Nigeria",
       "language": "English",
-      "usd-balance": "1387.20",
+      "usd-balance": "2160.42",
       "verification": "0",
       "is-active": "1",
       "id": 1
@@ -108,7 +108,7 @@
     {
       "wallet-name": "Izukinguuuu",
       "wallet-address": "1ZBfX3AtBVdtzOVUy1lCmxphO3kl2Ck7p0",
-      "coin-balance": "0.10000000",
+      "coin-balance": "-0.05",
       "coin-symbol": "BTC",
       "coin-name": "bitcoin",
       "user-id": "1",
@@ -122,17 +122,17 @@
       "coin-symbol": "BTC",
       "coin-name": "bitcoin",
       "user-id": "1",
-      "is-wallet-active": "1",
+      "is-wallet-active": "0",
       "id": 9
     },
     {
       "wallet-name": "My wallet",
       "wallet-address": "3PV4sb1cbgADhQ3bSKUYwGlOYMc4zAQjQ",
-      "coin-balance": "0.5",
+      "coin-balance": "0",
       "coin-symbol": "BTC",
       "coin-name": "bitcoin",
       "user-id": "1",
-      "is-wallet-active": "1",
+      "is-wallet-active": "0",
       "id": 10
     },
     {
@@ -144,6 +144,76 @@
       "user-id": "1",
       "is-wallet-active": "1",
       "id": 11
+    },
+    {
+      "wallet-name": "BCH wallet 1",
+      "wallet-address": "q0izao8rluwx4ztanrplrbocivknx3x4acwm3u13hx",
+      "coin-balance": "0",
+      "coin-symbol": "BCH",
+      "coin-name": "bitcoin cash",
+      "user-id": "1",
+      "is-wallet-active": "1",
+      "id": 12
+    },
+    {
+      "wallet-name": "BTC Wallet 1",
+      "wallet-address": "3HJMsGJDjF3FZaOCMi5w22hHOF9a1fj5",
+      "coin-balance": "0",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "1",
+      "is-wallet-active": "0",
+      "id": 13
+    },
+    {
+      "wallet-name": "Wallet 1",
+      "wallet-address": "qkynuxurqxwzzrr7715lnltkt9qnny71frq61rki",
+      "coin-balance": "0",
+      "coin-symbol": "BCH",
+      "coin-name": "bitcoin cash",
+      "user-id": "1",
+      "is-wallet-active": "1",
+      "id": 14
+    },
+    {
+      "wallet-name": "My LTC Wallet",
+      "wallet-address": "MsGrpPPlnlGFsMQPfuxjA4fwfR1ej13yaa",
+      "coin-balance": "0",
+      "coin-symbol": "LTC",
+      "coin-name": "litecoin",
+      "user-id": "1",
+      "is-wallet-active": "1",
+      "id": 15
+    },
+    {
+      "wallet-name": "BCH",
+      "wallet-address": "qh8kn1wktuf72fjlkrkp1tg8aiazsfuniz9vob65ps",
+      "coin-balance": "0",
+      "coin-symbol": "BCH",
+      "coin-name": "bitcoin cash",
+      "user-id": "1",
+      "is-wallet-active": "1",
+      "id": 16
+    },
+    {
+      "wallet-name": "Personal",
+      "wallet-address": "1B8kbRFqLBZllUSqjDmetPTwYFkImzOcyk",
+      "coin-balance": "0.24999999999999997",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "user-id": "1",
+      "is-wallet-active": "1",
+      "id": 17
+    },
+    {
+      "wallet-name": "Home",
+      "wallet-address": "rSNddUypYm93oZfqXtxeJaQjAaemVZxfqwt",
+      "coin-balance": "0",
+      "coin-symbol": "XRP",
+      "coin-name": "ripple",
+      "user-id": "1",
+      "is-wallet-active": "1",
+      "id": 18
     }
   ],
   "transactions": [
@@ -359,6 +429,61 @@
       "sender-address": "3atCjCxnTGYMPlufxC6cy92ouncqugtN",
       "receiver-address": "1hqT1oZ2LUhzc2akyivhGBWPMmsLvPXQ",
       "id": 16
+    },
+    {
+      "timestamp": "Thu, 14 Mar 2019 22:02:24 GMT",
+      "wallet-name": "My wallet",
+      "wallet-id": "10",
+      "transaction-type": "send",
+      "transaction-id": "g5o3YuNmYLGmdkuuXLv5EsxYLGBrT59KGhlkQgu0t63SjQyOZ5U1CikxVJE0",
+      "user-id": "1",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-transferred": "1",
+      "sender-address": "3PV4sb1cbgADhQ3bSKUYwGlOYMc4zAQjQ",
+      "receiver-address": "1ZBfX3AtBVdtzOVUy1lCmxphO3kl2Ck7p0",
+      "id": 17
+    },
+    {
+      "timestamp": "Thu, 14 Mar 2019 22:05:03 GMT",
+      "wallet-name": "Izukinguuuu",
+      "wallet-id": "8",
+      "transaction-type": "send",
+      "transaction-id": "Lvs2QhMqAklqbMKsK9OJCEYMDB1cLxl349NvaU0ZcXinS7eO4hOpas9PHYOC",
+      "user-id": "1",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-transferred": "0.5",
+      "sender-address": "1ZBfX3AtBVdtzOVUy1lCmxphO3kl2Ck7p0",
+      "receiver-address": "3PV4sb1cbgADhQ3bSKUYwGlOYMc4zAQjQ",
+      "id": 18
+    },
+    {
+      "timestamp": "Thu, 14 Mar 2019 22:37:05 GMT",
+      "wallet-name": "Izukinguuuu",
+      "wallet-id": "8",
+      "transaction-type": "send",
+      "transaction-id": "21zxuVXCF3HjO5dHBEA5q0Kre0C8k94E8zlCPi6qLrxBAjp2YEcg5A60sIBM",
+      "user-id": "1",
+      "coin-symbol": "BTC",
+      "coin-name": "bitcoin",
+      "amount-transferred": "0.25",
+      "sender-address": "1ZBfX3AtBVdtzOVUy1lCmxphO3kl2Ck7p0",
+      "receiver-address": "1B8kbRFqLBZllUSqjDmetPTwYFkImzOcyk",
+      "id": 19
+    },
+    {
+      "timestamp": "Thu, 14 Mar 2019 22:39:18 GMT",
+      "wallet-name": "Izukinguuuu",
+      "wallet-id": "8",
+      "transaction-type": "sell",
+      "transaction-id": "4bDdMq37Mrh7vKe6JHQgANgzNHBEhJVUWfeikiwTe2FbjVnbRYRbc0TkOOiJ",
+      "user-id": "1",
+      "coin-symbol": "BTC",
+      "coin-name": "Bitcoin",
+      "amount-spent": "0.1",
+      "amount-received": "385.19",
+      "id": 20
     }
   ],
   "account-funding-transaction": [
